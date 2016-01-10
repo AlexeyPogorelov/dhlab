@@ -471,7 +471,6 @@ input[type='number'] {
 .vertical-middle,
 .full-height {
 	position: relative;
-	text-align: center;
 }
 .full-height .content-holder,
 .vertical-middle .content-holder {
@@ -540,6 +539,7 @@ button,
 	background: none;
 	border: 2px solid whitesmoke;
 	color: #fff;
+	cursor: pointer;
 	padding: 14px;
 	text-transform: uppercase;
 	/*transition: all .3s ease;*/

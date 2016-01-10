@@ -37,24 +37,50 @@ nav li a {
 	font-size: 14px;
 	padding: 26px 0;
 }
+.top-line .container {
+	position: relative;
+}
+.top-line .navbar.main-navbar {
+	margin-left: 200px;
+}
 .top-line .navbar-left {
 	text-align: left;
 }
 .top-line .navbar-right {
-	text-align: right;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 300px;
 }
-
-.top-line .navbar-phone {
+.top-line .brand-holder {
+	position: absolute;
+	left: -12px;
+	top: -12px;
+	height: 176px;
+	width: 176px;
+	z-index: 2;
+}
+.top-line .extra-link-holder {
+	position: absolute;
+	right: -90px;
+	top: -7px;
+	height: 50px;
+	width: 90px;
+	z-index: 2;
+}
+/*.top-line .navbar-phone {
 	font-size: 14px;
 	position: absolute;
 	top: 24px;
-}
+	white-space: nowrap;
+}*/
 /* END TOP-LINE */
 
 /* MAIN-SCREEN */
 section.main-screen {
 	overflow: hidden;
-	height: 788px;
+	height: 744px;
 }
 section.main-screen .content {
 	position: relative;
@@ -62,6 +88,7 @@ section.main-screen .content {
 section.main-screen .background-video-holder {
 	overflow: hidden;
 	position: absolute;
+	pointer-events: none;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -79,9 +106,35 @@ section.main-screen .background-video-holder:after {
 section.main-screen .content-holder {
 	position: relative;
 }
+section.main-screen .content-holder .vertical-middle {}
 section.main-screen .content-holder p.description {
 	font-size: 18px;
-	margin-bottom: 34px;
+	margin-bottom: 30px;
+	margin-top: 252px;
+	text-transform: uppercase;
+}
+section.main-screen .content-holder h1 {
+	line-height: 50px;
+}
+section.main-screen .left-bottom-holder {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	text-align: left;
+	text-transform: uppercase;
+	-webkit-transform: rotateZ(90deg);
+	transform: rotateZ(90deg);
+}
+section.main-screen .right-top-holder {
+	position: absolute;
+	right: 0;
+	top: 0;
+	-webkit-transform: rotateZ(90deg);
+	transform: rotateZ(90deg);
+}
+section.main-screen .right-top-holder a {
+	color: white;
+	font-size: 14px;
 	text-transform: uppercase;
 }
 /* END MAIN-SCREEN */
@@ -137,6 +190,13 @@ section.services .service > .content-holder {
 /* PARTNERS */
 section.partners {}
 /* END PARTNERS */
+
+/* BONUSES */
+section.bonuses {
+	background: url('../img/bg/bonus-bg-1.svg') 0 0 repeat;
+}
+section.bonuses {}
+/* END BONUSES */
 
 /* MOBILE */
 .navbar-toggle {
