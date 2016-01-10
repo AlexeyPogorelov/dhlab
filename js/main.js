@@ -138,7 +138,7 @@ $(document).on('ready', function () {
 						DOM.$pagination = $('<div>').addClass('paginator-holder');
 						DOM.$pagination.appendTo(DOM.$slider);
 					}
-					$('<div />')
+					$('<div>')
 						.addClass('prev-slide')
 						.on('click', function() {
 							this.prevSlide();
@@ -151,7 +151,7 @@ $(document).on('ready', function () {
 						}
 						DOM.$pagination.append(page);
 					}
-					$('<div />')
+					$('<div>')
 						.addClass('next-slide')
 						.on('click', function() {
 							this.nextSlide();
