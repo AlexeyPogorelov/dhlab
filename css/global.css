@@ -5,13 +5,12 @@
 	padding: 0;
 }
 body {
-	color: black;
-	font-family: "Gotham Pro", sans-serif;
-	font-size: 18px;
+	color: white;
+	background-color: #111;
+	font-family: "MuseoSansCyrl", sans-serif;
+	font-size: 13px;
 	font-weight: 300;
-	line-height: 30px;
-	perspective: 1500px;
-	transform-style: preserve-3d;
+	line-height: 17px;
 }
 .wrapper {}
 .lightbox-cell::-webkit-scrollbar-corner,
@@ -43,8 +42,8 @@ section#footer .container {
 	width: auto;
 }
 a {
-	color: #000;
-	font-family: "Gotham Pro", sans-serif;
+	color: #fff;
+	font-family: "MuseoSansCyrl", sans-serif;
 	text-decoration: none;
 }
 img {
@@ -55,21 +54,25 @@ li {
 }
 
 h1 {
-	color: white;
-	font-size: 58px;
-	font-weight: 700;
-	line-height: 69px;
-}
-h1.big {
-	font-size: 88px;
+	font-size: 42px;
+	line-height: 56px;
+	text-transform: uppercase;
 }
 h1.center {
 	text-align: center;
 	width: 100%;
 }
 h2 {
+	color: white;
+	line-height: 32px;
+	font-size: 24px;
+	text-transform: uppercase;
 }
 h3 {
+	color: white;
+	font-size: 16px;
+	line-height: 28px;
+	text-transform: uppercase;
 }
 h4 {
 }
@@ -431,6 +434,7 @@ input[type='number'] {
 /*	GRID	*/
 .container {
 	margin: 0 auto;
+	width: 1200px;
 }
 .text-center {
 	text-align: center;
@@ -533,8 +537,16 @@ section:after,
 }
 button,
 .btn {
-	border: none;
+	background: none;
+	border: 2px solid whitesmoke;
+	color: #fff;
+	padding: 14px;
+	text-transform: uppercase;
 	/*transition: all .3s ease;*/
+}
+button img,
+.btn img {
+	margin-right: 14px;
 }
 button.focus,
 button.active,

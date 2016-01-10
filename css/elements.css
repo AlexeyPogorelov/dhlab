@@ -1,0 +1,23 @@
+.grey {
+	background-color: #f7f7f7;
+	color: black;
+}
+.white {
+	background-color: #fff;
+	color: black;
+}
+.white h1,
+.grey h1,
+.white h2,
+.grey h2,
+.white h3,
+.grey h3,
+.white h4,
+.grey h4,
+.white h5,
+.grey h5,
+.white h6,
+.grey h6,
+.grey a {
+	color: black;
+}
