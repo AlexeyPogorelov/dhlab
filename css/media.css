@@ -1,0 +1,65 @@
+
+/*
+	LARGE
+*/
+@media screen and (min-width: 1440px) {
+	.container {
+		width: 1160px;
+	}
+}
+/*------------------------------------------------------------------------------
+	MEDIUM
+------------------------------------------------------------------------------*/
+@media screen and (max-width: 1439px) {
+	.mobile-sm-visible {
+		display: inherit;
+	}
+	.mobile-sm-hidden {
+		display: none;
+	}
+	.container {
+		width: 800px;
+	}
+}
+/*--------------------------------------------------------------------------
+	TABLET
+--------------------------------------------------------------------------*/
+@media screen and (max-width: 1024px) {
+
+}
+/*
+	MOBILE
+*/
+@media screen and (max-width: 960px) {
+	body::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+		background-color: #fff;
+		border: none;
+	}
+	.mobile-visible {
+		display: inherit !important;
+	}
+	.mobile-hidden {
+		display: none !important;
+	}
+	.mobile-xs-visible {
+		display: inherit;
+	}
+	.mobile-xs-hidden {
+		display: none;
+	}
+	.container {
+		width: 100%;
+	}
+}
+/*
+	SMALL
+*/
+@media screen and (max-width: 564px) {
+}
+/*
+	xSMALL
+*/
+@media screen and (max-width: 400px) {
+}
