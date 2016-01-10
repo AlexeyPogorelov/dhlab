@@ -142,8 +142,7 @@ section.main-screen .right-top-holder a {
 /* FEATURES */
 section.features {
 	padding-top: 80px;
-	padding-bottom: 56px;
-}
+}v
 section.features .container {
 	position: relative;
 }
@@ -154,10 +153,41 @@ section.features .left-side {
 section.features .right-side {
 	margin-left: 330px;
 }
-section.features ul.features-list {}
+section.features ul.features-list {
+	margin-right: -145px;
+	margin-bottom: -24px;
+}
 section.features ul.features-list li {
 	display: inline-block;
-	width: 360px;
+	width: 372px;
+	display: inline-block;
+	position: relative;
+	padding-left: 60px;
+	min-height: 180px;
+	margin-right: 133px;
+	vertical-align: top;
+	margin-bottom: 22px;
+}
+section.features ul.features-list li h2 {
+	color: white;
+	font-size: 24px;
+	line-height: 24px;
+	text-transform: uppercase;
+	margin-bottom: 19px;
+}
+section.features ul.features-list li  p {
+	opacity: 0.7;
+	color: white;
+	font-size: 15px;
+	line-height: 19px;
+}
+section.features ul.features-list li .counter {
+	position: absolute;
+	color: white;
+	font-size: 72px;
+	text-transform: uppercase;
+	left: 0;
+	top: 19px;
 }
 /* END FEATURES */
 
@@ -183,7 +213,18 @@ section.services .service > .content-holder {
 	top: 50%;
 	left: 96px;
 	width: 100%;
-	overflow: hidden;
+}
+section.services .service > .content-holder h2 {
+	text-transform: uppercase;
+	font-weight: 100;
+	max-width: 221px;
+}
+section.services .service > .content-holder button {
+	position: absolute;
+	top: -6px;
+	right: 193px;
+	padding: 12px;
+
 }
 /* END SERVICES */
 
@@ -193,7 +234,8 @@ section.partners {}
 
 /* BONUSES */
 section.bonuses {
-	background: url('../img/bg/bonus-bg-1.svg') 0 0 repeat;
+	background: url('../img/bg/bonus-bg-1.svg') 281px 0 no-repeat;
+	height: 361px;
 }
 section.bonuses {}
 /* END BONUSES */
@@ -280,4 +322,132 @@ section.bonuses {}
 .mobile-menu li.active a {
 	color: #f41f52;
 }
+section.bonuses .left-side {
+	position: absolute;
+	width: 200px;
+	height: 100%;
+	padding-top: 139px;
+	border-right: 1px solid #fff;
+}
+section.bonuses .left-side h2 {
+	color: white;
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: 100;
+}
+section.bonuses .right-side {
+	margin-left: 200px;
+	padding-top: 139px;
+}
+section.bonuses .right-side h1 {
+	color: white;
+	font-size: 42px;
+	line-height: 56px;
+	text-transform: uppercase;
+	font-weight: 100;
+	max-width: 748px;
+	margin-left: 100px;
+}
 /* END MOBILE */
+
+
+
+/* UPDARES */
+section.updates {}
+section.updates .headers h2 {
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: 100;
+	color: black;
+	margin-left: 100px;
+	margin-bottom: 40px;
+}
+section.updates .left-side {
+	width: 50%;
+	float: left;
+}
+section.updates .right-side {
+	width: 50%;
+	float: left;
+}
+section.updates .news-slider {
+	margin-top: 88px;
+	margin-left: 57px;
+}
+section.updates .slider-holder {
+	font-size: 0;
+	width: 600px;
+}
+section.updates .slider-holder .new-item {
+	display: inline-block;
+	margin-bottom: 90px;
+	padding-right: 30px;
+	padding-left: 30px;
+	vertical-align: top;
+	width: 50%;
+}
+section.updates .slider-holder .new-item h2 {
+	font-size: 18px;
+	line-height: 25px;
+	text-transform: uppercase;
+	font-weight: 100;
+	margin-bottom: 19px;
+}
+section.updates .slider-holder .new-item p {
+	color: black;
+	font-size: 13px;
+	line-height: 17px;
+	margin-bottom: 19px;
+}
+section.updates .slider-holder .new-item p.date {
+	color: #888;
+	font-size: 13px;
+	line-height: 17px;
+}
+/* END UPDARES */
+
+
+
+
+/* footer */
+/* END footer */
+section.footer {
+	padding:  101px 60px 23px 99px;
+}
+section.footer .left-side,
+section.footer .right-side {
+	float: left;
+	width: 50%;
+}
+section.footer h2 {
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: 100;
+	margin-bottom: 95px;
+}
+section.footer p {
+	color: white;
+	font-size: 16px;
+	line-height: 28px;
+	text-transform: uppercase;
+	margin-bottom: 60px;
+}
+section.footer ul {
+	display: inline-block;
+	width: 47.2%;
+}
+section.footer ul li {
+	display: block;
+	color: white;
+	font-size: 16px;
+	line-height: 28px;
+	text-transform: uppercase;
+	margin-bottom: 28px;
+}
+section.footer .copyright-holder {
+	margin-top: 103px;
+}
+section.footer .copyright-holder span {
+	width: 32.5%;
+	display: inline-block;
+}
