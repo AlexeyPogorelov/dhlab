@@ -57,6 +57,9 @@ $(document).on('ready', function () {
 		bodyOverflow.unfixBody();
 	});
 
+	// initias
+	$('#persons-slider').personsSlider();
+
 	// loaded
 	loading.loaded();
 
@@ -223,6 +226,13 @@ $(document).on('ready', function () {
 						DOM.$pagination = $('<div>').addClass('paginator-holder');
 						DOM.$pagination.appendTo(DOM.$slider);
 					};
+
+					$('<div>')
+						.addClass('prev-slide')
+						.on('click', function() {
+							this.prevSlide();
+						})
+						.appendTo(DOM.$pagination);
 					for (var i = 0; i < state.activeSlides / options.slidesOnPage; i++) {
 						var page = $('<div>').data('page', i).addClass('page');
 						if (!i) {
@@ -230,8 +240,11 @@ $(document).on('ready', function () {
 						};
 						DOM.$pagination.append(page);
 					};
-					// DOM.$slider
-					//
+					$('<div>')
+						.addClass('next-slide')
+						.on('click', function() {
+							this.nextSlide();
+						})
 				}
 			};
 
@@ -283,43 +296,36 @@ $(document).on('ready', function () {
 				init: function () {
 					state.cur = state.cur || 0;
 					state.activeSlides = DOM.$slides.length;
+					state.pages = Math.ceil(DOM.$slides.length / options.slidesOnPage);
+					state.slideWidth = state.sliderWidth / options.slidesOnPage;
 					DOM.$preloader.fadeOut(150);
 				},
 				resize: function () {
 					state.sliderWidth = DOM.$viewport.width();
-					state.slideWidth = DOM.$slides.eq(0).outerWidth();
-					state.slideMargin = (state.sliderWidth - (state.slideWidth * options.slidesOnPage)) / (options.slidesOnPage * 2);
-					if ((Math.abs(state.slideMargin * 2) + state.slideWidth) * options.slidesOnPage > state.sliderWidth && options.slidesOnPage > 1) {
-						options.slidesOnPage--;
-						this.resize();
-						this.createPagination();
-						return;
-					}
-					DOM.$sliderHolder.width((state.slideMargin * 2 + state.slideWidth) * state.activeSlides);
-					DOM.$slides.css({
-						'margin-left': state.slideMargin,
-						'margin-right': state.slideMargin
-					});
+					state.slideWidth = state.sliderWidth / options.slidesOnPage;
+					DOM.$slides.width(state.slideWidth);
+					DOM.$sliderHolder.width(state.slideWidth * state.activeSlides);
 				},
 				prevSlide: function () {
 					var id = state.cur - 1;
 					if (id < 0) {
-						this.toSlide(state.activeSlides - 1);
+						this.toSlide(state.activeSlides - options.slidesOnPage);
 						return;
 					}
 					this.toSlide(id);
 				},
 				nextSlide: function () {
 					var id = state.cur + 1;
-					if (id >= state.activeSlides) {
+					if (id >= state.activeSlides - options.slidesOnPage + 1) {
 						this.toSlide(0);
 						return;
 					}
 					this.toSlide(id);
 				},
 				toSlide: function (id) {
+					state.cur = id;
 					DOM.$sliderHolder.css({
-						'transform': 'translateX( -' + (state.sliderWidth * id) + 'px)'
+						'transform': 'translateX( -' + (state.slideWidth * id) + 'px)'
 					});
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
 				},
@@ -330,15 +336,18 @@ $(document).on('ready', function () {
 						DOM.$pagination = $('<div>').addClass('paginator-holder');
 						DOM.$pagination.appendTo(DOM.$slider);
 					};
-					for (var i = 0; i < state.activeSlides / options.slidesOnPage; i++) {
-						var page = $('<div>').data('page', i).addClass('page');
-						if (!i) {
-							page.addClass('active');
-						};
-						DOM.$pagination.append(page);
-					};
-					// DOM.$slider
-					//
+					$('<div>')
+						.addClass('prev-slide')
+						.on('click', function() {
+							plg.prevSlide();
+						})
+						.appendTo(DOM.$pagination);
+					$('<div>')
+						.addClass('next-slide')
+						.on('click', function() {
+							plg.nextSlide();
+						})
+						.appendTo(DOM.$pagination);
 				}
 			};
 
@@ -347,6 +356,22 @@ $(document).on('ready', function () {
 			plg.createPagination();
 			plg.resize();
 			// console.log(DOM);
+
+			// video
+			DOM.$slides.find('video').each(function () {
+					this.load();
+					this.currentTime = 0.01;
+				});
+			DOM.$slides.on('mouseenter', function () {
+					var $this = $(this);
+					$this.find('video').get(0).play();
+				})
+				.on('mouseleave', function () {
+					var $this = $(this);
+					var video = $this.find('video').get(0);
+					video.pause();
+					video.currentTime = 0.01;
+				});
 
 			// resize
 			$(window).on('resize', function () {
