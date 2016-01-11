@@ -94,6 +94,9 @@ section.main-screen .background-video-holder {
 	width: 100%;
 	z-index: 0;
 }
+section.main-screen .background-video-holder video {
+	min-width: 100%;
+}
 section.main-screen .background-video-holder:after {
 	background: rgba(0,0,0,0.3) url('../img/bg/grid-1.png') 50% 50% repeat-y;
 	content: "";
@@ -176,6 +179,7 @@ section.features .left-side {
 }
 section.features .right-side {
 	margin-left: 330px;
+	overflow: hidden;
 }
 section.features ul.features-list {
 	margin-right: -145px;
@@ -533,9 +537,13 @@ section.footer ul li {
 section.footer .copyright-holder {
 	margin-top: 103px;
 }
+section.footer .copyright-holder a,
 section.footer .copyright-holder span {
 	width: 32.5%;
 	display: inline-block;
+	color: #888;
+	font-size: 13px;
+	line-height: 17px;
 }
 
 /* PERSONAL */
@@ -549,6 +557,7 @@ section.footer .copyright-holder span {
 /* PERSONS-SLIDER */
 .persons-slider {
 	display: block;
+	position: relative;
 	/*height: 520px;*/
 }
 .persons-slider .slider-viewport {
@@ -607,6 +616,7 @@ section.footer .copyright-holder span {
 .persons-slider .prev-slide,
 .persons-slider .next-slide {
 	cursor: pointer;
+	margin-top: -21px;
 	position: absolute;
 	top: 50%;
 	width: 23px;

@@ -52,6 +52,14 @@
 	.container {
 		width: 100%;
 	}
+	.left-side,
+	.right-side {
+		display: block !important;
+		float: none !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		width: 100% !important;
+	}
 }
 /*
 	SMALL

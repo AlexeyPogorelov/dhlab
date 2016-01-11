@@ -1,3 +1,49 @@
+// easing
+
+jQuery.extend( jQuery.easing,
+	{
+		def: 'easeOutQuad',
+		swing: function (x, t, b, c, d) {
+			//alert(jQuery.easing.default);
+			return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+		},
+		easeOutQuart: function (x, t, b, c, d) {
+			return -c * ((t=t/d-1)*t*t*t - 1) + b;
+		},
+		easeInOutQuart: function (x, t, b, c, d) {
+			if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+			return -c/2 * ((t-=2)*t*t*t - 2) + b;
+		},
+		easeOutQuint: function (x, t, b, c, d) {
+			return c*((t=t/d-1)*t*t*t*t + 1) + b;
+		},
+		easeInOutQuint: function (x, t, b, c, d) {
+			if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+			return c/2*((t-=2)*t*t*t*t + 2) + b;
+		},
+		easeOutCirc: function (x, t, b, c, d) {
+			return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+		},
+		easeInBounce: function (x, t, b, c, d) {
+			return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+		},
+		easeOutBounce: function (x, t, b, c, d) {
+			if ((t/=d) < (1/2.75)) {
+				return c*(7.5625*t*t) + b;
+			} else if (t < (2/2.75)) {
+				return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+			} else if (t < (2.5/2.75)) {
+				return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+			} else {
+				return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+			}
+		},
+		easeInOutBounce: function (x, t, b, c, d) {
+			if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
+			return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+		}
+	});
+
 var loading = {
 	avgTime: 3000,
 	trg: 1,
@@ -42,6 +88,15 @@ $(document).on('ready', function () {
 		};
 	$('.full-height').css({
 		'min-height': winHeight
+	});
+
+	// main navigation
+	$('.main-navbar').find('a').on('click', function (e) {
+		e.preventDefault();
+		var target = $(this).attr('href');
+		$('html, body').animate({
+			scrollTop: $(target).offset().top
+		}, 1200, 'easeOutCirc');
 	});
 
 	// sidebars
@@ -338,7 +393,7 @@ $(document).on('ready', function () {
 					} else {
 						DOM.$pagination = $('<div>').addClass('paginator-holder');
 						DOM.$pagination.appendTo(DOM.$slider);
-					};
+					}
 					$('<div>')
 						.addClass('prev-slide')
 						.on('click', function() {
@@ -372,6 +427,7 @@ $(document).on('ready', function () {
 				.on('mouseleave', function () {
 					var $this = $(this);
 					var video = $this.find('video').get(0);
+
 					video.pause();
 					video.currentTime = 0.01;
 				});
@@ -389,8 +445,8 @@ $(document).on('ready', function () {
 				} else if ($target.hasClass('filter')) {
 					$target.addClass('active').siblings().removeClass('active');
 					plg.filter($target.data('filter'));
-				};
-			})
+				}
+			});
 
 			return plg;
 		});
