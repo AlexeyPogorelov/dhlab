@@ -58,7 +58,9 @@ $(document).on('ready', function () {
 	});
 
 	// initias
+	$('#news-slider').simpleSlider();
 	$('#persons-slider').personsSlider();
+	$('#partners-slider').verticalSlider();
 
 	// loaded
 	loading.loaded();
@@ -191,11 +193,12 @@ $(document).on('ready', function () {
 				init: function () {
 					state.cur = state.cur || 0;
 					state.activeSlides = DOM.$slides.length;
+					DOM.$slides.width(DOM.$slider);
 					DOM.$preloader.fadeOut(150);
 				},
 				resize: function () {
 					state.sliderWidth = DOM.$viewport.width();
-					DOM.$sliderHolder.width(sliderWidth * state.activeSlides);
+					DOM.$sliderHolder.width(state.sliderWidth * state.activeSlides);
 				},
 				prevSlide: function () {
 					var id = state.cur - 1;
@@ -233,7 +236,7 @@ $(document).on('ready', function () {
 							this.prevSlide();
 						})
 						.appendTo(DOM.$pagination);
-					for (var i = 0; i < state.activeSlides / options.slidesOnPage; i++) {
+					for (var i = 0; i < state.activeSlides; i++) {
 						var page = $('<div>').data('page', i).addClass('page');
 						if (!i) {
 							page.addClass('active');

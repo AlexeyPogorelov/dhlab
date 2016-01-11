@@ -522,17 +522,21 @@ section:after,
 .nav:after,
 .navbar:before,
 .navbar:after {
-  display: table;
-  content: " ";
+	clear: both;
+	content: "";
+	display: table;
 }
 .clearfix:after,
 section:after,
 .row:after,
 .container:after,
+.container:before,
 .container-fluid:after,
 .nav:after,
 .navbar:after {
-  clear: both;
+	clear: both;
+	content: "";
+	display: table;
 }
 button,
 .btn {
@@ -578,3 +582,26 @@ button:focus,
 .btn:focus {
 	outline: none;
 }
+
+/* SLIDERS */
+.slider-viewport {
+	overflow: hidden;
+}
+.slider-holder {
+	-webkit-transition: transform .4s ease-in-out;
+	transition: transform .4s ease-in-out;
+}
+.paginator-holder {}
+.paginator-holder .page {
+	border: 2px solid black;
+	cursor: pointer;
+	display: inline-block;
+	height: 10px;
+	margin-right: 16px;
+	width: 10px;
+}
+.paginator-holder .page.active {
+	background: #000;
+	cursor: auto;
+}
+/* END SLIDERS */

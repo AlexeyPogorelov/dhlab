@@ -273,6 +273,36 @@ section.services .service:hover > .content-holder button {
 
 /* PARTNERS */
 section.partners {}
+
+section.partners .left-side {
+	position: absolute;
+	height: 360px;
+	width: 300px;
+}
+section.partners .left-side h2 {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+section.partners .right-side {
+	height: 360px;
+	margin-left: 330px;
+}
+section.partners .partners-slider {
+	position: relative;
+	top: 100px;
+}
+section.partners .slide {
+	display: inline-block;
+	text-align: center;
+	height: 90px;
+	width: 230px;
+}
+section.partners .slide img {
+	display: inline-block;
+	vertical-align: middle;
+}
 /* END PARTNERS */
 
 /* BONUSES */
@@ -407,21 +437,25 @@ section.bonuses .right-side h1 {
 
 /* UPDARES */
 section.updates {}
+section.updates .headers {
+	height: 32px;
+	margin-top: 82px;
+}
 section.updates .headers h2 {
-	font-size: 24px;
-	text-transform: uppercase;
-	font-weight: 100;
 	color: black;
-	margin-left: 100px;
-	margin-bottom: 40px;
+	font-size: 24px;
+	font-weight: 100;
+	padding-bottom: 40px;
+	text-transform: uppercase;
 }
 section.updates .left-side {
 	width: 50%;
 	float: left;
 }
 section.updates .right-side {
-	width: 50%;
+	position: relative;
 	float: left;
+	width: 50%;
 }
 section.updates .news-slider {
 	margin-top: 88px;
@@ -437,7 +471,7 @@ section.updates .slider-holder .new-item {
 	padding-right: 30px;
 	padding-left: 30px;
 	vertical-align: top;
-	width: 50%;
+	width: 240px;
 }
 section.updates .slider-holder .new-item h2 {
 	font-size: 18px;
