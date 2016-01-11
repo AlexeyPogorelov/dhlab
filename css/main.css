@@ -184,7 +184,6 @@ section.features ul.features-list {
 section.features ul.features-list li {
 	display: inline-block;
 	width: 372px;
-	display: inline-block;
 	position: relative;
 	padding-left: 60px;
 	min-height: 180px;
@@ -622,3 +621,16 @@ section.footer .copyright-holder span {
 	left: 16px;
 }
 /* END PERSONS-SLIDER */
+
+
+/* MAP */
+ #footer-map {
+	 height: 450px;
+ }
+ #footer-map .gm-style-cc,
+ #footer-map .gmnoprint,
+ #footer-map .gmnoscreen,
+ #footer-map a[target="_blank"]{
+	 display:none !important
+ }
+/* END MAP */
