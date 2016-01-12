@@ -248,12 +248,12 @@ $(document).on('ready', function () {
 				init: function () {
 					state.cur = state.cur || 0;
 					state.activeSlides = DOM.$slides.length;
-					DOM.$slides.width(DOM.$slider);
 					DOM.$preloader.fadeOut(150);
 				},
 				resize: function () {
 					state.sliderWidth = DOM.$viewport.width();
 					DOM.$sliderHolder.width(state.sliderWidth * state.activeSlides);
+					DOM.$slides.width(state.sliderWidth);
 				},
 				prevSlide: function () {
 					var id = state.cur - 1;
@@ -272,6 +272,7 @@ $(document).on('ready', function () {
 					this.toSlide(id);
 				},
 				toSlide: function (id) {
+					state.cur = id;
 					DOM.$sliderHolder.css({
 						'transform': 'translateX( -' + (state.sliderWidth * id) + 'px)'
 					});
@@ -288,7 +289,7 @@ $(document).on('ready', function () {
 					$('<div>')
 						.addClass('prev-slide')
 						.on('click', function() {
-							this.prevSlide();
+							plg.prevSlide();
 						})
 						.appendTo(DOM.$pagination);
 					for (var i = 0; i < state.activeSlides; i++) {
@@ -301,8 +302,9 @@ $(document).on('ready', function () {
 					$('<div>')
 						.addClass('next-slide')
 						.on('click', function() {
-							this.nextSlide();
+							plg.nextSlide();
 						})
+						.appendTo(DOM.$pagination);
 				}
 			};
 

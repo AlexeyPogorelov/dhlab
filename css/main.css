@@ -468,13 +468,16 @@ section.updates .slider-holder {
 	font-size: 0;
 	width: 600px;
 }
+section.updates .slider-holder .slide {
+	float: left;
+}
 section.updates .slider-holder .new-item {
 	display: inline-block;
 	margin-bottom: 90px;
 	padding-right: 30px;
 	padding-left: 30px;
 	vertical-align: top;
-	width: 240px;
+	width: 50%;
 }
 section.updates .slider-holder .new-item h2 {
 	font-size: 18px;
@@ -502,12 +505,16 @@ section.updates .slider-holder .new-item p.date {
 /* footer */
 /* END footer */
 section.footer {
-	padding:  101px 60px 23px 99px;
+	padding: 0 60px 0 99px;
 }
 section.footer .left-side,
 section.footer .right-side {
 	float: left;
 	width: 50%;
+}
+section.footer .left-side {
+	padding-top: 101px;
+	padding-bottom: 23px;
 }
 section.footer h2 {
 	font-size: 24px;
@@ -635,7 +642,7 @@ section.footer .copyright-holder span {
 
 /* MAP */
  #footer-map {
-	 height: 450px;
+	 height: 570px;
  }
  #footer-map .gm-style-cc,
  #footer-map .gmnoprint,

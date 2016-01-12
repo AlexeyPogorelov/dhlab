@@ -591,13 +591,33 @@ button:focus,
 	-webkit-transition: transform .4s ease-in-out;
 	transition: transform .4s ease-in-out;
 }
-.paginator-holder {}
+.paginator-holder {
+	text-align: center;
+}
+.paginator-holder > * {
+	vertical-align: middle;
+}
+.paginator-holder .prev-slide,
+.paginator-holder .next-slide {
+	cursor: pointer;
+	display: inline-block;
+	height: 14px;
+	width: 8px;
+}
+.paginator-holder .prev-slide {
+	background: url('../img/icons/arrow-slider-left-2.svg') -1px -1px no-repeat;
+	margin-right: 70px;
+}
+.paginator-holder .next-slide {
+	background: url('../img/icons/arrow-slider-right-2.svg') -1px -1px no-repeat;
+	margin-left: 70px;
+}
 .paginator-holder .page {
 	border: 2px solid black;
 	cursor: pointer;
 	display: inline-block;
 	height: 10px;
-	margin-right: 16px;
+	margin: 0 8px;
 	width: 10px;
 }
 .paginator-holder .page.active {
