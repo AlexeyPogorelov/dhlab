@@ -1,14 +1,14 @@
 @font-face {
     font-family: 'MuseoSansCyrl';
-    src: url('../fonts/MuseoCyrl-300.eot');
-    src: url('../fonts/MuseoCyrl-300.eot?#iefix') format('embedded-opentype'), url('../fonts/MuseoCyrl-300.woff') format('woff'), url('../fonts/MuseoCyrl-300.ttf') format('truetype'), url('../fonts/MuseoCyrl-300.svg#MuseoSansCyrl') format('svg');
+    src: url('../fonts/MuseoSansCyrl_1.eot');
+    src: url('../fonts/MuseoSansCyrl_1.eot?#iefix') format('embedded-opentype'), url('../fonts/MuseoSansCyrl_1.woff') format('woff'), url('../fonts/MuseoSansCyrl_1.ttf') format('truetype'), url('../fonts/MuseoSansCyrl_1.svg#MuseoSansCyrl') format('svg');
     font-style: normal;
     font-weight: normal;
 }
 @font-face {
     font-family: 'MuseoSansCyrl';
-    src: url('../fonts/MuseoCyrl-500.eot');
-    src: url('../fonts/MuseoCyrl-500.eot?#iefix') format('embedded-opentype'), url('../fonts/MuseoCyrl-500.woff') format('woff'), url('../fonts/MuseoCyrl-500.ttf') format('truetype'), url('../fonts/MuseoCyrl-500.svg#MuseoSansCyrl') format('svg');
+    src: url('../fonts/MuseoSansCyrl_2.eot');
+    src: url('../fonts/MuseoSansCyrl_2.eot?#iefix') format('embedded-opentype'), url('../fonts/MuseoSansCyrl_2.woff') format('woff'), url('../fonts/MuseoSansCyrl_2.ttf') format('truetype'), url('../fonts/MuseoSansCyrl_2.svg#MuseoSansCyrl') format('svg');
     font-style: normal;
     font-weight: 500;
 }
