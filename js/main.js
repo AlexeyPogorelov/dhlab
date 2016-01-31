@@ -2,7 +2,6 @@
 
 jQuery.extend( jQuery.easing,
 	{
-		def: 'easeOutQuad',
 		swing: function (x, t, b, c, d) {
 			//alert(jQuery.easing.default);
 			return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
@@ -86,8 +85,14 @@ $(document).on('ready', function () {
 				this.unfixBody();
 			}.bind(this)
 		};
-	$('.full-height').css({
-		'min-height': winHeight
+	$('.left-bottom-holder').find('> span').on('click', function () {
+		var topTarget = $('.features').offset().top;
+		$("html, body").stop().animate({
+			scrollTop: topTarget
+		}, 800, 'easeOutQuint').one('mousewheel DOMMouseScroll touchstart',
+			function () {
+				$(this).stop(false, false)
+			})
 	});
 
 	// main navigation
