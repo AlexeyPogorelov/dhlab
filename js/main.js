@@ -163,7 +163,6 @@ $(document).on('ready', function () {
 					state.sliderHeight = DOM.$viewport.height();
 					state.activeSlides = DOM.$slides.length;
 					DOM.$slides.height(state.sliderHeight);
-					DOM.$sliderHolder.height(state.sliderHeight * state.activeSlides);
 					// debugger
 				},
 				cacheDom: function () {
@@ -174,7 +173,7 @@ $(document).on('ready', function () {
 				},
 				resize: function () {
 					state.slideHeight = DOM.$sliderHolder.height();
-					DOM.$sliderHolder.height(state.slideHeight * state.activeSlides);
+					DOM.$sliderHolder.height(state.sliderHeight * state.activeSlides);
 				},
 				prevSlide: function () {
 					var id = state.cur - 1;
@@ -198,6 +197,15 @@ $(document).on('ready', function () {
 						'transform': 'translateY( -' + (state.sliderHeight * id) + 'px)'
 					});
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
+					if (!id) {
+						DOM.$pagination.find('.prev-slide').addClass('disabled');
+						DOM.$pagination.find('.next-slide').removeClass('disabled');
+					} else if (id == state.activeSlides - 1) {
+						DOM.$pagination.find('.next-slide').addClass('disabled');
+						DOM.$pagination.find('.prev-slide').removeClass('disabled');
+					} else {
+						DOM.$pagination.find('.next-slide, .prev-slide').removeClass('disabled');
+					}
 					state.cur = id;
 				},
 				createPagination: function () {
@@ -227,6 +235,7 @@ $(document).on('ready', function () {
 			plg.init();
 			plg.createPagination();
 			plg.resize();
+			plg.toSlide(0);
 
 			// click events
 			$self.on('click', function (e) {
@@ -294,6 +303,15 @@ $(document).on('ready', function () {
 						'transform': 'translateX( -' + (state.sliderWidth * id) + 'px)'
 					});
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
+					if (!id) {
+						DOM.$pagination.find('.prev-slide').addClass('disabled');
+						DOM.$pagination.find('.next-slide').removeClass('disabled');
+					} else if (id == state.activeSlides - 1) {
+						DOM.$pagination.find('.next-slide').addClass('disabled');
+						DOM.$pagination.find('.prev-slide').removeClass('disabled');
+					} else {
+						DOM.$pagination.find('.next-slide, .prev-slide').removeClass('disabled');
+					}
 				},
 				createPagination: function () {
 					if (DOM.$pagination) {
@@ -323,6 +341,7 @@ $(document).on('ready', function () {
 			plg.init();
 			plg.createPagination();
 			plg.resize();
+			plg.toSlide(0);
 			// console.log(DOM);
 
 			// resize

@@ -547,7 +547,16 @@ button,
 	cursor: pointer;
 	padding: 14px;
 	text-transform: uppercase;
-	/*transition: all .3s ease;*/
+	-webkit-transition: background .3s, border .3s, color .3s;
+	transition: background .3s, border .3s, color .3s;
+}
+button:hover,
+.btn:hover {
+	background-color: white;
+	border: 2px solid white;
+	color: #222;
+	-webkit-transition: background .3s, border .3s, color .3s;
+	transition: background .3s, border .3s, color .3s;
 }
 button img,
 .btn img {
@@ -605,6 +614,12 @@ button:focus,
 	height: 14px;
 	width: 8px;
 }
+.paginator-holder .prev-slide.disabled,
+.paginator-holder .next-slide.disabled {
+	opacity: .4;
+	cursor: auto;
+	pointer-events: none;
+}
 .paginator-holder.vertical .prev-slide,
 .paginator-holder.vertical .next-slide {
 	display: block;
@@ -623,6 +638,12 @@ button:focus,
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
+.paginator-holder.vertical .prev-slide {
+	margin-bottom: 60px;
+}
+.paginator-holder.vertical .next-slide {
+	margin-top: 60px;
+}
 .paginator-holder .page {
 	border: 2px solid black;
 	cursor: pointer;
@@ -633,7 +654,8 @@ button:focus,
 }
 .paginator-holder.vertical .page {
 	display: block;
-	margin: 8px auto;
+	margin: 20px 0;
+	margin-left: -2px;
 }
 .paginator-holder .page.active {
 	background: #000;
