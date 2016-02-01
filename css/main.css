@@ -57,7 +57,7 @@ nav li a:hover:after {
 .top-line .navbar-right {
 	position: absolute;
 	right: 0;
-	text-align: center;
+	text-align: left;
 	top: 0;
 	width: 300px;
 }
@@ -72,7 +72,7 @@ nav li a:hover:after {
 .top-line .extra-link-holder {
 	height: 50px;
 	position: absolute;
-	right: -88px;
+	right: 0;
 	top: -19px;
 	width: 90px;
 	z-index: 2;
@@ -106,7 +106,7 @@ section.main-screen .background-video-holder video {
 	min-width: 100%;
 }
 section.main-screen .background-video-holder:after {
-	background: rgba(0,0,0,0.3) url('../img/bg/grid-1.png') 50% 50% repeat-y;
+	background: rgba(0,0,0,0.3) url('../img/bg/grid-1200.png') 50% 50% repeat-y;
 	content: "";
 	height: 100%;
 	left: 0;

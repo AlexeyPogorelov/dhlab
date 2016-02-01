@@ -394,8 +394,15 @@ $(document).on('ready', function () {
 				resize: function () {
 					state.sliderWidth = DOM.$viewport.width();
 					state.slideWidth = state.sliderWidth / options.slidesOnPage;
+					console.log(state.slideWidth);
 					DOM.$slides.width(state.slideWidth);
 					DOM.$sliderHolder.width(state.slideWidth * state.activeSlides);
+					if (state.slideWidth < 400 && options.slidesOnPage > 1) {
+						options.slidesOnPage = 1;
+						plg.init();
+						plg.resize();
+						return;
+					}
 				},
 				prevSlide: function () {
 					var id = state.cur - 1;
