@@ -57,6 +57,7 @@ h1 {
 	font-size: 42px;
 	line-height: 56px;
 	text-transform: uppercase;
+	letter-spacing: 1.7px;
 }
 h1.center {
 	text-align: center;
@@ -64,7 +65,7 @@ h1.center {
 }
 h2 {
 	color: white;
-	line-height: 32px;
+	line-height: 29px;
 	font-size: 24px;
 	text-transform: uppercase;
 }
@@ -604,6 +605,10 @@ button:focus,
 	height: 14px;
 	width: 8px;
 }
+.paginator-holder.vertical .prev-slide,
+.paginator-holder.vertical .next-slide {
+	display: block;
+}
 .paginator-holder .prev-slide {
 	background: url('../img/icons/arrow-slider-left-2.svg') -1px -1px no-repeat;
 	margin-right: 70px;
@@ -612,6 +617,12 @@ button:focus,
 	background: url('../img/icons/arrow-slider-right-2.svg') -1px -1px no-repeat;
 	margin-left: 70px;
 }
+.paginator-holder.vertical .prev-slide,
+.paginator-holder.vertical .next-slide {
+	margin: 0 auto;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
 .paginator-holder .page {
 	border: 2px solid black;
 	cursor: pointer;
@@ -619,6 +630,10 @@ button:focus,
 	height: 10px;
 	margin: 0 8px;
 	width: 10px;
+}
+.paginator-holder.vertical .page {
+	display: block;
+	margin: 8px auto;
 }
 .paginator-holder .page.active {
 	background: #000;

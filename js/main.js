@@ -160,8 +160,11 @@ $(document).on('ready', function () {
 						this.cacheDom();
 					}
 					state.cur = state.cur || 0;
-					state.slideHeight = DOM.$sliderHolder.height();
-					state.activeSlides = parseInt(state.slideHeight / DOM.$viewport);
+					state.sliderHeight = DOM.$viewport.height();
+					state.activeSlides = DOM.$slides.length;
+					DOM.$slides.height(state.sliderHeight);
+					DOM.$sliderHolder.height(state.sliderHeight * state.activeSlides);
+					// debugger
 				},
 				cacheDom: function () {
 					DOM.$preloader = $self.find('.slider-preloader');
@@ -191,25 +194,23 @@ $(document).on('ready', function () {
 				},
 				toSlide: function (id) {
 					DOM.$sliderHolder.css({
-						'-webkit-transform': 'translateY( -' + (state.slideHeight * id) + 'px)',
-						'transform': 'translateY( -' + (state.slideHeight * id) + 'px)'
+						'-webkit-transform': 'translateY( -' + (state.sliderHeight * id) + 'px)',
+						'transform': 'translateY( -' + (state.sliderHeight * id) + 'px)'
 					});
 					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
+					state.cur = id;
 				},
 				createPagination: function () {
 					if (DOM.$pagination) {
 						DOM.$pagination.empty();
 					} else {
-						DOM.$pagination = $('<div>').addClass('paginator-holder');
-						DOM.$pagination.appendTo(DOM.$slider);
+						DOM.$pagination = $('<div>').addClass('paginator-holder vertical');
+						DOM.$pagination.appendTo($self);
 					}
 					$('<div>')
 						.addClass('prev-slide')
-						.on('click', function() {
-							this.prevSlide();
-						})
 						.appendTo(DOM.$pagination);
-					for (var i = 0; i < state.activeSlides / opt.slidesOnPage; i++) {
+					for (var i = 0; i < state.activeSlides; i++) {
 						var page = $('<div>').data('page', i).addClass('page');
 						if (!i) {
 							page.addClass('active');
@@ -218,15 +219,26 @@ $(document).on('ready', function () {
 					}
 					$('<div>')
 						.addClass('next-slide')
-						.on('click', function() {
-							this.nextSlide();
-						})
 						.appendTo(DOM.$pagination);
 				}
 			};
 
 			plg.cacheDom();
 			plg.init();
+			plg.createPagination();
+			plg.resize();
+
+			// click events
+			$self.on('click', function (e) {
+				var $target = $(e.target);
+				if ($target.hasClass('page')) {
+					plg.toSlide($(e.target).data('page'));
+				} else if ($target.hasClass('next-slide')) {
+					plg.nextSlide();
+				} else if ($target.hasClass('prev-slide')) {
+					plg.prevSlide();
+				}
+			});
 
 			return plg;
 		});
@@ -293,9 +305,6 @@ $(document).on('ready', function () {
 
 					$('<div>')
 						.addClass('prev-slide')
-						.on('click', function() {
-							plg.prevSlide();
-						})
 						.appendTo(DOM.$pagination);
 					for (var i = 0; i < state.activeSlides; i++) {
 						var page = $('<div>').data('page', i).addClass('page');
@@ -306,9 +315,6 @@ $(document).on('ready', function () {
 					}
 					$('<div>')
 						.addClass('next-slide')
-						.on('click', function() {
-							plg.nextSlide();
-						})
 						.appendTo(DOM.$pagination);
 				}
 			};
@@ -329,9 +335,10 @@ $(document).on('ready', function () {
 				var $target = $(e.target);
 				if ($target.hasClass('page')) {
 					plg.toSlide($(e.target).data('page'));
-				} else if ($target.hasClass('filter')) {
-					$target.addClass('active').siblings().removeClass('active');
-					plg.filter($target.data('filter'));
+				} else if ($target.hasClass('next-slide')) {
+					plg.nextSlide();
+				} else if ($target.hasClass('prev-slide')) {
+					plg.prevSlide();
 				}
 			});
 

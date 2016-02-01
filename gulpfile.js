@@ -15,6 +15,7 @@ var serverConfig = {
 // SERVER
 gulp.task('browser-sync', function() {
 	browserSync.init(serverConfig);
+	gulp.watch('www/**/*.*').on('change', reload);
 });
 
 // RELOAD
@@ -27,5 +28,4 @@ gulp.task('default', ['browser-sync', 'watch']);
 
 // WATCH
 gulp.task('watch', function(){
-	gulp.watch('www/src/*.*', ['browser-reload']);
 });

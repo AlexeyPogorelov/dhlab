@@ -22,7 +22,7 @@
 }
 nav li {
 	display: inline-block;
-	margin-right: 46px;
+	margin-right: 43px;
 }
 nav li a {
 	font-size: 14px;
@@ -35,7 +35,7 @@ nav li a {
 /* TOP-LINE */
 .top-line {
 	font-size: 14px;
-	padding: 26px 0;
+	padding: 23px 0 15px;
 }
 .top-line .container {
 	position: relative;
@@ -55,17 +55,17 @@ nav li a {
 }
 .top-line .brand-holder {
 	height: 176px;
-	left: -12px;
+	left: -11px;
 	position: absolute;
-	top: -12px;
+	top: -10px;
 	width: 176px;
 	z-index: 2;
 }
 .top-line .extra-link-holder {
 	height: 50px;
 	position: absolute;
-	right: -90px;
-	top: -7px;
+	right: -88px;
+	top: -19px;
 	width: 90px;
 	z-index: 2;
 }
@@ -80,7 +80,7 @@ nav li a {
 /* MAIN-SCREEN */
 section.main-screen {
 	overflow: hidden;
-	height: 744px;
+	height: 745px;
 }
 section.main-screen .content {
 	position: relative;
@@ -122,10 +122,11 @@ section.main-screen .content-holder p.description {
 }
 section.main-screen .content-holder h1 {
 	line-height: 50px;
+	padding-right: 76px;
 }
 section.main-screen .left-bottom-holder {
-	bottom: 200px;
-	left: 20px;
+	bottom: 208px;
+	left: 27px;
 	position: absolute;
 	text-align: left;
 	text-transform: uppercase;
@@ -143,7 +144,8 @@ section.main-screen .left-bottom-holder span:after {
 	content: "";
 	display: inline-block;
 	height: 2px;
-	margin-left: 10px;
+	margin-left: 15px;
+	margin-top: -2px;
 	vertical-align: middle;
 	width: 78px;
 }
@@ -169,7 +171,7 @@ section.main-screen ul.socials li {
 
 /* FEATURES */
 section.features {
-	padding-top: 80px;
+	padding-top: 77px;
 }
 section.features .container {
 	position: relative;
@@ -189,18 +191,18 @@ section.features ul.features-list {
 section.features ul.features-list li {
 	display: inline-block;
 	margin-bottom: 22px;
-	margin-right: 133px;
+	margin-right: 123px;
 	min-height: 180px;
 	padding-left: 60px;
 	position: relative;
 	vertical-align: top;
-	width: 372px;
+	width: 382px;
 }
 section.features ul.features-list li h2 {
 	color: white;
 	font-size: 24px;
 	line-height: 24px;
-	margin-bottom: 19px;
+	margin-bottom: 22px;
 	text-transform: uppercase;
 }
 section.features ul.features-list li  p {
@@ -215,12 +217,13 @@ section.features ul.features-list li .counter {
 	left: 0;
 	position: absolute;
 	text-transform: uppercase;
-	top: 19px;
+	top: 23px;
 }
 /* END FEATURES */
 
 /* SERVICES */
 section.services {
+	/*display: none;*/
 }
 section.services .service {
 	background: #000;
@@ -280,7 +283,7 @@ section.partners {}
 section.partners .left-side {
 	position: absolute;
 	height: 360px;
-	width: 300px;
+	width: 360px;
 }
 section.partners .left-side h2 {
 	position: absolute;
@@ -290,21 +293,32 @@ section.partners .left-side h2 {
 }
 section.partners .right-side {
 	height: 360px;
-	margin-left: 330px;
+	margin-left: 422px;
 }
 section.partners .partners-slider {
 	position: relative;
 	top: 100px;
 }
-section.partners .slide {
+section.partners .partners-slider .slider-viewport {
+	height: 180px;
+}
+section.partners .partner {
 	display: inline-block;
 	text-align: center;
 	height: 90px;
+	vertical-align: top;
 	width: 230px;
 }
-section.partners .slide img {
+section.partners .partner img {
 	display: inline-block;
 	vertical-align: middle;
+}
+section.partners .paginator-holder {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 /* END PARTNERS */
 
@@ -449,6 +463,10 @@ section.updates .headers h2 {
 	padding-bottom: 40px;
 	text-transform: uppercase;
 }
+section.updates .headers .left-side,
+section.updates .headers .right-side {
+	padding-left: 99px;
+}
 section.updates .left-side {
 	width: 50%;
 	float: left;
@@ -467,7 +485,8 @@ section.updates .instagram-holder img {
 }
 section.updates .news-slider {
 	margin-top: 88px;
-	margin-left: 57px;
+	margin-left: 70px;
+	padding-bottom: 40px;
 }
 section.updates .slider-holder {
 	font-size: 0;
@@ -523,7 +542,7 @@ section.footer .right-side {
 	width: 50%;
 }
 section.footer .left-side {
-	padding-top: 101px;
+	padding-top: 97px;
 	padding-bottom: 23px;
 }
 section.footer .map-holder {
@@ -572,7 +591,7 @@ section.footer .copyright-holder span {
 /* PERSONAL */
 .personal {}
 .personal .section-label {
-	margin-top: 82px;
+	margin-top: 79px;
 	margin-bottom: 30px;
 }
 /* END PERSONAL */
