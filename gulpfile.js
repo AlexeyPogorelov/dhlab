@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 
 var serverConfig = {
 	server: {
-		baseDir: "./www/src"
+		baseDir: "./dhlab"
 	},
 	tunnel: true,
 	host: 'localhost',
@@ -15,12 +15,12 @@ var serverConfig = {
 // SERVER
 gulp.task('browser-sync', function() {
 	browserSync.init(serverConfig);
-	gulp.watch('www/**/*.*').on('change', reload);
+	gulp.watch('dhlab/**/*.*').on('change', reload);
 });
 
 // RELOAD
 gulp.task('browser-reload', function() {
-	gulp.dest('www/src/css')
+	gulp.dest('dhlab/css')
 		.pipe(reload({stream:true}));
 });
 
