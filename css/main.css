@@ -8,7 +8,7 @@
 }
 nav li {
 	display: inline-block;
-	margin-right: 35px;
+	margin-right: 15px;
 }
 nav li a {
 	font-size: 14px;
@@ -57,11 +57,12 @@ nav li a:hover:after {
 .top-line .navbar-right {
 	position: absolute;
 	right: 0;
-	text-align: left;
+	text-align: center;
 	top: 0;
-	width: 300px;
+	width: 290px;
 }
 .top-line .brand-holder {
+	text-align: center;
 	height: 176px;
 	left: -11px;
 	position: absolute;
@@ -69,10 +70,16 @@ nav li a:hover:after {
 	width: 176px;
 	z-index: 2;
 }
+.top-line .brand-holder > div {
+	display: inline-block;
+	text-align: center;
+	height: 176px;
+	width: 176px;
+}
 .top-line .extra-link-holder {
 	height: 50px;
 	position: absolute;
-	right: 0;
+	right: -90px;
 	top: -19px;
 	width: 90px;
 	z-index: 2;
@@ -401,9 +408,9 @@ section.bonuses .right-side {
 }
 section.bonuses .right-side h1 {
 	color: white;
-	font-size: 42px;
+	font-size: 32px;
+	line-height: 42px;
 	font-weight: 100;
-	line-height: 56px;
 	margin-left: 100px;
 	max-width: 748px;
 	position: absolute;
@@ -620,6 +627,7 @@ section.updates .slider-holder .new-item:hover p.date {
 section.updates .paginator-holder {
 	/*display: none;*/
 	/*margin-bottom: 40px;*/
+	padding-right: 70px;
 }
 /* END UPDARES */
 
@@ -848,3 +856,27 @@ section.footer .copyright-holder a:hover span:after {
 	 display:none !important
  }
 /* END MAP */
+
+
+/* ADMIN */
+.editable {
+	cursor: pointer;
+	position: relative;
+}
+.editable:after {
+	display: block !important;
+	content: '' !important;
+	position: absolute !important;
+	top: 0 !important;
+	left: auto !important;
+	right: -25px !important;
+	height: 20px !important;
+	width: 20px !important;
+}
+.editable[contenteditable="true"] {
+	outline: 2px solid red;
+}
+.editable[contenteditable="true"]:after {
+	display: none !important;
+}
+/* END ADMIN */

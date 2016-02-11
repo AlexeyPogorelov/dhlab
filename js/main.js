@@ -96,7 +96,7 @@ $(document).on('ready', function () {
 	});
 
 	// main navigation
-	$('.main-navbar').find('a').on('click', function (e) {
+	$('.main-navbar').find('a').not('[data-editable]').on('click', function (e) {
 		e.preventDefault();
 		var target = $(this).attr('href');
 		$('html, body').animate({
@@ -394,7 +394,7 @@ $(document).on('ready', function () {
 				resize: function () {
 					state.sliderWidth = DOM.$viewport.width();
 					state.slideWidth = state.sliderWidth / options.slidesOnPage;
-					console.log(state.slideWidth);
+					// console.log(state.slideWidth);
 					DOM.$slides.width(state.slideWidth);
 					DOM.$sliderHolder.width(state.slideWidth * state.activeSlides);
 					if (state.slideWidth < 400 && options.slidesOnPage > 1) {

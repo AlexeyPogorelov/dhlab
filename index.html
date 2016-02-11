@@ -23,35 +23,35 @@
 <section class="top-line">
 	<div class="container">
 		<div class="brand-holder">
-			<a href="#">
+			<div href="#">
 				<img src="img/icons/logo-bordered-1.svg" alt="DHlab">
-			</a>
+			</div>
 		</div>
-		<div class="navbar main-navbar">
+		<div class="navbar main-navbar mobile-hidden">
 			<nav class="navbar-left">
 				<ul>
 					<li>
-						<a href="#services">услуги</a>
+						<a href="#services" data-editable="nav" data-key="nav-1">услуги</a>
 					</li>
 					<li>
-						<a href="#bonuses">акции</a>
+						<a href="#bonuses" data-editable="nav" data-key="nav-2">акции</a>
 					</li>
 					<li>
-						<a href="#personal">мастера</a>
+						<a href="#personal" data-editable="nav" data-key="nav-3">мастера</a>
 					</li>
 					<li>
-						<a href="#partners">партнеры</a>
+						<a href="#partners" data-editable="nav" data-key="nav-4">партнеры</a>
 					</li>
 					<li>
-						<a href="#updates">новости</a>
+						<a href="#updates" data-editable="nav" data-key="nav-5">новости</a>
 					</li>
 					<li>
-						<a href="#footer">контакты</a>
+						<a href="#footer" data-editable="nav" data-key="nav-6">контакты</a>
 					</li>
 				</ul>
 			</nav>
 			<div class="navbar-right">
-				<a href="tel:+30443442233">(044) 344-22-33</a>
+				<a href="tel:+30443442233" data-editable="snippets" data-key="phone">(044) 344-22-33</a>
 			</div>
 		</div>
 		<div class="extra-link-holder">
@@ -72,8 +72,8 @@
 	<div class="content-holder">
 		<div class="container">
 			<div class="vertical-middle">
-				<p class="description">Одна из главных черт салона</p>
-				<h1>постоянное совершенствование искусства по созданию Вашей красоты</h1>
+				<p class="description" data-editable="snippets" data-key="main-small">Одна из главных черт салона</p>
+				<h1 data-editable="snippets" data-key="main-grand">постоянное совершенствование искусства по созданию Вашей красоты</h1>
 			</div>
 		</div>
 	</div>
@@ -87,7 +87,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="left-bottom-holder">
+	<div class="left-bottom-holder mobile-hidden">
 		<span>узнать больше</span>
 	</div>
 </section>
@@ -216,7 +216,7 @@
 
 <section id="personal" class="personal white">
 	<div class="container">
-		<h2 class="section-label">Наша команда</h2>
+		<h2 class="section-label">Обо мне</h2>
 	</div>
 	<div class="persons-slider" id="persons-slider">
 		<div class="slider-viewport">
@@ -421,6 +421,7 @@
 		</div>
 		<div class="right-side">
 			<div class="news-slider" id="news-slider">
+				<h2>Новости</h2>
 				<div class="slider-viewport">
 					<div class="slider-holder clearfix">
 
@@ -608,5 +609,6 @@
 	<script src="libs/wow/dist/wow.min.js"></script>
 	<script src="js/content.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/admin.js"></script>
 </body>
 </html>

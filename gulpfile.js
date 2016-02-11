@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 
 var serverConfig = {
 	server: {
-		baseDir: "./dhlab"
+		baseDir: "./"
 	},
 	tunnel: true,
 	host: 'localhost',

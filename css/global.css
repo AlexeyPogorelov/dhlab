@@ -340,6 +340,12 @@ input[type='number'] {
 .mobile-xs-visible {
 	display: none;
 }
+.tablet-visible {
+	display: none !important;
+}
+.tablet-xs-visible {
+	display: none;
+}
 .image-holder {
 	overflow: hidden;
 	position: relative;
