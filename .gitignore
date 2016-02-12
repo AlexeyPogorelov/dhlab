@@ -17,6 +17,6 @@ Thumbs.db
 idea/*
 bower_components/*
 node_modules/*
-
-libs/
-videos/
+libs/*
+dist/*
+videos/*

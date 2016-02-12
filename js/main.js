@@ -1,68 +1,110 @@
-// easing
+function replaceTemplate (data, template, index) {
+	if (typeof data != "object" || !template) {
+		console.error('Нет шаблона или данных');
+		return false;
+	}
+	for (attr in data) {
+		var expr = new RegExp('{{' + attr + '}}', 'g'),
+			indExpr = new RegExp('{{index}}', 'g'),
+			numExpr = new RegExp('{{number}}', 'g');
+		template = template.replace(expr, data[attr]);
+	}
+	if (index || index === 0) {
+		template = template.replace(indExpr, index);
+		template = template.replace(numExpr, +index + 1);
+	}
+	return template;
+}
+function buildElements (data, selector) {
+	var $el, template, index = 0;
+	if (selector instanceof jQuery) {
+		$el = selector;
+	} else {
+		$el = $(selector);
+	}
+	if ($el.length) {
+		template = $el.html();
+		$el.empty();
+	} else {
+		console.error('Элемент отсутствует!');
+		return false;
+	}
+	if (!template) {
+		console.error('Нет шаблона');
+		return false;
+	} else if ( data instanceof Array ) {
 
-jQuery.extend( jQuery.easing,
-	{
-		swing: function (x, t, b, c, d) {
-			//alert(jQuery.easing.default);
-			return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
-		},
-		easeOutQuart: function (x, t, b, c, d) {
-			return -c * ((t=t/d-1)*t*t*t - 1) + b;
-		},
-		easeInOutQuart: function (x, t, b, c, d) {
-			if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-			return -c/2 * ((t-=2)*t*t*t - 2) + b;
-		},
-		easeOutQuint: function (x, t, b, c, d) {
-			return c*((t=t/d-1)*t*t*t*t + 1) + b;
-		},
-		easeInOutQuint: function (x, t, b, c, d) {
-			if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
-			return c/2*((t-=2)*t*t*t*t + 2) + b;
-		},
-		easeOutCirc: function (x, t, b, c, d) {
-			return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
-		},
-		easeInBounce: function (x, t, b, c, d) {
-			return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
-		},
-		easeOutBounce: function (x, t, b, c, d) {
-			if ((t/=d) < (1/2.75)) {
-				return c*(7.5625*t*t) + b;
-			} else if (t < (2/2.75)) {
-				return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-			} else if (t < (2.5/2.75)) {
-				return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-			} else {
-				return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
-			}
-		},
-		easeInOutBounce: function (x, t, b, c, d) {
-			if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
-			return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+		for (var y = 0; y < data.length; y++) {
+			$el.append( replaceTemplate(data[y], template, y) );
 		}
-	});
+
+	} else if (typeof data == "object") {
+
+		for (el in data) {
+			$el.append( replaceTemplate(data[el], template, ++index) );
+		}
+
+	} else {
+
+		console.error('Нет данных');
+		return false;
+
+	}
+}
+$('[data-repeat]').each(function () {
+	var $self = $(this);
+	if ( window[$self.data('repeat')] ) {
+		buildElements(window[$self.data('repeat')], $self);
+	} else {
+		console.error('Нет объекта с данными');
+	}
+});
+$('[data-editable="snippets"]').each(function () {
+	var $self = $(this);
+	if ( window[$self.data('editable')][$self.data('key')] ) {
+		var ob = window[$self.data('editable')][$self.data('key')];
+		if (Object.keys(ob).length > 1) {
+			for (key in ob) {
+
+				if (key != 'name') {
+					$self.attr(key, ob[key])
+				} else {
+					$self.html( ob[key] );
+				}
+
+			}
+		} else {
+
+			$self.html( ob['name'] );
+
+		}
+	} else if ( window[$self.data('editable')] ) {
+		$self.html( window[$self.data('editable')]['name'] );
+	} else {
+		console.error('Нет данных');
+	}
+});
 
 var loading = {
-	avgTime: 3000,
-	trg: 1,
-	state: 0,
-	loaded: function () {
-		if(++this.state == this.trg) {
-			this.done();
-		}
-	},
-	done: function () {
-		// setInterval();
+		avgTime: 3000,
+		trg: 1,
+		state: 0,
+		loaded: function () {
+			if(++this.state == this.trg) {
+				this.done();
+			}
+		},
+		done: function () {
+			// setInterval();
 
-		// hide preloader
-		$('body > .preloader').animate({
-			'opacity': 0
-		}, 200, function () {
-			$(this).remove();
-		});
-	}
-};
+			// hide preloader
+			$('body > .preloader').animate({
+				'opacity': 0
+			}, 200, function () {
+				$(this).remove();
+			});
+		}
+	};
 $(document).on('ready', function () {
 	var winWidth = $(window).width(),
 		winHeight = $(window).height(),
@@ -519,3 +561,47 @@ $(document).on('ready', function () {
 		});
 	};
 })(jQuery);
+
+// easing
+jQuery.extend( jQuery.easing,
+	{
+		swing: function (x, t, b, c, d) {
+			//alert(jQuery.easing.default);
+			return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
+		},
+		easeOutQuart: function (x, t, b, c, d) {
+			return -c * ((t=t/d-1)*t*t*t - 1) + b;
+		},
+		easeInOutQuart: function (x, t, b, c, d) {
+			if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+			return -c/2 * ((t-=2)*t*t*t - 2) + b;
+		},
+		easeOutQuint: function (x, t, b, c, d) {
+			return c*((t=t/d-1)*t*t*t*t + 1) + b;
+		},
+		easeInOutQuint: function (x, t, b, c, d) {
+			if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+			return c/2*((t-=2)*t*t*t*t + 2) + b;
+		},
+		easeOutCirc: function (x, t, b, c, d) {
+			return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+		},
+		easeInBounce: function (x, t, b, c, d) {
+			return c - jQuery.easing.easeOutBounce (x, d-t, 0, c, d) + b;
+		},
+		easeOutBounce: function (x, t, b, c, d) {
+			if ((t/=d) < (1/2.75)) {
+				return c*(7.5625*t*t) + b;
+			} else if (t < (2/2.75)) {
+				return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+			} else if (t < (2.5/2.75)) {
+				return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+			} else {
+				return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+			}
+		},
+		easeInOutBounce: function (x, t, b, c, d) {
+			if (t < d/2) return jQuery.easing.easeInBounce (x, t*2, 0, c, d) * .5 + b;
+			return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
+		}
+	});

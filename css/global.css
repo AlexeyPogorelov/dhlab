@@ -668,3 +668,27 @@ button:focus,
 	cursor: auto;
 }
 /* END SLIDERS */
+
+/* MODALS */
+.modal-holder {
+	background: rgba(255,255,255,.7);
+	display: none;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 10;
+}
+.modal-holder.opened {
+	display: block;
+}
+.modal-holder .modal-content {
+	background: #000;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+/* END MODALS */

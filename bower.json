@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "directory": "dist/libs/",
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "normalize-css": "normalize.css#~3.0.3",
+    "font-awesome": "~4.5.0",
+    "wow": "~1.1.2",
+    "animate.css": "animate-css#~3.5.1"
+  }
+}

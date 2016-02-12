@@ -11,21 +11,24 @@ $('[data-editable]').each(function () {
 			$self.attr('contentEditable', false);
 			if (typeof window[$self.data('editable')] == 'object') {
 				var ob = window[$self.data('editable')];
-				ob[$self.data('key')] = $self.html();
+				if (typeof ob[$self.data('key')] != 'object') {
+					ob[$self.data('key')] = {};
+				}
+				if ($self.attr('href')) {
+					ob[$self.data('key')]['href'] = $self.attr('href');
+				}
+				if ($self.attr('src')) {
+					ob[$self.data('key')]['src'] = $self.attr('src');
+				}
+				if ($self.data('val')) {
+					ob[$self.data('key')][$self.data('val')] = $self.html();
+				} else {
+					ob[$self.data('key')]['name'] = $self.html();
+				}
 				console.log(ob);
 			} else {
 				alert('Ошибка! window.[$self.data(editable)] не является объектом')
 			}
 		});
 });
-function buildNav (data, template) {
-	if (typeof data != "object" || !template) {
-		return false;
-	}
-	for (attr in data) {
-		// console.log('/{{' + attr + '}}/g');
-		template = template.replace('{{' + attr + '}}', data[attr])
-	}
-	console.log(template);
-}
-buildNav ({'href': 'test1', 'name': 'name-1'}, '<li><a href="{{href}}" data-editable="nav" data-key="nav-1">{{name}}</a></li>')
+

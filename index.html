@@ -3,13 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>DH Lab</title>
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="libs/animate/animate.css">
+	<link rel="stylesheet" href="libs/animate.css/animate.css">
 	<!--<link rel="stylesheet" href="css/normalize.css">-->
-	<link rel="stylesheet" href="libs/font-awesome-4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/grid.css">
 	<link rel="stylesheet" href="css/global.css">
 	<link rel="stylesheet" href="css/fonts.css">
@@ -29,29 +45,14 @@
 		</div>
 		<div class="navbar main-navbar mobile-hidden">
 			<nav class="navbar-left">
-				<ul>
+				<ul data-repeat="nav">
 					<li>
-						<a href="#services" data-editable="nav" data-key="nav-1">услуги</a>
-					</li>
-					<li>
-						<a href="#bonuses" data-editable="nav" data-key="nav-2">акции</a>
-					</li>
-					<li>
-						<a href="#personal" data-editable="nav" data-key="nav-3">мастера</a>
-					</li>
-					<li>
-						<a href="#partners" data-editable="nav" data-key="nav-4">партнеры</a>
-					</li>
-					<li>
-						<a href="#updates" data-editable="nav" data-key="nav-5">новости</a>
-					</li>
-					<li>
-						<a href="#footer" data-editable="nav" data-key="nav-6">контакты</a>
+						<a href="{{href}}" data-editable="nav" data-key="nav-{{index}}">{{name}}</a>
 					</li>
 				</ul>
 			</nav>
 			<div class="navbar-right">
-				<a href="tel:+30443442233" data-editable="snippets" data-key="phone">(044) 344-22-33</a>
+				<a href="tel:+30443442233" data-editable="snippets" data-key="phones">(044) 344-22-33</a>
 			</div>
 		</div>
 		<div class="extra-link-holder">
@@ -78,12 +79,9 @@
 		</div>
 	</div>
 	<div class="right-top-holder">
-		<ul class="socials">
+		<ul class="socials" data-repeat="socials">
 			<li>
-				<a href="https://www.facebook.com/DH-lab-313790678652777/?fref=ts\">facebook</a>
-			</li>
-			<li>
-				<a href="https://www.instagram.com/dh_lab/">instagram</a>
+				<a href="{{href}}">{{name}}</a>
 			</li>
 		</ul>
 	</div>
@@ -95,48 +93,18 @@
 <section class="features">
 	<div class="container">
 		<div class="left-side">
-			<h2>особенности салона</h2>
+			<h2 data-editable="snippets" data-key="features-header">особенности салона</h2>
 		</div>
 		<div class="right-side">
-			<ul class="features-list">
+			<ul class="features-list" data-repeat="features">
 
 				<li>
 					<div class="counter">
-						<span>1</span>
+						<span>{{number}}</span>
 					</div>
 					<div class="content">
-						<h2>Косметологи-доктора</h2>
-						<p>Наши косметологи имеют высшее медицинское образование и лицензию на проведение инъекционных процедур</p>
-					</div>
-				</li>
-
-				<li>
-					<div class="counter">
-						<span>2</span>
-					</div>
-					<div class="content">
-						<h2>Loreal expert</h2>
-						<p>Мы являемся официальными партнерами Loreal и постоянным участником бизнес-форума Loreal для лучших салонов-партнеров всего мира.</p>
-					</div>
-				</li>
-
-				<li>
-					<div class="counter">
-						<span>3</span>
-					</div>
-					<div class="content">
-						<h2>Обучение</h2>
-						<p>Наши мастера регулярно повышают квалификацию в академии Loreal и других парикмахерских школах мира</p>
-					</div>
-				</li>
-
-				<li>
-					<div class="counter">
-						<span>4</span>
-					</div>
-					<div class="content">
-						<h2>Новинки</h2>
-						<p>Мы отслеживаем тендеции новых продуктов и технологий в сфере красоты. Лучшие из них мы предоставляем нашим клиентам</p>
+						<h2 data-editable="features" data-key="{{index}}" data-val="head">{{head}}</h2>
+						<p data-editable="features" data-key="{{index}}" data-val="text">{{text}}</p>
 					</div>
 				</li>
 
@@ -206,17 +174,17 @@
 <section id="bonuses" class="bonuses">
 	<div class="container">
 		<div class="left-side">
-			<h2>Акции и новинки</h2>
+			<h2 data-editable="snippets" data-key="bonuses-header">Акции и новинки</h2>
 		</div>
 		<div class="right-side">
-			<h1>Каждая шестая стрижка в нашем салоне – в подарок !</h1>
+			<h1 data-editable="snippets" data-key="bonuses-body">Каждая шестая стрижка в нашем салоне – в подарок !</h1>
 		</div>
 	</div>
 </section>
 
 <section id="personal" class="personal white">
 	<div class="container">
-		<h2 class="section-label">Обо мне</h2>
+		<h2 class="section-label" data-editable="snippets" data-key="personal-header">Обо мне</h2>
 	</div>
 	<div class="persons-slider" id="persons-slider">
 		<div class="slider-viewport">
@@ -300,7 +268,7 @@
 <section id="partners" class="partners grey">
 	<div class="container">
 		<div class="left-side">
-			<h2>Мы работаем с лучшими брендами на рынке</h2>
+			<h2 data-editable="snippets" data-key="partners-header">Мы работаем с лучшими брендами на рынке</h2>
 		</div>
 		<div class="right-side">
 			<div class="partners-slider" id="partners-slider">
@@ -407,10 +375,10 @@
 <section id="updates" class="updates white">
 	<div class="headers">
 		<div class="left-side">
-			<h2>наш instagram</h2>
+			<h2 data-editable="snippets" data-key="updates-header">наш instagram</h2>
 		</div>
 		<div class="right-side">
-			<h2>Новости</h2>
+			<h2 data-editable="snippets" data-key="news-header">Новости</h2>
 		</div>
 	</div>
 	<div class="row">
@@ -421,7 +389,7 @@
 		</div>
 		<div class="right-side">
 			<div class="news-slider" id="news-slider">
-				<h2>Новости</h2>
+				<h2 data-editable="snippets" data-key="news-header">Новости</h2>
 				<div class="slider-viewport">
 					<div class="slider-holder clearfix">
 
@@ -550,22 +518,19 @@
 	<div class="row">
 		<div class="left-side">
 			<div class="contacts-holder">
-				<h2>Контактная информация</h2>
-				<p class="address">Киев, бульвар Леси Украинки 7б</p>
+				<h2 data-editable="snippets" data-key="contacts-header">Контактная информация</h2>
+				<p class="address" data-editable="snippets" data-key="adress">Киев, бульвар Леси Украинки 7б</p>
 				<ul class="phones">
 					<li>
-						<a href="tel:+30675991177">(067) 599-11-77</a>
+						<a href="tel:+30675991177" data-editable="snippets" data-key="phones">(067) 599-11-77</a>
 					</li>
 					<li>
-						<a href="tel:+30445990405">(044) 599-04-05</a>
+						<a href="tel:+30445990405" data-editable="snippets" data-key="phones-2">(044) 599-04-05</a>
 					</li>
 				</ul>
-				<ul class="socials">
+				<ul class="socials" data-repeat="socials">
 					<li>
-						<a href="https://www.facebook.com/DH-lab-313790678652777/?fref=ts\">facebook</a>
-					</li>
-					<li>
-						<a href="https://www.instagram.com/dh_lab/">instagram</a>
+						<a href="{{href}}">{{name}}</a>
 					</li>
 				</ul>
 				<div class="copyright-holder">
@@ -582,6 +547,73 @@
 		</div>
 	</div>
 </section>
+
+<!-- MODALS -->
+<!-- <div id="news-modal" class="modal-holder opened">
+	<div class="modal-content">
+		<div class="close-modal">
+			<img src="http://studies.makemeat.com/themes/meatds/assets/img/icons/cross-2.svg" alt="close">
+		</div>
+		<div class="date-holder">{{date}}</div>
+		<div class="image-hilder">
+			<img src="{{src}}">
+		</div>
+		<div class="content-holder">
+			<h3>{{header}}</h3>
+			<p>{{text}}</p>
+		</div>
+
+	</div>
+</div> -->
+
+
+<div id="news-modal" class="modal-holder">
+	<div class="modal-content">
+		<div class="close-modal">
+			<!--<img src="http://studies.makemeat.com/themes/meatds/assets/img/icons/cross-2.svg" alt="close">-->
+		</div>
+
+		<div class="content-wrapper">
+			<div class="date-holder">09 сентября 2015</div>
+			<div class="image-holder">
+				<img src="img/content/service-3.jpg">
+			</div>
+			<div class="content-holder">
+				<h3>Сколько времени я могу использовать</h3>
+				<p>Готовим сюрпризы для гостей благотворительного бала Олега Скрипки "Великі дитячі вечорниці". В антракте будет разыграно 4 сертификата от салона красоты Backstage. До встречи на самом ожидаемом и знаковом событием уходящей осени!
+				<br />
+				<br />
+				Напомним, что 22 ноября в бальном зале InterContinental Kiev состоится большая детская вечеринка, где ребятишек научат танцевать вальс и полонез, а те, кто уже освоил искусство танца, смогут продемонстрировать собственное мастерство в бальной зале, в сопровождении оркестра. 
+				<br />
+				<br />
+				Зону красоты для маленьких леди представит сеть салонов</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="services-modal" class="modal-holder opened">
+	<div class="modal-content">
+		<div class="close-modal">
+			<!--<img src="http://studies.makemeat.com/themes/meatds/assets/img/icons/cross-2.svg" alt="close">-->
+		</div>
+
+		<div class="content-wrapper">
+			<h3>Сколько времени я могу использовать</h3>
+			<ul class="services-list">
+				<li>Lorem ipsum dolor</li>
+				<li>sit amet, consectetur</li>
+				<li>adipisicing elit. Labore, quidem.</li>
+				<li>Aperiam eaque porro cum, qui!</li>
+				<li>Repellat quibusdam eos officiis consequuntur</li>
+				<li>quidem nesciunt autem cum quos magnam reiciendis</li>
+				<li>mollitia explicabo provident!</li>
+			</ul>
+		</div>
+
+	</div>
+</div>
 
 	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9I8d7JYaXAgwCBqNKjPxaEOUvT-Z_G4w&callback=initMap"></script>
 	<script>
@@ -604,9 +636,8 @@
 			});
 		}
 	</script>
-	<!-- <div class="grid-overlay"></div> -->
-	<script src="libs/jquery-2.1.4/jquery-2.1.4.min.js"></script>
-	<script src="libs/wow/dist/wow.min.js"></script>
+	<script src="libs/jquery/dist/jquery.js"></script>
+	<script src="libs/wow/dist/wow.js"></script>
 	<script src="js/content.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/admin.js"></script>

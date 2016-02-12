@@ -1,0 +1,32 @@
+{
+  "name": "dhlab",
+  "version": "0.0.1",
+  "description": "landingPage",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "browser-sync": "^2.11.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexeyPogorelov/dhlab.git"
+  },
+  "keywords": [
+    "landing",
+    "page"
+  ],
+  "author": "Alexey Pogorelov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexeyPogorelov/dhlab/issues"
+  },
+  "homepage": "https://github.com/AlexeyPogorelov/dhlab#readme"
+}
