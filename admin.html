@@ -427,7 +427,37 @@
 <div id="admin-button">
 	<button>Сохранить</button>
 </div>
+<div class="editor-modal modal-holder opened" id="addNew" data-type="news">
+	<div class="modal-content">
+		<h2>Создать новость</h2>
+		<div class="form-group">
+			<div class="label">Заголовок новости</div>
+			<input type="text" name="header" data-validate="empty">
+		</div>
+		<div class="form-group">
+			<div class="label">Дата</div>
+			<input type="text" name="date" data-validate="empty">
+		</div>
+		<div class="form-group file">
+			<div class="label">Изображение</div>
+			<input type="text" name="date" data-validate="empty" class="hidden">
+			<input type="file" name="file" id="file" required />
+			<label for="file">Загрузить</label>
+		</div>
 
+		<div class="form-group">
+			<div class="label">Короткое описание</div>
+			<textarea name="short" class="small" data-validate="empty"></textarea>
+		</div>
+		<div class="form-group">
+			<div class="label">Текст</div>
+			<textarea name="content" data-validate="empty"></textarea>
+		</div>
+		<div class="button-holder">
+			<button class="type-1" type="submit">Сохранить</button>
+		</div>
+	</div>
+</div>
 	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9I8d7JYaXAgwCBqNKjPxaEOUvT-Z_G4w&callback=initMap"></script>
 	<script>
 		// map

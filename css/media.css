@@ -98,6 +98,10 @@
 		margin-right: 16px;
 		font-size: 12px;
 	}
+	.persons-slider .slide .image-holder video {
+		-webkit-transform: none;
+		transform: none;
+	}
 }
 /*
 	TABLET
@@ -289,6 +293,8 @@
 	}
 
 	section.bonuses {
+		padding-top: 30px;
+		padding-bottom: 40px;
 		height: auto;
 		background-size: 150%;
 	}

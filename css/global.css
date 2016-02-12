@@ -669,6 +669,37 @@ button:focus,
 }
 /* END SLIDERS */
 
+/* FILE */
+.file {
+	position: relative;
+}
+.file label {
+	background: #fff;
+	color: #000;
+	cursor: pointer;
+	padding: 5px 20px;
+	pointer-events: none;
+	transition: all .4s;
+}
+.file input[type="file"] {
+	cursor: pointer;
+	display: inline-block;
+	left: 0;
+	opacity: 0.01;
+	position: absolute;
+	top: 0;
+}
+.file input[type="file"]:hover + label,
+.file input[type="file"]:focus + label {
+	background: #000;
+	color: #fff;
+}
+.file input[type="file"]:valid + label {
+	background-color: #4eab61;
+	font-size: 0;
+}
+/* END FILE */
+
 /* MODALS */
 .modal-holder {
 	background: rgba(255,255,255,.7);
@@ -717,3 +748,4 @@ button:focus,
 	width: 30px;
 }
 /* END MODALS */
+

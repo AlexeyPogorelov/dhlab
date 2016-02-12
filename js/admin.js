@@ -37,9 +37,6 @@ function runAdmin (argument) {
 		$.ajax({
 			method: "POST",
 			url: domain + "api/admin/data",
-			// data: {
-			// 	data: reseeet
-			// }
 			data: {
 				data: rest
 			}
@@ -71,6 +68,7 @@ function runAdmin (argument) {
 		if ( rest[$self.data('editable')] && rest[$self.data('editable')][$self.data('key')] ) {
 			var ob = rest[$self.data('editable')][$self.data('key')];
 			if (Object.keys(ob).length > 1) {
+
 				for (key in ob) {
 
 					if (key != 'name') {
@@ -80,17 +78,38 @@ function runAdmin (argument) {
 					}
 
 				}
+
 			} else {
 
 				$self.html( ob['name'] );
 
 			}
+
 		} else if ( rest[$self.data('editable')] ) {
+
 			$self.html( rest[$self.data('editable')]['name'] );
+
 		} else {
+
 			console.error('Нет данных');
+
 		}
 	});
 
 	// createForm('<h1>test</h1>');
+	$('#addNew').on('submit', function () {
+		var data = {},
+			$self = $(this);
+		$self.find('[name]').each(function () {
+			var $input = $(this);
+			data[$input.attr('name')] = $input.val();
+		});
+		if(rest[$self.data('type')]  instanceof Array )
+		{
+			rest[$self.data('type')].push(data);
+			$('#admin-button').trigger('click');
+		} else {
+			console.error('Увы, у нас на сайте ошибка. Конечный массив не найден.');
+		}
+	}).validate();
 }

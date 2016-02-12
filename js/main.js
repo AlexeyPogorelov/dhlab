@@ -1,50 +1,78 @@
 function replaceTemplate (data, template, index) {
-	if (typeof data != "object" || !template) {
+
+	if(typeof data != "object" || !template)
+	{
 		console.error('Нет шаблона или данных');
 		return false;
 	}
-	for (attr in data) {
+
+	for(attr in data)
+	{
 		var expr = new RegExp('{{' + attr + '}}', 'g'),
 			indExpr = new RegExp('{{index}}', 'g'),
 			numExpr = new RegExp('{{number}}', 'g');
+	
 		template = template.replace(expr, data[attr]);
 	}
-	if (index || index === 0) {
+
+	if(index || index === 0)
+	{
 		template = template.replace(indExpr, index);
 		template = template.replace(numExpr, +index + 1);
 	}
+
 	return template;
 }
+
 function buildElements (data, selector) {
+
 	var $el, template, index = 0;
+
 	if (selector instanceof jQuery) {
+
 		$el = selector;
+
 	} else {
+
 		$el = $(selector);
+
 	}
+
 	if ($el.length) {
+
 		template = $el.html();
 		$el.empty();
+
 	} else {
+
 		console.error('Элемент отсутствует!');
 		return false;
+
 	}
+
 	if (!template) {
+
 		console.error('Нет шаблона');
 		return false;
+
 	} else if ( $el.data('in-slide') ) {
+
+		$()
+
 		var $slide = $('<div>').addClass('slide'),
 			itemsPer = +$el.data('in-slide');
 
 		for (var y = 0; y < data.length; y++) {
-			if ((y + 1) % itemsPer) {
-				$slide.append( replaceTemplate(data[y], template, y) );
-			} else {
-				$slide.append( replaceTemplate(data[y], template, y) );
+			// TODO review this
+			$slide.append( replaceTemplate(data[y], template, y) );
+
+			if (!((y + 1) % itemsPer))
+			{
 				$el.append( $slide );
 				$slide = $('<div>').addClass('slide');
 			}
 		}
+
 		if ($slide.html()) {
 			$el.append( $slide );
 		}
@@ -119,7 +147,6 @@ var loading = {
 function runUser () {
 	var winWidth = $(window).width(),
 		winHeight = $(window).height();
-
 
 	$('[data-repeat]').each(function () {
 		var $self = $(this);
@@ -597,6 +624,83 @@ function runUser () {
 		});
 	};
 
+
+	$.fn.validate = function (opt) {
+
+		this.each(function (i) {
+
+			var DOM = {},
+				state = {},
+				$self = $(this);
+
+			// options
+			if (!opt) {
+				opt = {};
+			}
+			opt = $.extend({
+			}, opt);
+
+			// methods
+			var plg = {
+				init: function () {
+					DOM.$fields = $self.find('[data-validate]');
+					// $self.on('submit', plg.submit);
+					$self.find('[type="submit"]').on('click', plg.submit);
+					// DOM.$fields.on('blur keyup', function () {
+					// 	plg.validate( $(this) );
+					// })
+					DOM.$fields.on('focus', function () {
+						plg.removeLabel( $(this) );
+					})
+				},
+				test: function (data, type) {
+					switch (type) {
+						case 'name':
+							return /^[а-яА-Яa-zA-Z\-]+\s{0,1}[а-яА-Яa-zA-Z\-]{0,}$/.test(data);
+						case 'phone':
+							return /^[\(\)0-9\-\s\+]{8,}/.test(data);
+						case 'email':
+							return /^[0-9a-zA-Z._-]+@[0-9a-zA-Z_-]+\.[a-zA-Z._-]+/.test(data);
+						case 'empty':
+							return /.+/.test(data);
+						default:
+							return true;
+					}
+				},
+				addLabel: function ($el) {
+					$el.parent().addClass('error');
+				},
+				removeLabel: function ($el) {
+					$el.parent().removeClass('error');
+				},
+				validate: function ($el) {
+					if ( plg.test( $el.val(), $el.data('validate') ) ) {
+						plg.removeLabel( $el );
+					} else {
+						plg.addLabel( $el );
+						state.errors++;
+					}
+				},
+				submit: function (e) {
+					state.errors = 0;
+					DOM.$fields.each( function () {
+						plg.validate( $(this) );
+					} );
+					if (state.errors) {
+						e.preventDefault();
+					} else {
+						$self.trigger('submit');
+					}
+				}
+			};
+
+			plg.init();
+
+			return plg;
+		});
+	};
+
+
 	$.fn.test = function (opt) {
 
 		this.each(function (i) {
@@ -664,3 +768,265 @@ jQuery.extend( jQuery.easing,
 			return jQuery.easing.easeOutBounce (x, t*2-d, 0, c, d) * .5 + c*.5 + b;
 		}
 	});
+
+/*
+
+(function ($) {
+	$.fn.capabilitiesSlider = function (opt) {
+
+		this.each(function (i) {
+
+			var DOM = {},
+				state = {
+					'touchStart': {},
+					'touchEnd': {}
+				},
+				self = this;
+
+			// options
+			if (!opt) {
+				opt = {};
+			}
+			opt = $.extend({
+				'loop': true,
+				'interval': false,
+				'easing': 'swing',
+				'prevClass': 'arrow-left-1',
+				'nextClass': 'arrow-right-1',
+				'holderClass': '.slides-holder',
+				'slideClass': '.slide',
+				'nameClass': '.slide-name',
+				'imageClass': '.slide-image',
+				'pagination': false,
+				'clickToNext': false,
+				'startSlide': 0,
+				'slidesOnPage': 1
+			}, opt);
+
+			// methods
+			var plg = {
+				cacheDOM: function () {
+					DOM.$slider = $(self);
+					DOM.$preloader = DOM.$slider.find('.slider-preloader');
+					DOM.$viewport = DOM.$slider.find('.slider-viewport');
+					DOM.$sliderHolder = DOM.$viewport.find('.slider-holder');
+					DOM.$slides = DOM.$sliderHolder.find('.slide');
+					DOM.$slides.eq(0).addClass('active')
+				},
+				init: function () {
+					state.cur = state.cur || 0;
+					state.slides = DOM.$slides.length;
+					state.pages = Math.ceil(DOM.$slides.length / opt.slidesOnPage);
+					DOM.$preloader.fadeOut(150);
+				},
+				resize: function () {
+					state.sliderWidth = DOM.$viewport.width();
+					if ($(window).width() > 300 && opt.slidesOnPage > 1 && $(window).width() <= 700) {
+						opt.slidesOnPage = Math.floor( opt.slidesOnPage / 2 );
+						plg.init();
+					}
+					DOM.$slides.width( DOM.$viewport.width() / opt.slidesOnPage);
+					DOM.$slides.height(
+							(function ($slides) {
+								var max = 1;
+								$slides.each(function () {
+									var height = $(this).find('> div').outerHeight();
+									if (height > max) {
+										max = height;
+									}
+								});
+								return max;
+							})(DOM.$slides) + 26
+						);
+					state.slideWidth = DOM.$slides.eq(0).outerWidth() + 12;
+					DOM.$sliderHolder.width(state.slideWidth * state.slides);
+					plg.toSlide(opt.startSlide);
+				},
+				prevSlide: function () {
+					var id = state.cur - 1;
+					if (id < 0) {
+						// this.toSlide(state.pages - 1);
+						return;
+					}
+					this.toSlide(id);
+				},
+				nextSlide: function () {
+					var id = state.cur + 1;
+					if (id >= state.pages) {
+						// this.toSlide(0);
+						return;
+					}
+					this.toSlide(id);
+				},
+				toSlide: function (id) {
+					if ( id < 0 || id >= state.pages ) {
+						return;
+					}
+					DOM.$sliderHolder.css({
+						'-webkit-transform': 'translateX( -' + (state.sliderWidth * id) + 'px)',
+						'transform': 'translateX( -' + (state.sliderWidth * id) + 'px)'
+					});
+					DOM.$slides.eq(id).addClass('active').siblings().removeClass('active');
+					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
+					state.cur = id;
+				},
+				createPagination: function () {
+					if (DOM.$pagination) {
+						DOM.$pagination.empty();
+					} else {
+						DOM.$pagination = $('<div>').addClass('paginator-holder');
+						if (opt.pagination || true) {
+							DOM.$pagination.appendTo(DOM.$slider);
+						}
+					}
+					$('<div>')
+						.addClass('prev-slide')
+						.appendTo(DOM.$pagination);
+					for (var i = 0; i < state.pages / opt.slidesOnPage; i++) {
+						var page = $('<div>').data('page', i).addClass('page');
+						if (!i) {
+							page.addClass('active');
+						}
+						DOM.$pagination.append(page);
+					}
+					$('<div>')
+						.addClass('next-slide')
+						.appendTo(DOM.$pagination);
+				}
+			};
+
+			plg.cacheDOM();
+			plg.init();
+			plg.createPagination();
+			plg.resize();
+
+			// resize
+			$(window).on('resize', function () {
+				plg.resize();
+			});
+
+			// click events
+			DOM.$slider.on('click', function (e) {
+				var $target = $(e.target);
+				if ($target.hasClass('page')) {
+					plg.toSlide($(e.target).data('page'));
+				} else if ($target.hasClass('prev-slide')) {
+					plg.prevSlide();
+				} else if ($target.hasClass('next-slide')) {
+					plg.nextSlide();
+				} else if (opt.clickToNext && $target.parents('.slide').length) {
+					plg.nextSlide();
+				}
+			});
+
+			// drag events
+			DOM.$slider.on('touchstart', function (e) {
+				state.touchStart.xPos = e.originalEvent.touches[0].clientX;
+				state.touchStart.yPos = e.originalEvent.touches[0].clientY;
+				state.touchStart.timeStamp = e.timeStamp;
+				// console.log('-----');
+			});
+			DOM.$slider.on('touchmove', function (e) {
+				state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
+				state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
+				// console.log('-----');
+			});
+			DOM.$slider.on('touchend', function (e) {
+				var distance = 70,
+					speed = 200,
+					deltaX = state.touchEnd.xPos - state.touchStart.xPos,
+					deltaY = Math.abs(state.touchEnd.yPos - state.touchStart.yPos);
+				state.touchEnd.xPos = 0;
+				state.touchEnd.yPos = 0;
+					// time = e.timeStamp - state.touchStart.timeStamp;
+				// console.log('-----');
+				// console.log(time);
+				// console.log(deltaX);
+				// console.log((deltaY));
+				// console.log(state.touchEnd.originalEvent.touches[0].clientX);
+				// console.log(state.touchStart.originalEvent.touches[0].clientX);
+				if (deltaX > distance || -deltaX > distance && deltaY < 30) {
+					if (deltaX < 0) {
+						plg.nextSlide();
+					} else {
+						plg.prevSlide();
+					}
+				}
+			});
+
+			$(window).on('resize', plg.resize.bind(plg));
+			plg.init();
+
+			return plg;
+		});
+	};
+
+	$.fn.landingNavigation = function (opt) {
+
+		this.each(function (i) {
+
+			var DOM = {},
+				state = {},
+				array = [],
+				$self = $(this);
+
+			// options
+			if (!opt) {
+				opt = {
+					'linkClass': 'a'
+				};
+			}
+			opt = $.extend({
+			}, opt);
+
+			// methods
+			var plg = {
+				init: function () {
+					DOM.$lnks = $self.find(opt.linkClass);
+					// state.pages = DOM.$lnks.length;
+					plg.resize();
+				},
+				scroll: function (top) {
+					for (var y = 0; y < array.length; y++) {
+						if (top < array[y].val && y) {
+							plg.avtive(array[y - 1].$elem);
+							return;
+						} else if (y == array.length - 1) {
+							plg.avtive(array[y].$elem);
+						}
+					};
+				},
+				avtive: function ($el) {
+					if ($el !== state.$active) {
+						DOM.$lnks.removeClass('active');
+						$el.addClass('active');
+						state.$active = $el;
+					}
+				},
+				resize: function () {
+					DOM.$lnks.each(function (i, elem) {
+							array[i] = {};
+							array[i]['$elem'] = $(elem);
+							array[i]['trg'] = $(elem).attr('href') || $(elem).data('target');
+							array[i]['val'] = $(array[i]['trg']).offset().top;
+						});
+				}
+			};
+
+			plg.init();
+			$(window).on('scroll', function () {
+				plg.scroll($(this).scrollTop() + 110);
+			})
+
+			$(window).on('resize', function () {
+				plg.resize();
+			})
+
+			return plg;
+		});
+	};
+
+
+
+})(jQuery);
+*/
