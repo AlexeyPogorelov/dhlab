@@ -383,9 +383,6 @@ input[type='number'] {
 	overflow: auto;
 	box-shadow: 0 0 24px rgba(0,0,0,.4);
 	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	z-index: 10;
 }
@@ -406,24 +403,27 @@ input[type='number'] {
 .preloader img {
 	position: absolute;
 	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	top: 50%;
 	left: 50%;
 }
-.preloader svg {
+.preloader .image-holder {
 	position: absolute;
 	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	top: 50%;
 	left: 50%;
 	height: 200px;
 	width: 200px;
+}
+.preloader .image-holder svg {
+	display: none;
+	animation: rotate 1s linear 0 infinite;
+	-webkit-animation: rotate 1s linear 0 infinite;
+}
+.preloader svg path,
+.preloader svg rect {
+	fill: #ffffff;
 }
 .preloader span {
 	color: #ffffff;

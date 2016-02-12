@@ -872,8 +872,8 @@ section.footer .copyright-holder a:hover span:after {
 	position: relative;
 }
 .editable:hover {
-	-webkit-filter: invert(80%);
-	filter: invert(100%);
+	-webkit-filter: invert(30%);
+	filter: invert(30%);
 	z-index: 9;
 }
 .editable:after {
@@ -1015,6 +1015,14 @@ section.footer .copyright-holder a:hover span:after {
 	background: #000;
 }
 #admin-saved .modal-content {
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+#editor-modal {}
+#editor-modal .modal-content {
+	padding: 40px;
+	right: auto;
+	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }

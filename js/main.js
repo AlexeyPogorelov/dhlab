@@ -72,40 +72,6 @@ function buildSlideGroup (data, itemsPerSlide, $el) {
 	var $slide = $('<div>').addClass('slide');
 }
 
-$('[data-repeat]').each(function () {
-	var $self = $(this);
-	if ( rest[$self.data('repeat')] ) {
-		buildElements(rest[$self.data('repeat')], $self);
-	} else {
-		console.error('Нет объекта с данными');
-	}
-});
-$('[data-editable="snippets"]').each(function () {
-	var $self = $(this);
-	if ( rest[$self.data('editable')][$self.data('key')] ) {
-		var ob = rest[$self.data('editable')][$self.data('key')];
-		if (Object.keys(ob).length > 1) {
-			for (key in ob) {
-
-				if (key != 'name') {
-					$self.attr(key, ob[key])
-				} else {
-					$self.html( ob[key] );
-				}
-
-			}
-		} else {
-
-			$self.html( ob['name'] );
-
-		}
-	} else if ( rest[$self.data('editable')] ) {
-		$self.html( rest[$self.data('editable')]['name'] );
-	} else {
-		console.error('Нет данных');
-	}
-});
-
 var loading = {
 		avgTime: 3000,
 		trg: 1,
@@ -117,13 +83,18 @@ var loading = {
 		},
 		done: function () {
 			// setInterval();
+			if (!loading.completed) {
+				loading.completed = true;
+				runUser();
+				runAdmin();
 
-			// hide preloader
-			$('body > .preloader').animate({
-				'opacity': 0
-			}, 200, function () {
-				$(this).remove();
-			});
+				// hide preloader
+				$('body > .preloader').animate({
+					'opacity': 0
+				}, 400, function () {
+					$(this).remove();
+				});
+			}
 		}
 	},
 	bodyOverflow = {
@@ -145,10 +116,63 @@ var loading = {
 				this.unfixBody();
 			}.bind(this)
 		};
-$(document).on('ready', function () {
+function runUser () {
 	var winWidth = $(window).width(),
 		winHeight = $(window).height();
 
+
+	$('[data-repeat]').each(function () {
+		var $self = $(this);
+		if ( rest[$self.data('repeat')] ) {
+			buildElements(rest[$self.data('repeat')], $self);
+		} else {
+			console.error('Нет объекта с данными');
+		}
+	});
+
+	$('[data-repeat]').each(function () {
+		var $self = $(this);
+		if ( rest[$self.data('repeat')] ) {
+			$self.off('click').on('click', function (e) {
+				var $target = $(e.target),
+					$el;
+				if ($target.attr('data-index')) {
+					$el = $target;
+				} else {
+					$el = $target.closest('[data-index]');
+				}
+				if ($el.length) {
+					var $modal = $( $el.data('content-modal') ).clone();
+					$modal.html( replaceTemplate(rest[$self.data('repeat')][$el.data('index')], $modal.html()) );
+					bodyOverflow.fixBody();
+					$modal.on('click', function (e) {
+						if (e.target == this) {
+							bodyOverflow.unfixBody();
+							$(this).closest('.opened').removeClass('opened');
+							setTimeout(function (argument) {
+								$modal.remove();
+							}, 300);
+						}
+					})
+					$modal.find('.close-modal').on('click', function () {
+						bodyOverflow.unfixBody();
+						$(this).closest('.opened').removeClass('opened');
+						setTimeout(function (argument) {
+							$modal.remove();
+						}, 300);
+					});
+					$('body').append($modal);
+					setTimeout(function () {
+						$modal.addClass('opened');
+					}, 1)
+				} else {
+					console.error('Не найден редактируемый элемент');
+				}
+			})
+		} else {
+			console.error('Нет объекта с данными');
+		}
+	});
 		// modals
 		$('[data-modal]').on('click', function (e) {
 			e.preventDefault();
@@ -157,7 +181,7 @@ $(document).on('ready', function () {
 				bodyOverflow.fixBody();
 			}
 		});
-		$('.modal-holder').on('click', function (e) {
+		$('.modal-holder').not('#admin-saved').on('click', function (e) {
 			if (this == e.target) {
 				$(this).removeClass('opened');
 				bodyOverflow.unfixBody();
@@ -206,9 +230,6 @@ $(document).on('ready', function () {
 	$('#persons-slider').personsSlider();
 	$('#partners-slider').verticalSlider();
 
-	// loaded
-	loading.loaded();
-
 	// resize
 	$(window).on('resize', function () {
 		winWidth = $(window).width();
@@ -217,7 +238,7 @@ $(document).on('ready', function () {
 			'min-height': winHeight
 		});
 	});
-});
+};
 
 //plugins
 (function ($) {
@@ -607,10 +628,6 @@ $(document).on('ready', function () {
 // easing
 jQuery.extend( jQuery.easing,
 	{
-		swing: function (x, t, b, c, d) {
-			//alert(jQuery.easing.default);
-			return jQuery.easing[jQuery.easing.def](x, t, b, c, d);
-		},
 		easeOutQuart: function (x, t, b, c, d) {
 			return -c * ((t=t/d-1)*t*t*t - 1) + b;
 		},
