@@ -45,6 +45,9 @@ function buildElements (data, selector) {
 				$slide = $('<div>').addClass('slide');
 			}
 		}
+		if ($slide.html()) {
+			$el.append( $slide );
+		}
 
 	} else if ( data instanceof Array ) {
 
@@ -71,16 +74,16 @@ function buildSlideGroup (data, itemsPerSlide, $el) {
 
 $('[data-repeat]').each(function () {
 	var $self = $(this);
-	if ( window[$self.data('repeat')] ) {
-		buildElements(window[$self.data('repeat')], $self);
+	if ( rest[$self.data('repeat')] ) {
+		buildElements(rest[$self.data('repeat')], $self);
 	} else {
 		console.error('Нет объекта с данными');
 	}
 });
 $('[data-editable="snippets"]').each(function () {
 	var $self = $(this);
-	if ( window[$self.data('editable')][$self.data('key')] ) {
-		var ob = window[$self.data('editable')][$self.data('key')];
+	if ( rest[$self.data('editable')][$self.data('key')] ) {
+		var ob = rest[$self.data('editable')][$self.data('key')];
 		if (Object.keys(ob).length > 1) {
 			for (key in ob) {
 
@@ -96,8 +99,8 @@ $('[data-editable="snippets"]').each(function () {
 			$self.html( ob['name'] );
 
 		}
-	} else if ( window[$self.data('editable')] ) {
-		$self.html( window[$self.data('editable')]['name'] );
+	} else if ( rest[$self.data('editable')] ) {
+		$self.html( rest[$self.data('editable')]['name'] );
 	} else {
 		console.error('Нет данных');
 	}
@@ -122,11 +125,8 @@ var loading = {
 				$(this).remove();
 			});
 		}
-	};
-$(document).on('ready', function () {
-	var winWidth = $(window).width(),
-		winHeight = $(window).height(),
-		bodyOverflow = {
+	},
+	bodyOverflow = {
 			fixBody: function () {
 				$('body').width($('body').width())
 					.css({
@@ -145,7 +145,9 @@ $(document).on('ready', function () {
 				this.unfixBody();
 			}.bind(this)
 		};
-
+$(document).on('ready', function () {
+	var winWidth = $(window).width(),
+		winHeight = $(window).height();
 
 		// modals
 		$('[data-modal]').on('click', function (e) {

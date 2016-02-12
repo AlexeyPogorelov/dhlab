@@ -1,4 +1,5 @@
-var nav = {
+var rest = {};
+rest.nav = {
 	'nav-1': {
 		name: "услуги",
 		href: "#services"
@@ -24,7 +25,7 @@ var nav = {
 		href: "#footer"
 	}
 }
-var socials = {
+rest.socials = {
 	'nav-5': {
 		name: "facebook",
 		href: "https://www.facebook.com/DH-lab-313790678652777/?fref=ts"
@@ -35,7 +36,7 @@ var socials = {
 	}
 }
 
-var features = {
+rest.features = {
 	'feature-1': {
 		head: 'Косметологи-доктора',
 		text: 'Наши косметологи имеют высшее медицинское образование и лицензию на проведение инъекционных процедур'
@@ -53,7 +54,7 @@ var features = {
 		text: 'Мы отслеживаем тендеции новых продуктов и технологий в сфере красоты. Лучшие из них мы предоставляем нашим клиентам'
 	}
 }
-var features = [
+rest.features = [
 {
 	head: 'Косметологи-доктора',
 	text: 'Наши косметологи имеют высшее медицинское образование и лицензию на проведение инъекционных процедур'
@@ -71,7 +72,7 @@ var features = [
 	text: 'Мы отслеживаем тендеции новых продуктов и технологий в сфере красоты. Лучшие из них мы предоставляем нашим клиентам'
 }
 ]
-var snippets = {
+rest.snippets = {
 	'adress': {
 		name: 'Киев, бульвар Леси Украинки 7б'
 	},
@@ -107,7 +108,7 @@ var snippets = {
 		name: 'наш instagram'
 	}
 }
-var news = [
+rest.news = [
 {
 	header: 'Сколько времени я могу использовать',
 	short: 'Наша лицензия предназначена для использования в любой стране мира и является бессрочной. Как только вы ...',
@@ -193,6 +194,34 @@ var news = [
 	content: 'Ни в коем случае. Векторные изображения и EPS-файлы входят в стоимость вашего заказа.'
 }
 ]
-var partners = {}
-var team = {}
-var services = {}
+rest.partners = [
+	{
+		name: 'img/content/partner-1.png'
+	},
+	{
+		name: 'img/content/partner-2.png'
+	},
+	{
+		name: 'img/content/partner-3.png'
+	},
+	{
+		name: 'img/content/partner-4.png'
+	},
+	{
+		name: 'img/content/partner-5.png'
+	},
+	{
+		name: 'img/content/partner-6.png'
+	},
+	{
+		name: 'img/content/partner-1.png'
+	},
+	{
+		name: 'img/content/partner-3.png'
+	},
+	{
+		name: 'img/content/partner-2.png'
+	}
+]
+rest.team = {}
+rest.services = {}

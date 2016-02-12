@@ -862,6 +862,11 @@ section.footer .copyright-holder a:hover span:after {
 
 
 /* ADMIN */
+#admin-button {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+}
 .editable {
 	cursor: pointer;
 	position: relative;
@@ -1005,5 +1010,12 @@ section.footer .copyright-holder a:hover span:after {
 }
 #services-modal .modal-content .image-holder {
 	max-width: 700px;
+}
+#admin-saved {
+	background: #000;
+}
+#admin-saved .modal-content {
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 /* END MODALS */
