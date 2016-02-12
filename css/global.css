@@ -672,23 +672,48 @@ button:focus,
 /* MODALS */
 .modal-holder {
 	background: rgba(255,255,255,.7);
-	display: none;
+	/*display: none;*/
+	pointer-events: none;
 	position: fixed;
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
 	z-index: 10;
+	opacity: 0;
+	-webkit-transition: opacity .3s ease;
+	transition: opacity .3s ease;
 }
 .modal-holder.opened {
-	display: block;
+	pointer-events: all;
+	/*display: block;*/
+	opacity: 1;
+	-webkit-transition: opacity .3s ease;
+	transition: opacity .3s ease;
 }
 .modal-holder .modal-content {
 	background: #000;
 	position: absolute;
 	right: 0;
 	top: 50%;
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%) translateX(-100%);
+	transform: translateY(-50%) translateX(-100%);
+	-webkit-transition: transform .3s ease;
+	transition: transform .3s ease;
+}
+.modal-holder.opened .modal-content {
+	-webkit-transform: translateY(-50%) translateX(0);
+	transform: translateY(-50%) translateX(0);
+	-webkit-transition: transform .3s ease;
+	transition: transform .3s ease;
+}
+.close-modal {
+	background: url('../img/icons/close-button.svg') no-repeat 50% 50%;
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	height: 30px;
+	width: 30px;
 }
 /* END MODALS */

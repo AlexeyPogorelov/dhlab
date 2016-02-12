@@ -32,6 +32,20 @@ function buildElements (data, selector) {
 	if (!template) {
 		console.error('Нет шаблона');
 		return false;
+	} else if ( $el.data('in-slide') ) {
+		var $slide = $('<div>').addClass('slide'),
+			itemsPer = +$el.data('in-slide');
+
+		for (var y = 0; y < data.length; y++) {
+			if ((y + 1) % itemsPer) {
+				$slide.append( replaceTemplate(data[y], template, y) );
+			} else {
+				$slide.append( replaceTemplate(data[y], template, y) );
+				$el.append( $slide );
+				$slide = $('<div>').addClass('slide');
+			}
+		}
+
 	} else if ( data instanceof Array ) {
 
 		for (var y = 0; y < data.length; y++) {
@@ -51,6 +65,10 @@ function buildElements (data, selector) {
 
 	}
 }
+function buildSlideGroup (data, itemsPerSlide, $el) {
+	var $slide = $('<div>').addClass('slide');
+}
+
 $('[data-repeat]').each(function () {
 	var $self = $(this);
 	if ( window[$self.data('repeat')] ) {
@@ -127,6 +145,28 @@ $(document).on('ready', function () {
 				this.unfixBody();
 			}.bind(this)
 		};
+
+
+		// modals
+		$('[data-modal]').on('click', function (e) {
+			e.preventDefault();
+			var $el = $( $(this).data('modal') ).addClass('opened');
+			if ($el.length) {
+				bodyOverflow.fixBody();
+			}
+		});
+		$('.modal-holder').on('click', function (e) {
+			if (this == e.target) {
+				$(this).removeClass('opened');
+				bodyOverflow.unfixBody();
+			}
+		});
+		$('.close-modal').on('click', function () {
+			$(this).closest('.opened').removeClass('opened');
+			bodyOverflow.unfixBody();
+		});
+
+
 	$('.left-bottom-holder').find('> span').on('click', function () {
 		var topTarget = $('.features').offset().top;
 		$("html, body").stop().animate({

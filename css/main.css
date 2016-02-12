@@ -897,6 +897,12 @@ section.footer .copyright-holder a:hover span:after {
 	padding-right: 100px;
 	padding-top: 84px;
 	padding-bottom: 84px;
+	-webkit-transform: translateY(-50%) translateX(100%);
+	transform: translateY(-50%) translateX(100%);
+}
+#news-modal.opened .modal-content {
+	-webkit-transform: translateY(-50%) translateX(0);
+	transform: translateY(-50%) translateX(0);
 }
 #news-modal .modal-content h3 {
 	color: white;

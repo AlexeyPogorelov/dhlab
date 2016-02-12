@@ -117,7 +117,7 @@
 
 	<!-- TODO make links for services -->
 
-	<a href="#" class="service">
+	<a href="#" class="service" data-modal="#services-modal">
 		<div class="image-holder">
 			<img src="img/content/service-1.jpg" alt="service">
 		</div>
@@ -130,7 +130,7 @@
 		</div>
 	</a>
 
-	<a href="#" class="service">
+	<a href="#" class="service" data-modal="#services-modal">
 		<div class="image-holder">
 			<img src="img/content/service-2.jpg" alt="service">
 		</div>
@@ -143,7 +143,7 @@
 		</div>
 	</a>
 
-	<a href="#" class="service">
+	<a href="#" class="service" data-modal="#services-modal">
 		<div class="image-holder">
 			<img src="img/content/service-3.jpg" alt="service">
 		</div>
@@ -156,7 +156,7 @@
 		</div>
 	</a>
 
-	<a href="#" class="service">
+	<a href="#" class="service" data-modal="#services-modal">
 		<div class="image-holder">
 			<img src="img/content/service-4.jpg" alt="service">
 		</div>
@@ -391,120 +391,15 @@
 			<div class="news-slider" id="news-slider">
 				<h2 data-editable="snippets" data-key="news-header">Новости</h2>
 				<div class="slider-viewport">
-					<div class="slider-holder clearfix">
+					<div class="slider-holder clearfix" data-repeat="news" data-in-slide="4" >
 
-						<div class="slide">
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Сколько времени я могу использовать</h2>
-								<p>Наша лицензия предназначена для использования в любой стране мира и является бессрочной. Как только вы ...</p>
-								<p class="date">09 сентября 2015</p>
+						<div class="new-item" data-modal="#news-modal" data-index="{{index}}">
+							<div class="image-holder">
+								<img src="{{src}}" alt="article">
 							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Могу я отменить свою подписку</h2>
-								<p>Да. Мы предлагаем гарантию возврата денег. Если вы недовольны работой с нами, вы можете в любой момент ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Необходимо ли дополнительно оплачивать доступ</h2>
-								<p>Наша лицензия предназначена для использования в любой стране мира и является бессрочной. Как только вы ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>изображения высокого разрешения?</h2>
-								<p>Ни в коем случае. Векторные изображения и EPS-файлы входят в стоимость вашего заказа.</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-						</div>
-
-						<div class="slide">
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Сколько времени я могу использовать</h2>
-								<p>Наша лицензия предназначена для использования в любой стране мира и является бессрочной. Как только вы ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Могу я отменить свою подписку</h2>
-								<p>Да. Мы предлагаем гарантию возврата денег. Если вы недовольны работой с нами, вы можете в любой момент ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Необходимо ли дополнительно оплачивать доступ</h2>
-								<p>Наша лицензия предназначена для использования в любой стране мира и является бессрочной. Как только вы ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>изображения высокого разрешения?</h2>
-								<p>Ни в коем случае. Векторные изображения и EPS-файлы входят в стоимость вашего заказа.</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-						</div>
-
-						<div class="slide">
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Сколько времени я могу использовать</h2>
-								<p>Наша лицензия предназначена для использования в любой стране мира и является бессрочной. Как только вы ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Могу я отменить свою подписку</h2>
-								<p>Да. Мы предлагаем гарантию возврата денег. Если вы недовольны работой с нами, вы можете в любой момент ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>Необходимо ли дополнительно оплачивать доступ</h2>
-								<p>Наша лицензия предназначена для использования в любой стране мира и является бессрочной. Как только вы ...</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
-							
-							<div class="new-item">
-								<div class="image-holder">
-									<img src="img/content/instagram-holder.jpg" alt="article">
-								</div>
-								<h2>изображения высокого разрешения?</h2>
-								<p>Ни в коем случае. Векторные изображения и EPS-файлы входят в стоимость вашего заказа.</p>
-								<p class="date">09 сентября 2015</p>
-							</div>
+							<h2>{{header}}</h2>
+							<p>{{short}}</p>
+							<p class="date">{{date}}</p>
 						</div>
 
 					</div>
@@ -593,7 +488,7 @@
 	</div>
 </div>
 
-<div id="services-modal" class="modal-holder opened">
+<div id="services-modal" class="modal-holder">
 	<div class="modal-content">
 		<div class="close-modal">
 			<!--<img src="http://studies.makemeat.com/themes/meatds/assets/img/icons/cross-2.svg" alt="close">-->
