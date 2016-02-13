@@ -74,6 +74,19 @@
 	section.footer .copyright-holder > a, section.footer .copyright-holder > span {
 		margin-right: 46px;
 	}
+	section.features .left-side {
+		width: 200px;
+	}
+	section.features .right-side {
+		margin-left: 220px;
+	}
+	section.features ul.features-list li {
+		margin-right: 20px;
+		width: 360px;
+	}
+	section.features ul.features-list li:nth-child(even) {
+		margin-right: 0;
+	}
 }
 /*--------------------------------------------------------------------------
 	SMALL PC

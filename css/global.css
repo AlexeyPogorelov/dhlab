@@ -13,24 +13,27 @@ body {
 	line-height: 17px;
 }
 .wrapper {}
+.modal-holder::-webkit-scrollbar-corner,
 .lightbox-cell::-webkit-scrollbar-corner,
 .dropdown::-webkit-scrollbar-corner,
 .mobile-navbar-holder::-webkit-scrollbar-corner {
-	background-color: #e5e5e5;
+	border: 2px solid #000;
+	background-color: #000;
 }
+.modal-holder::-webkit-scrollbar,
 .lightbox-cell::-webkit-scrollbar,
 .dropdown::-webkit-scrollbar,
 .mobile-navbar-holder::-webkit-scrollbar {
-	width: 6px;
-	height: 0;
+	width: 2px;
 	background-color: #fff;
-	border: none;
+	border: 2px solid #444;
 }
+.modal-holder::-webkit-scrollbar-thumb,
 .lightbox-cell::-webkit-scrollbar-thumb,
 .dropdown::-webkit-scrollbar-thumb,
 .mobile-navbar-holder::-webkit-scrollbar-thumb {
-	background-color: #EE2151;
-	border: 1px solid #e5e5e5;
+	background-color: #444;
+	border: 2px solid #fff;
 }
 section {
 	display: block;
@@ -396,6 +399,8 @@ input[type='number'] {
 .preloader {
 	background-color: #000;
 	position: fixed;
+	top: 0;
+	left: 0;
 	height: 100%;
 	width: 100%;
 	z-index: 999;
@@ -413,13 +418,13 @@ input[type='number'] {
 	transform: translate(-50%, -50%);
 	top: 50%;
 	left: 50%;
-	height: 200px;
-	width: 200px;
+	height: 40px;
+	width: 40px;
 }
 .preloader .image-holder svg {
-	display: none;
-	animation: rotate 1s linear 0 infinite;
-	-webkit-animation: rotate 1s linear 0 infinite;
+	/*display: none;*/
+	animation: rotate 1.6s linear 0s infinite;
+	-webkit-animation: rotate 1.6s linear 0s infinite;
 }
 .preloader svg path,
 .preloader svg rect {

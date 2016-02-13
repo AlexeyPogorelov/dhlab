@@ -755,7 +755,9 @@ section.footer .copyright-holder a:hover span:after {
 }
 
 /* PERSONAL */
-.personal {}
+.personal {
+	overflow: hidden;
+}
 .personal .section-label {
 	margin-top: 79px;
 	margin-bottom: 30px;
@@ -1032,13 +1034,15 @@ section.footer .copyright-holder a:hover span:after {
 	overflow: auto;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+	max-width: 770px;
+	width: 100%;
 }
 .editor-modal .form-group {
 	display: inline-block;
 	margin: 10px 20px;
 	vertical-align: top;
 	text-align: left;
-	min-width: 50%;
+	/*min-width: 50%;*/
 }
 .editor-modal .button-holder {
 	margin-top: 20px;
@@ -1054,9 +1058,12 @@ section.footer .copyright-holder a:hover span:after {
 .editor-modal .form-group textarea {
 	border: 1px solid black;
 	height: 200px;
+	width: 640px;
+	max-width: 100%;
 }
 .editor-modal .form-group textarea.small {
 	height: 100px;
+	width: 300px;
 }
 .editor-modal .form-group .label {
 	font-size: 14px;

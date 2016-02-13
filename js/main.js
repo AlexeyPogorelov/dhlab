@@ -57,7 +57,7 @@ function buildElements (data, selector) {
 
 	} else if ( $el.data('in-slide') ) {
 
-		$()
+		// $()
 
 		var $slide = $('<div>').addClass('slide'),
 			itemsPer = +$el.data('in-slide');
@@ -104,25 +104,37 @@ var loading = {
 		avgTime: 3000,
 		trg: 1,
 		state: 0,
+		$preloader: $('body > .preloader'),
 		loaded: function () {
 			if(++this.state == this.trg) {
 				this.done();
 			}
 		},
 		done: function () {
-			// setInterval();
 			if (!loading.completed) {
 				loading.completed = true;
 				runUser();
 				runAdmin();
 
-				// hide preloader
-				$('body > .preloader').animate({
-					'opacity': 0
-				}, 400, function () {
-					$(this).remove();
-				});
+				this.hidePreloader();
 			}
+		},
+		hidePreloader: function () {
+			this.$preloader.animate({
+				'opacity': 0
+			}, 400, function () {
+				$(this).detach();
+			});
+		},
+		showPreloader: function () {
+			this.$preloader
+				.css({
+					'opacity': 0
+				})
+				.appendTo('body')
+				.animate({
+					'opacity': 1
+				}, 200);
 		}
 	},
 	bodyOverflow = {
@@ -226,7 +238,7 @@ function runUser () {
 			scrollTop: topTarget
 		}, 800, 'easeOutQuint').one('mousewheel DOMMouseScroll touchstart',
 			function () {
-				$(this).stop(false, false)
+				$(this).stop(false, false);
 			})
 	});
 

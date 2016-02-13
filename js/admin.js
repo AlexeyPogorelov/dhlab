@@ -33,23 +33,48 @@ function runAdmin (argument) {
 			});
 	});
 
-	$('#admin-button').on('click', function () {
-		$.ajax({
-			method: "POST",
-			url: domain + "api/admin/data",
-			data: {
-				data: rest
-			}
-		}).done(function() {
-			$( '#admin-saved' ).addClass( "opened" ).on('click', function () {
-				window.location.reload();
+	var adminMethods = {
+		saveData: function (data) {
+			$.ajax({
+				method: "POST",
+				url: domain + "api/admin/data",
+				data: {
+					data: data
+				}
+			}).done(function() {
+				$( '#admin-saved' ).addClass( "opened" ).on('click', function () {
+					window.location.reload();
+				});
+				setTimeout(function () {
+					window.location.reload();
+				}, 7000)
+			}).fail(function( jqXHR, textStatus ) {
+				alert( "Request failed: " + textStatus );
 			});
-			setTimeout(function () {
-				window.location.reload();
-			}, 7000)
-		}).fail(function( jqXHR, textStatus ) {
-			alert( "Request failed: " + textStatus );
-		});
+		},
+		sendImage: function (file) {
+			loading.showPreloader();
+			var form = new FormData();
+			form.append('files[]', file);
+			// console.log(form);
+			$.ajax({
+				method: "POST",
+				url: domain + "api/admin/upload",
+				cache: false,
+				contentType: 'multipart/form-data',
+				processData: false,
+				data: form
+			}).done(function(data) {
+				loading.hidePreloader();
+				console.log(data);
+			}).fail(function( jqXHR, textStatus ) {
+				alert( "Ошибка загрузки: " + textStatus );
+			});
+		}
+	};
+
+	$('#admin-button').on('click', function () {
+		adminMethods.saveData(rest);
 	});
 
 	function createForm (data) {
@@ -112,4 +137,8 @@ function runAdmin (argument) {
 			console.error('Увы, у нас на сайте ошибка. Конечный массив не найден.');
 		}
 	}).validate();
+	$('#addNew').find('[type=file]').on('change', function () {
+		adminMethods.sendImage(this.files[0]);
+		// console.log(this.files);
+	});
 }
