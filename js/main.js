@@ -182,7 +182,8 @@ function runUser () {
 				}
 				if ($el.length) {
 					var $modal = $( $el.data('content-modal') ).clone();
-					$modal.html( replaceTemplate(rest[$self.data('repeat')][$el.data('index')], $modal.html()) );
+					console.log($el.data('index'))
+					$modal.html( replaceTemplate(rest[$self.data('repeat')][$el.data('index')], $modal.html()), $el.data('index') );
 					bodyOverflow.fixBody();
 					$modal.on('click', function (e) {
 						if (e.target == this) {
@@ -200,6 +201,11 @@ function runUser () {
 							$modal.remove();
 						}, 300);
 					});
+
+					if (isAdmin) {
+						removeElementByButton($modal);
+					}
+
 					$('body').append($modal);
 					setTimeout(function () {
 						$modal.addClass('opened');
@@ -212,25 +218,25 @@ function runUser () {
 			console.error('Нет объекта с данными');
 		}
 	});
-		// modals
-		$('[data-modal]').on('click', function (e) {
-			e.preventDefault();
-			var $el = $( $(this).data('modal') ).addClass('opened');
-			if ($el.length) {
-				bodyOverflow.fixBody();
-			}
-		});
-		$('.modal-holder').not('#admin-saved').on('click', function (e) {
-			if (this == e.target) {
-				$(this).removeClass('opened');
-				bodyOverflow.unfixBody();
-			}
-		});
-		$('.close-modal').on('click', function () {
-			$(this).closest('.opened').removeClass('opened');
-			bodyOverflow.unfixBody();
-		});
 
+	// modals
+	$('[data-modal]').on('click', function (e) {
+		e.preventDefault();
+		var $el = $( $(this).data('modal') ).addClass('opened');
+		if ($el.length) {
+			bodyOverflow.fixBody();
+		}
+	});
+	$('.modal-holder').not('#admin-saved').on('click', function (e) {
+		if (this == e.target) {
+			$(this).removeClass('opened');
+			bodyOverflow.unfixBody();
+		}
+	});
+	$('.close-modal').on('click', function () {
+		$(this).closest('.opened').removeClass('opened');
+		bodyOverflow.unfixBody();
+	});
 
 	$('.left-bottom-holder').find('> span').on('click', function () {
 		var topTarget = $('.features').offset().top;

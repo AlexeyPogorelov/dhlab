@@ -1,4 +1,22 @@
-function runAdmin (argument) {
+function runAdmin () {
+	window.isAdmin = true;
+	window.removeElementByButton = function ($modal) {
+		if (!$modal instanceof jQuery) {
+			$modal = $($modal);
+		}
+		$modal.on('click', function(e) {
+
+			var $target = $(e.target);
+
+			if ($target.hasClass('remove')) {
+				rest.news.splice((+$target.data('index')), 1);
+				$target.data('image')
+				$modal.removeClass('opened');
+				$('#admin-button').trigger('click');
+			}
+
+		});
+	}
 	$('[data-editable]').each(function () {
 		$(this)
 			.addClass('editable')
@@ -52,24 +70,42 @@ function runAdmin (argument) {
 				alert( "Request failed: " + textStatus );
 			});
 		},
-		sendImage: function (file) {
+		sendImage: function (file, input) {
 			loading.showPreloader();
 			var form = new FormData();
 			form.append('files[]', file);
-			// console.log(form);
 			$.ajax({
 				method: "POST",
 				url: domain + "api/admin/upload",
 				cache: false,
-				contentType: 'multipart/form-data',
+				contentType: false,
 				processData: false,
 				data: form
 			}).done(function(data) {
 				loading.hidePreloader();
+				adminMethods.fillFileInputs(data, input);
 				console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
 				alert( "Ошибка загрузки: " + textStatus );
 			});
+		},
+		deleteImage: function (url) {
+			$.ajax({
+				method: "POST",
+				url: url
+			}).done(function() {
+				console.log('removed old file');
+			}).fail(function( jqXHR, textStatus ) {
+				alert( "Ошибка загрузки: " + textStatus );
+			});
+		},
+		fillFileInputs: function (data, input) {
+			var $group = $(input).parent(),
+				src = data[0]['full_path'],
+				delLink = data[0]['path_to_delete'];
+				src = domain + src.substring(1);
+			$group.find('[name="src"]').val(src);
+			$group.find('[name="path_to_delete"]').val(delLink);
 		}
 	};
 
@@ -116,13 +152,18 @@ function runAdmin (argument) {
 
 		} else {
 
+			console.log('------------');
+			console.log(this);
 			console.error('Нет данных');
+			console.log('------------');
 
 		}
 	});
 
 	// createForm('<h1>test</h1>');
-	$('#addNew').on('submit', function () {
+	var $addNew = $('#addNew');
+	$addNew.validate();
+	$addNew.on('submit', function () {
 		var data = {},
 			$self = $(this);
 		$self.find('[name]').each(function () {
@@ -131,14 +172,27 @@ function runAdmin (argument) {
 		});
 		if(rest[$self.data('type')]  instanceof Array )
 		{
-			rest[$self.data('type')].push(data);
+			rest[$self.data('type')].unshift(data);
 			$('#admin-button').trigger('click');
+			$addNew.removeClass('opened');
 		} else {
 			console.error('Увы, у нас на сайте ошибка. Конечный массив не найден.');
 		}
-	}).validate();
-	$('#addNew').find('[type=file]').on('change', function () {
-		adminMethods.sendImage(this.files[0]);
-		// console.log(this.files);
+	});
+	$addNew.find('[type=file]').on('change', function () {
+		if (this.files.length) {
+			adminMethods.sendImage(this.files[0], this);
+			$(this).closest('.error').removeClass('error');
+		}
+	})
+	$addNew.on('click', function(e) {
+		if (e.target == this) {
+			var $src = $(this).find('[name="path_to_delete"]');
+			if ($src.val()) {
+				adminMethods.deleteImage($src.val());
+				$src.val('');
+				$src.closest('.file').addClass('error');
+			}
+		}
 	});
 }

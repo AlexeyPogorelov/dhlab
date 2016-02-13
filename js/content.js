@@ -215,6 +215,7 @@ $.ajax({
 	url: domain + "api/data",
 }).done(function(data) {
 	rest = jQuery.parseJSON(data);
+	console.log(rest);
 	loading.done();
 }).fail(function( jqXHR, textStatus ) {
 	alert( "Request failed: " + textStatus );

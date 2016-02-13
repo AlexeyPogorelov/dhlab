@@ -295,12 +295,6 @@
 
 					</ul>
 				</div>
-				<!-- div class="paginator-holder vertical">
-					<div class="prev-slide"></div>
-					<div class="page active"></div>
-					<div class="page"></div>
-					<div class="next-slide"></div>
-				</div -->
 			</div>
 		</div>
 	</div>
@@ -338,6 +332,9 @@
 
 					</div>
 				</div>
+			</div>
+			<div class="button-holder">
+				<button data-modal="#addNew" class="type-2">Добавить новость</button>
 			</div>
 		</div>
 	</div>
@@ -391,6 +388,9 @@
 			<div class="content-holder">
 				<h3>{{header}}</h3>
 				<p>{{content}}</p>
+				<div class="button-holder">
+					<button class="remove" data-image={{path_to_delete}} data-index={{index}}>Удалить новость</button>
+				</div>
 			</div>
 		</div>
 
@@ -427,7 +427,7 @@
 <div id="admin-button">
 	<button>Сохранить</button>
 </div>
-<div class="editor-modal modal-holder opened" id="addNew" data-type="news">
+<div class="editor-modal modal-holder" id="addNew" data-type="news">
 	<div class="modal-content">
 		<h2>Создать новость</h2>
 		<div class="form-group">
@@ -440,9 +440,10 @@
 		</div>
 		<div class="form-group file">
 			<div class="label">Изображение</div>
-			<input type="text" name="date" data-validate="empty" class="hidden">
 			<input type="file" name="file" id="file" required />
 			<label for="file">Загрузить</label>
+			<input type="text" name="src" data-validate="empty" class="hidden">
+			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
 		</div>
 
 		<div class="form-group">
