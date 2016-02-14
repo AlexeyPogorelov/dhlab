@@ -199,7 +199,10 @@
 		top: 40px;
 	}
 	section.partners .right-side {
-		height: 280px;
+		height: 200px;
+	}
+	section.partners .partners-slider .slider-viewport {
+		height: 100px;
 	}
 	section.partners .left-side h2 {
 		position: static;
@@ -295,6 +298,9 @@
 		margin-bottom: 20px;
 	}
 
+	section.partners .partners-slider .slider-viewport .slide {
+		text-align: center;
+	}
 	.persons-slider .prev-slide,
 	.persons-slider .next-slide {
 		background-size: 75%;
@@ -394,6 +400,13 @@
 	}
 	section.footer ul li a {
 		margin-left: -4px;
+	}
+	#services-modal .modal-content {
+		padding: 0;
+	}
+	#services-modal .modal-content .content-wrapper {
+		padding: 20px;
+		max-width: 100%;
 	}
 }
 /*

@@ -401,11 +401,16 @@
 </div>
 
 <div id="partners-modal" class="modal-holder">
-	<div class="modal-content" data-type="partners" data-index="{{index}}">
+	<div class="modal-content middle" data-type="partners" data-index="{{index}}">
 
 		<div class="content-wrapper">
 
-			<button class="remove" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить партнера</button>
+			<div class="image-holder">
+				<img src="{{src}}">
+			</div>
+			<div class="button-holder">
+				<button class="remove type-" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить партнера</button>
+			</div>
 
 		</div>
 
@@ -487,7 +492,7 @@
 	</div>
 </div>
 <div class="editor-modal modal-holder" id="addPartner" data-type="partners">
-	<div class="modal-content">
+	<div class="modal-content middle">
 
 		<h2>Добавить партнета</h2>
 

@@ -904,6 +904,22 @@ section.footer .copyright-holder a:hover span:after {
 /* END ADMIN */
 
 /* MODALS */
+.modal-holder .modal-content.middle {
+	left: 50%;
+	top: 50%;
+	right: auto;
+	bottom: auto;
+	-webkit-transform: translateY(0) translateX(-50%);
+	transform: translateY(0) translateX(-50%);
+}
+.modal-holder.opened .modal-content.middle {
+	left: 50%;
+	top: 50%;
+	right: auto;
+	bottom: auto;
+	-webkit-transform: translateY(-50%) translateX(-50%);
+	transform: translateY(-50%) translateX(-50%);
+}
 #news-modal .modal-content {
 	height: 100%;
 	width: 100%;
@@ -1054,6 +1070,13 @@ section.footer .copyright-holder a:hover span:after {
 #admin-saved .modal-content {
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+}
+#partners-modal .content-wrapper .image-holder {
+	background: #fff;
+	padding: 40px;
+}
+#partners-modal .content-wrapper button.remove {
+	margin: 10px 0;
 }
 .editor-modal {
 	overflow-y: auto;
