@@ -156,6 +156,11 @@ var loading = {
 				this.unfixBody();
 			}.bind(this)
 		};
+$(document).on('ready', function () {
+	if ( $(window).width() < 970 ) {
+		$('[data-in-slide]').attr('data-in-slide', 1);
+	}
+})
 function runUser () {
 	var winWidth = $(window).width(),
 		winHeight = $(window).height();
@@ -182,11 +187,14 @@ function runUser () {
 				}
 				if ($el.length) {
 					var $modal = $( $el.data('content-modal') ).clone();
-					console.log($el.data('index'))
-					$modal.html( replaceTemplate(rest[$self.data('repeat')][$el.data('index')], $modal.html()), $el.data('index') );
+					$modal.html( replaceTemplate( rest[$self.data('repeat')][$el.data('index')], $modal.html(), $el.data('index') ) );
 					bodyOverflow.fixBody();
 					$modal.on('click', function (e) {
 						if (e.target == this) {
+							if($modal.find('[name="path_to_delete"]').val())
+							{
+								adminMethods.deleteImage( $modal.find('[name="path_to_delete"]').val() );
+							}
 							bodyOverflow.unfixBody();
 							$(this).closest('.opened').removeClass('opened');
 							setTimeout(function (argument) {
@@ -195,6 +203,10 @@ function runUser () {
 						}
 					})
 					$modal.find('.close-modal').on('click', function () {
+						if($modal.find('[name="path_to_delete"]').val())
+						{
+							adminMethods.deleteImage( $modal.find('[name="path_to_delete"]').val() );
+						}
 						bodyOverflow.unfixBody();
 						$(this).closest('.opened').removeClass('opened');
 						setTimeout(function (argument) {
@@ -203,7 +215,25 @@ function runUser () {
 					});
 
 					if (isAdmin) {
-						removeElementByButton($modal);
+						$modal.on('blur', '[contenteditable]', function (e) {
+
+							var $target = $(this),
+								$content = $target.closest('.modal-content'),
+								type = $content.data('type'),
+								index = $content.data('index'),
+								key = $target.data('key');
+								// console.log(type);
+								// console.log(index);
+								// console.log(key);
+
+							if (key && type && (index || index == 0)) {
+								rest[type][index][key] = $target.html();
+							} else {
+								console.error('Не найден целевой ключ');
+							}
+
+						});
+						buttonHandlers($modal);
 					}
 
 					$('body').append($modal);
@@ -255,6 +285,11 @@ function runUser () {
 		$('html, body').animate({
 			scrollTop: $(target).offset().top
 		}, 1200, 'easeOutCirc');
+	});
+
+	// map-holder
+	$('#map-wrapper').on('click', function () {
+		$(this).remove();
 	});
 
 	// sidebars
@@ -362,7 +397,11 @@ function runUser () {
 					if (DOM.$pagination) {
 						DOM.$pagination.empty();
 					} else {
-						DOM.$pagination = $('<div>').addClass('paginator-holder vertical');
+						if ( $(window).width() < 970 ) {
+							DOM.$pagination = $('<div>').addClass('paginator-holder');
+						} else {
+							DOM.$pagination = $('<div>').addClass('paginator-holder vertical');
+						}
 						DOM.$pagination.appendTo($self);
 					}
 					$('<div>')
@@ -709,34 +748,6 @@ function runUser () {
 					} else {
 						$self.trigger('submit');
 					}
-				}
-			};
-
-			plg.init();
-
-			return plg;
-		});
-	};
-
-
-	$.fn.test = function (opt) {
-
-		this.each(function (i) {
-
-			var DOM = {},
-				state = {},
-				$self = $(this);
-
-			// options
-			if (!opt) {
-				opt = {};
-			}
-			opt = $.extend({
-			}, opt);
-
-			// methods
-			var plg = {
-				init: function () {
 				}
 			};
 

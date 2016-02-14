@@ -262,6 +262,7 @@ section.services {
 	/*display: none;*/
 }
 section.services .service {
+	cursor: pointer;
 	background: #000;
 	display: block;
 	float: left;
@@ -536,6 +537,12 @@ section.updates .right-side {
 }
 section.updates .instagram-holder {
 	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+section.updates .instagram-holder iframe {
+	height: 100%;
+	width: 100%;
 }
 /* TODO remove it */
 section.updates .instagram-holder img {
@@ -927,7 +934,11 @@ section.footer .copyright-holder a:hover span:after {
 	color: white;
 	font-weight: 200;
 	font-size: 13px;
-	line-height: 17px;
+	line-height: 20px;
+}
+#news-modal.opened .modal-content .label {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 #news-modal .modal-content .content-wrapper::-webkit-scrollbar-corner {
 	background-color: #000;
@@ -986,12 +997,32 @@ section.footer .copyright-holder a:hover span:after {
 	font-size: 13px;
 	line-height: 17px;
 }
-#services-modal .modal-content li {
+#services-modal .modal-content .services-list div,
+#services-modal .modal-content .services-list p,
+#services-modal .modal-content .services-list li {
 	opacity: 0.7;
 	color: white;
 	font-size: 15px;
 	line-height: 45px;
 	border-bottom: 1px solid #333;
+}
+#services-modal .modal-content button.type-1 {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+#services-modal .modal-content .form-group.file {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+#services-modal .modal-content .form-group.file .label {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+#services-modal .modal-content .form-group.file label {
+	display: inline-block;
+	min-height: 25px;
+	min-width: 100px;
 }
 #services-modal .modal-content .content-wrapper::-webkit-scrollbar-corner {
 	background-color: #000;

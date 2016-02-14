@@ -127,63 +127,28 @@
 	</div>
 </section>
 
-<section id="services" class="services">
+<section id="services" class="services" data-repeat="services">
 
 	<!-- TODO make links for services -->
 
-	<a href="#" class="service" data-modal="#services-modal">
+	<div href="#" class="service" data-content-modal="#services-modal" data-index="{{index}}">
 		<div class="image-holder">
-			<img src="img/content/service-1.jpg" alt="service">
+			<img src="{{src}}" alt="service">
 		</div>
 		<div class="content-holder">
-			<h2>парекмехарские услуги</h2>
+			<h2>{{name}}</h2>
 			<button class="more">
 				<img src="img/icons/button-list-icon-1.png" alt="list">
 				<span>посмотреть перечень услуг</span>
 			</button>
 		</div>
-	</a>
-
-	<a href="#" class="service" data-modal="#services-modal">
-		<div class="image-holder">
-			<img src="img/content/service-3.jpg" alt="service">
-		</div>
-		<div class="content-holder">
-			<h2>ногтевой сервисest</h2>
-			<button class="more">
-				<img src="img/icons/button-list-icon-1.png" alt="list">
-				<span>посмотреть перечень услуг</span>
-			</button>
-		</div>
-	</a>
-
-	<a href="#" class="service" data-modal="#services-modal">
-		<div class="image-holder">
-			<img src="img/content/service-2.jpg" alt="service">
-		</div>
-		<div class="content-holder">
-			<h2>косметология</h2>
-			<button class="more">
-				<img src="img/icons/button-list-icon-1.png" alt="list">
-				<span>посмотреть перечень услуг</span>
-			</button>
-		</div>
-	</a>
-
-	<a href="#" class="service" data-modal="#services-modal">
-		<div class="image-holder">
-			<img src="img/content/service-4.jpg" alt="service">
-		</div>
-		<div class="content-holder">
-			<h2>визаж</h2>
-			<button class="more">
-				<img src="img/icons/button-list-icon-1.png" alt="list">
-				<span>посмотреть перечень услуг</span>
-			</button>
-		</div>
-	</a>
+	</div>
 
 </section>
+
+<div class="button-holder">
+	<button data-modal="#addService" class="type-1">Добавить услугу</button>
+</div>
 
 <section id="bonuses" class="bonuses">
 	<div class="container">
@@ -289,8 +254,8 @@
 				<div class="slider-viewport">
 					<ul class="slider-holder" data-repeat="partners" data-in-slide="6" >
 
-						<li class="partner">
-							<img src="{{name}}" alt="partner">
+						<li class="partner" data-content-modal="#partners-modal" data-index="{{index}}">
+							<img src="{{src}}" alt="partner">
 						</li>
 
 					</ul>
@@ -298,7 +263,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="button-holder">
+		<button data-modal="#addPartner" class="type-2">Добавить партнера</button>
+	</div>
 </section>
+
 
 <section id="updates" class="updates white">
 	<div class="headers">
@@ -312,7 +281,8 @@
 	<div class="row">
 		<div class="left-side">
 			<div class="instagram-holder">
-				<img src="img/content/instagram-holder.jpg" alt="instagram">
+				<!-- <img src="img/content/instagram-holder.jpg" alt="instagram"> -->
+				<iframe src="http://widget.websta.me/in/dh_lab/?s=250&w=3&h=3&b=0&bg=000000&p=0&sb=off" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:750px; height: 750px" ></iframe> <!-- websta - websta.me -->
 			</div>
 		</div>
 		<div class="right-side">
@@ -369,6 +339,7 @@
 		<div class="right-side">
 			<div class="map-holder">
 				<div id="footer-map"></div>
+				<div id="map-wrapper"></div>
 			</div>
 		</div>
 	</div>
@@ -376,20 +347,23 @@
 
 <!-- MODALS -->
 <div id="news-modal" class="modal-holder">
-	<div class="modal-content">
+	<div class="modal-content" data-type="news" data-index="{{index}}">
 		<div class="close-modal">
 		</div>
 
 		<div class="content-wrapper">
-			<div class="date-holder">{{date}}</div>
+			<div class="date-holder" data-key="date" contenteditable="true">{{date}}</div>
 			<div class="image-holder">
 				<img src="{{src}}">
 			</div>
 			<div class="content-holder">
-				<h3>{{header}}</h3>
-				<p>{{content}}</p>
+				<h3 data-key="header" contenteditable="true">{{header}}</h3>
+				<div class="label">Текст новости:</div>
+				<p data-key="content" contenteditable="true">{{content}}</p>
+				<div class="label">Краткое описание:</div>
+				<p data-key="short" contenteditable="true">{{short}}</p>
 				<div class="button-holder">
-					<button class="remove" data-image={{path_to_delete}} data-index={{index}}>Удалить новость</button>
+					<button class="remove" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить новость</button>
 				</div>
 			</div>
 		</div>
@@ -398,22 +372,41 @@
 </div>
 
 <div id="services-modal" class="modal-holder">
-	<div class="modal-content">
+	<div class="modal-content" data-type="services" data-index="{{index}}">
+
 		<div class="close-modal">
-			<!--<img src="http://studies.makemeat.com/themes/meatds/assets/img/icons/cross-2.svg" alt="close">-->
 		</div>
 
 		<div class="content-wrapper">
-			<h3>Сколько времени я могу использовать</h3>
-			<ul class="services-list">
-				<li>Lorem ipsum dolor</li>
-				<li>sit amet, consectetur</li>
-				<li>adipisicing elit. Labore, quidem.</li>
-				<li>Aperiam eaque porro cum, qui!</li>
-				<li>Repellat quibusdam eos officiis consequuntur</li>
-				<li>quidem nesciunt autem cum quos magnam reiciendis</li>
-				<li>mollitia explicabo provident!</li>
+
+			<h1 contenteditable="true" data-key="name">{{name}}</h1>
+			<h3 contenteditable="true" data-key="header">{{header}}</h3>
+			<ul class="services-list" contenteditable="true" data-key="content">
+				{{content}}
 			</ul>
+
+			<div class="form-group file">
+				<input type="file" name="file" id="file1" required />
+				<label for="file1">Загрузить</label>
+				<input type="text" name="src" data-validate="empty" class="hidden" data-key="src">
+				<input type="text" name="path_to_delete" data-validate="empty" class="hidden" data-key="path_to_delete">
+				<span class="label">Изменить зображение</span>
+			</div>
+			<button class="type-1" type="submit">Сохранить</button>
+			<button class="remove" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить услугу</button>
+
+		</div>
+
+	</div>
+</div>
+
+<div id="partners-modal" class="modal-holder">
+	<div class="modal-content" data-type="partners" data-index="{{index}}">
+
+		<div class="content-wrapper">
+
+			<button class="remove" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить партнера</button>
+
 		</div>
 
 	</div>
@@ -457,6 +450,59 @@
 		<div class="button-holder">
 			<button class="type-1" type="submit">Сохранить</button>
 		</div>
+	</div>
+</div>
+<div class="editor-modal modal-holder" id="addService" data-type="services">
+	<div class="modal-content">
+
+		<h2>Создать услугу</h2>
+
+		<div class="form-group">
+			<div class="label">Название услуги</div>
+			<input type="text" name="name" data-validate="empty">
+		</div>
+
+		<div class="form-group">
+			<div class="label">Заголовок</div>
+			<input type="text" name="header" data-validate="empty">
+		</div>
+
+		<div class="form-group file">
+			<div class="label">Изображение</div>
+			<input type="file" name="file" id="file" required />
+			<label for="file">Загрузить</label>
+			<input type="text" name="src" data-validate="empty" class="hidden">
+			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
+		</div>
+
+		<div class="form-group">
+			<div class="label">Текст</div>
+			<textarea name="content" data-validate="empty"></textarea>
+		</div>
+
+		<div class="button-holder">
+			<button class="type-1" type="submit">Сохранить</button>
+		</div>
+
+	</div>
+</div>
+<div class="editor-modal modal-holder" id="addPartner" data-type="partners">
+	<div class="modal-content">
+
+		<h2>Добавить партнета</h2>
+
+		<div class="form-group file">
+			<div class="label">Логотип</div>
+			<input type="file" name="file" id="file" required />
+			<label for="file">Загрузить</label>
+			<input type="text" name="src" data-validate="empty" class="hidden">
+			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
+		</div>
+
+		<div class="button-holder">
+			<button class="type-1" type="submit">Сохранить</button>
+		</div>
+
 	</div>
 </div>
 	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9I8d7JYaXAgwCBqNKjPxaEOUvT-Z_G4w&callback=initMap"></script>
