@@ -441,6 +441,34 @@ function runUser () {
 				}
 			});
 
+			// drag events
+			state.touchStart = {};
+			state.touchEnd = {};
+			$self.on('touchstart', function (e) {
+				state.touchStart.xPos = e.originalEvent.touches[0].clientX;
+				state.touchStart.yPos = e.originalEvent.touches[0].clientY;
+				state.touchStart.timeStamp = e.timeStamp;
+			});
+			$self.on('touchmove', function (e) {
+				state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
+				state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
+			});
+			$self.on('touchend', function (e) {
+				var distance = 70,
+					speed = 200,
+					deltaX = state.touchEnd.xPos - state.touchStart.xPos,
+					deltaY = Math.abs(state.touchEnd.yPos - state.touchStart.yPos);
+				state.touchEnd.xPos = 0;
+				state.touchEnd.yPos = 0;
+				if (deltaX > distance || -deltaX > distance && deltaY < 30) {
+					if (deltaX < 0) {
+						plg.nextSlide();
+					} else {
+						plg.prevSlide();
+					}
+				}
+			});
+
 			return plg;
 		});
 	};
@@ -553,6 +581,34 @@ function runUser () {
 					plg.nextSlide();
 				} else if ($target.hasClass('prev-slide')) {
 					plg.prevSlide();
+				}
+			});
+
+			// drag events
+			state.touchStart = {};
+			state.touchEnd = {};
+			DOM.$slider.on('touchstart', function (e) {
+				state.touchStart.xPos = e.originalEvent.touches[0].clientX;
+				state.touchStart.yPos = e.originalEvent.touches[0].clientY;
+				state.touchStart.timeStamp = e.timeStamp;
+			});
+			DOM.$slider.on('touchmove', function (e) {
+				state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
+				state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
+			});
+			DOM.$slider.on('touchend', function (e) {
+				var distance = 70,
+					speed = 200,
+					deltaX = state.touchEnd.xPos - state.touchStart.xPos,
+					deltaY = Math.abs(state.touchEnd.yPos - state.touchStart.yPos);
+				state.touchEnd.xPos = 0;
+				state.touchEnd.yPos = 0;
+				if (deltaX > distance || -deltaX > distance && deltaY < 30) {
+					if (deltaX < 0) {
+						plg.nextSlide();
+					} else {
+						plg.prevSlide();
+					}
 				}
 			});
 
@@ -683,6 +739,34 @@ function runUser () {
 				}
 			});
 
+			// drag events
+			state.touchStart = {};
+			state.touchEnd = {};
+			DOM.$slider.on('touchstart', function (e) {
+				state.touchStart.xPos = e.originalEvent.touches[0].clientX;
+				state.touchStart.yPos = e.originalEvent.touches[0].clientY;
+				state.touchStart.timeStamp = e.timeStamp;
+			});
+			DOM.$slider.on('touchmove', function (e) {
+				state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
+				state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
+			});
+			DOM.$slider.on('touchend', function (e) {
+				var distance = 70,
+					speed = 200,
+					deltaX = state.touchEnd.xPos - state.touchStart.xPos,
+					deltaY = Math.abs(state.touchEnd.yPos - state.touchStart.yPos);
+				state.touchEnd.xPos = 0;
+				state.touchEnd.yPos = 0;
+				if (deltaX > distance || -deltaX > distance && deltaY < 30) {
+					if (deltaX < 0) {
+						plg.nextSlide();
+					} else {
+						plg.prevSlide();
+					}
+				}
+			});
+
 			return plg;
 		});
 	};
@@ -807,194 +891,6 @@ jQuery.extend( jQuery.easing,
 /*
 
 (function ($) {
-	$.fn.capabilitiesSlider = function (opt) {
-
-		this.each(function (i) {
-
-			var DOM = {},
-				state = {
-					'touchStart': {},
-					'touchEnd': {}
-				},
-				self = this;
-
-			// options
-			if (!opt) {
-				opt = {};
-			}
-			opt = $.extend({
-				'loop': true,
-				'interval': false,
-				'easing': 'swing',
-				'prevClass': 'arrow-left-1',
-				'nextClass': 'arrow-right-1',
-				'holderClass': '.slides-holder',
-				'slideClass': '.slide',
-				'nameClass': '.slide-name',
-				'imageClass': '.slide-image',
-				'pagination': false,
-				'clickToNext': false,
-				'startSlide': 0,
-				'slidesOnPage': 1
-			}, opt);
-
-			// methods
-			var plg = {
-				cacheDOM: function () {
-					DOM.$slider = $(self);
-					DOM.$preloader = DOM.$slider.find('.slider-preloader');
-					DOM.$viewport = DOM.$slider.find('.slider-viewport');
-					DOM.$sliderHolder = DOM.$viewport.find('.slider-holder');
-					DOM.$slides = DOM.$sliderHolder.find('.slide');
-					DOM.$slides.eq(0).addClass('active')
-				},
-				init: function () {
-					state.cur = state.cur || 0;
-					state.slides = DOM.$slides.length;
-					state.pages = Math.ceil(DOM.$slides.length / opt.slidesOnPage);
-					DOM.$preloader.fadeOut(150);
-				},
-				resize: function () {
-					state.sliderWidth = DOM.$viewport.width();
-					if ($(window).width() > 300 && opt.slidesOnPage > 1 && $(window).width() <= 700) {
-						opt.slidesOnPage = Math.floor( opt.slidesOnPage / 2 );
-						plg.init();
-					}
-					DOM.$slides.width( DOM.$viewport.width() / opt.slidesOnPage);
-					DOM.$slides.height(
-							(function ($slides) {
-								var max = 1;
-								$slides.each(function () {
-									var height = $(this).find('> div').outerHeight();
-									if (height > max) {
-										max = height;
-									}
-								});
-								return max;
-							})(DOM.$slides) + 26
-						);
-					state.slideWidth = DOM.$slides.eq(0).outerWidth() + 12;
-					DOM.$sliderHolder.width(state.slideWidth * state.slides);
-					plg.toSlide(opt.startSlide);
-				},
-				prevSlide: function () {
-					var id = state.cur - 1;
-					if (id < 0) {
-						// this.toSlide(state.pages - 1);
-						return;
-					}
-					this.toSlide(id);
-				},
-				nextSlide: function () {
-					var id = state.cur + 1;
-					if (id >= state.pages) {
-						// this.toSlide(0);
-						return;
-					}
-					this.toSlide(id);
-				},
-				toSlide: function (id) {
-					if ( id < 0 || id >= state.pages ) {
-						return;
-					}
-					DOM.$sliderHolder.css({
-						'-webkit-transform': 'translateX( -' + (state.sliderWidth * id) + 'px)',
-						'transform': 'translateX( -' + (state.sliderWidth * id) + 'px)'
-					});
-					DOM.$slides.eq(id).addClass('active').siblings().removeClass('active');
-					DOM.$pagination.find('.page').eq(id).addClass('active').siblings().removeClass('active');
-					state.cur = id;
-				},
-				createPagination: function () {
-					if (DOM.$pagination) {
-						DOM.$pagination.empty();
-					} else {
-						DOM.$pagination = $('<div>').addClass('paginator-holder');
-						if (opt.pagination || true) {
-							DOM.$pagination.appendTo(DOM.$slider);
-						}
-					}
-					$('<div>')
-						.addClass('prev-slide')
-						.appendTo(DOM.$pagination);
-					for (var i = 0; i < state.pages / opt.slidesOnPage; i++) {
-						var page = $('<div>').data('page', i).addClass('page');
-						if (!i) {
-							page.addClass('active');
-						}
-						DOM.$pagination.append(page);
-					}
-					$('<div>')
-						.addClass('next-slide')
-						.appendTo(DOM.$pagination);
-				}
-			};
-
-			plg.cacheDOM();
-			plg.init();
-			plg.createPagination();
-			plg.resize();
-
-			// resize
-			$(window).on('resize', function () {
-				plg.resize();
-			});
-
-			// click events
-			DOM.$slider.on('click', function (e) {
-				var $target = $(e.target);
-				if ($target.hasClass('page')) {
-					plg.toSlide($(e.target).data('page'));
-				} else if ($target.hasClass('prev-slide')) {
-					plg.prevSlide();
-				} else if ($target.hasClass('next-slide')) {
-					plg.nextSlide();
-				} else if (opt.clickToNext && $target.parents('.slide').length) {
-					plg.nextSlide();
-				}
-			});
-
-			// drag events
-			DOM.$slider.on('touchstart', function (e) {
-				state.touchStart.xPos = e.originalEvent.touches[0].clientX;
-				state.touchStart.yPos = e.originalEvent.touches[0].clientY;
-				state.touchStart.timeStamp = e.timeStamp;
-				// console.log('-----');
-			});
-			DOM.$slider.on('touchmove', function (e) {
-				state.touchEnd.xPos = e.originalEvent.touches[0].clientX;
-				state.touchEnd.yPos = e.originalEvent.touches[0].clientY;
-				// console.log('-----');
-			});
-			DOM.$slider.on('touchend', function (e) {
-				var distance = 70,
-					speed = 200,
-					deltaX = state.touchEnd.xPos - state.touchStart.xPos,
-					deltaY = Math.abs(state.touchEnd.yPos - state.touchStart.yPos);
-				state.touchEnd.xPos = 0;
-				state.touchEnd.yPos = 0;
-					// time = e.timeStamp - state.touchStart.timeStamp;
-				// console.log('-----');
-				// console.log(time);
-				// console.log(deltaX);
-				// console.log((deltaY));
-				// console.log(state.touchEnd.originalEvent.touches[0].clientX);
-				// console.log(state.touchStart.originalEvent.touches[0].clientX);
-				if (deltaX > distance || -deltaX > distance && deltaY < 30) {
-					if (deltaX < 0) {
-						plg.nextSlide();
-					} else {
-						plg.prevSlide();
-					}
-				}
-			});
-
-			$(window).on('resize', plg.resize.bind(plg));
-			plg.init();
-
-			return plg;
-		});
-	};
 
 	$.fn.landingNavigation = function (opt) {
 
