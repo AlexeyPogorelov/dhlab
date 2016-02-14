@@ -404,6 +404,9 @@ function runUser () {
 						}
 						DOM.$pagination.appendTo($self);
 					}
+
+					if (state.activeSlides == 1) return;
+
 					$('<div>')
 						.addClass('prev-slide')
 						.appendTo(DOM.$pagination);
@@ -503,12 +506,15 @@ function runUser () {
 					}
 				},
 				createPagination: function () {
+
 					if (DOM.$pagination) {
 						DOM.$pagination.empty();
 					} else {
 						DOM.$pagination = $('<div>').addClass('paginator-holder');
 						DOM.$pagination.appendTo(DOM.$slider);
 					}
+
+					if (state.activeSlides == 1) return;
 
 					$('<div>')
 						.addClass('prev-slide')

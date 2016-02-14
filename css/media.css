@@ -356,6 +356,7 @@
 	section.features {
 		padding-top: 30px;
 		padding-bottom: 30px;
+		overflow: hidden;
 	}
 	section.features ul.features-list {
 		margin-right: 0;
@@ -405,8 +406,8 @@
 		padding: 0;
 	}
 	#services-modal .modal-content .content-wrapper {
-		padding: 20px;
-		max-width: 100%;
+		padding: 60px 20px 20px;
+		max-width: 100vw;
 	}
 }
 /*
@@ -415,6 +416,7 @@
 @media screen and (max-width: 760px) {
 	section.partners {
 		/*display: none;*/
+		overflow: hidden;
 	}
 	section.partners .right-side {
 		height: auto;
@@ -437,6 +439,36 @@
 		left: 50%;
 		-webkit-transform: translateY(-50%) translateX(-50%);
 		transform: translateY(-50%) translateX(-50%);
+	}
+	section.partners .paginator-holder .page {
+		display: none;
+	}
+	.editor-modal.opened .modal-content {
+		padding: 40px 0;
+		margin-bottom: 0;
+	}
+	.modal-content .close-modal,
+	.editor-modal .close-modal,
+	.editor-modal .modal-content .close-modal {
+		-webkit-background-size: 50%;
+		background-size: 50%;
+		background-position: 100% 0;
+		right: 10px;
+		top: 10px;
+	}
+	.editor-modal .form-group {
+		display: block;
+		margin: 10px;
+	}
+	.editor-modal .form-group textarea {
+		width: auto;
+	}
+	.editor-modal .form-group textarea,
+	.editor-modal .form-group input {
+		width: 100%;
+	}
+	.editor-modal .file label {
+		width: 100%;
 	}
 }
 /*

@@ -61,7 +61,7 @@
 			<nav class="navbar-left">
 				<ul data-repeat="nav">
 					<li>
-						<a href="{{href}}" data-editable="nav" data-key="nav-{{index}}">{{name}}</a>
+						<a href="{{href}}" data-editable="nav" data-key="{{index}}">{{name}}</a>
 					</li>
 				</ul>
 			</nav>
@@ -426,6 +426,10 @@
 	<button>Сохранить</button>
 </div>
 <div class="editor-modal modal-holder" id="addNew" data-type="news">
+
+		<div class="close-modal">
+		</div>
+
 	<div class="modal-content">
 		<h2>Создать новость</h2>
 		<div class="form-group">
@@ -459,6 +463,10 @@
 </div>
 <div class="editor-modal modal-holder" id="addService" data-type="services">
 	<div class="modal-content">
+
+		<div class="close-modal">
+		</div>
+
 
 		<h2>Создать услугу</h2>
 
