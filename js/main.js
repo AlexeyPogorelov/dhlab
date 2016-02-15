@@ -222,9 +222,10 @@ function runUser () {
 								type = $content.data('type'),
 								index = $content.data('index'),
 								key = $target.data('key');
-								// console.log(type);
-								// console.log(index);
-								// console.log(key);
+								
+								console.log(type);
+								console.log(index);
+								console.log(key);
 
 							if (key && type && (index || index == 0)) {
 								rest[type][index][key] = $target.html();

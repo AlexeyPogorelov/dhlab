@@ -303,6 +303,36 @@ function runAdmin () {
 		}
 	});
 
+	var $addFeatures = $('#addFeatures');
+	$addFeatures.validate();
+	$addFeatures.on('submit', function () {
+		var data = {},
+			$self = $(this);
+		$self.find('[name]').each(function () {
+			var $input = $(this);
+			data[$input.attr('name')] = $input.val();
+		});
+		if(rest[$self.data('type')]  instanceof Array )
+		{
+			rest[$self.data('type')].unshift(data);
+			$('#admin-button').trigger('click');
+			$addFeatures.removeClass('opened');
+		} else {
+			rest[$self.data('type')] = [];
+			console.warn('Увы, у нас на сайте ошибка. Конечный массив не найден. Но он был только что создан!');
+		}
+	});
+	$addFeatures.on('click', function(e) {
+		if (e.target == this) {
+			var $src = $(this).find('[name="path_to_delete"]');
+			if ($src.val()) {
+				adminMethods.deleteImage($src.val());
+				$src.val('');
+				$src.closest('.file').addClass('error');
+			}
+		}
+	});
+
 	// $servicesModal.find('[type="file"]').on('change', function () {
 	// 		alert()
 	// 	if (this.files.length) {

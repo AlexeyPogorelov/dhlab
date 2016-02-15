@@ -112,17 +112,22 @@
 		<div class="right-side">
 			<ul class="features-list" data-repeat="features">
 
-				<li>
+				<li data-content-modal="#editFeatures" data-index="{{index}}">
 					<div class="counter">
 						<span>{{number}}</span>
 					</div>
 					<div class="content">
-						<h2 data-editable="features" data-key="{{index}}" data-val="head">{{head}}</h2>
-						<p data-editable="features" data-key="{{index}}" data-val="text">{{text}}</p>
+						<h2 data-val="head">{{head}}</h2>
+						<p data-val="text">{{text}}</p>
 					</div>
 				</li>
 
 			</ul>
+
+		<div class="button-holder">
+			<button data-modal="#addFeatures" class="type-1">Добавить особенность</button>
+		</div>
+
 		</div>
 	</div>
 </section>
@@ -427,8 +432,8 @@
 </div>
 <div class="editor-modal modal-holder" id="addNew" data-type="news">
 
-		<div class="close-modal">
-		</div>
+	<div class="close-modal">
+	</div>
 
 	<div class="modal-content">
 		<h2>Создать новость</h2>
@@ -461,6 +466,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="editor-modal modal-holder" id="addService" data-type="services">
 	<div class="modal-content">
 
@@ -499,6 +505,7 @@
 
 	</div>
 </div>
+
 <div class="editor-modal modal-holder" id="addPartner" data-type="partners">
 	<div class="modal-content middle">
 
@@ -514,6 +521,51 @@
 
 		<div class="button-holder">
 			<button class="type-1" type="submit">Сохранить</button>
+		</div>
+
+	</div>
+</div>
+
+<div class="editor-modal modal-holder" id="addFeatures" data-type="features">
+	<div class="modal-content">
+
+		<div class="close-modal">
+		</div>
+
+
+		<h2>Создать особенность</h2>
+
+		<div class="form-group">
+			<div class="label">Заголовок</div>
+			<input type="text" name="head" data-validate="empty">
+		</div>
+
+		<div class="form-group">
+			<div class="label">Текст</div>
+			<textarea name="text" data-validate="empty"></textarea>
+		</div>
+
+		<div class="button-holder">
+			<button class="type-1" type="submit">Сохранить</button>
+		</div>
+
+	</div>
+</div>
+
+<div class="editor-modal modal-holder" id="editFeatures" data-type="features">
+	<div class="modal-content" data-type="features" data-index="{{index}}">
+
+		<div class="close-modal">
+		</div>
+
+		<h2 data-key="head" contenteditable="true">{{head}}</h2>
+		<br>
+		<p data-key="text" contenteditable="true">{{text}}</p>
+		<br>
+
+		<div class="button-holder">
+			<button class="type-1" type="submit">Сохранить</button>
+			<button class="remove type-1" data-index="{{index}}">Удалить</button>
 		</div>
 
 	</div>
