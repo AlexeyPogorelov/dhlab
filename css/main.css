@@ -208,6 +208,7 @@ section.main-screen ul.socials li {
 /* FEATURES */
 section.features {
 	padding-top: 77px;
+	padding-bottom: 77px;
 }
 section.features .container {
 	position: relative;
@@ -414,7 +415,7 @@ section.bonuses .right-side h1 {
 	line-height: 42px;
 	font-weight: 100;
 	margin-left: 100px;
-	max-width: 748px;
+	/*max-width: 748px;*/
 	position: absolute;
 	text-transform: uppercase;
 	top: 50%;
