@@ -222,18 +222,18 @@ section.features .right-side {
 	overflow: hidden;
 }
 section.features ul.features-list {
-	margin-right: -145px;
+	margin-right: -125px;
 	margin-bottom: -24px;
 }
 section.features ul.features-list li {
 	display: inline-block;
-	margin-bottom: 22px;
+	margin-bottom: 42px;
 	margin-right: 123px;
 	min-height: 180px;
 	padding-left: 60px;
 	position: relative;
 	vertical-align: top;
-	width: 382px;
+	width: 362px;
 }
 section.features ul.features-list li h2 {
 	color: white;
@@ -1126,6 +1126,11 @@ section.footer .copyright-holder a:hover span:after {
 	transform: translate(-50%, -50%);
 	max-width: 770px;
 	width: 100%;
+}
+.editor-modal.opened .modal-content p {
+	text-align: left;
+	font-size: 16px;
+	line-height: 24px;
 }
 .editor-modal .form-group {
 	display: inline-block;
