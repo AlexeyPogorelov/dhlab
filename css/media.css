@@ -212,6 +212,10 @@
 	section.updates .headers .left-side, section.updates .headers .right-side {
 		padding-left: 40px;
 	}
+	/*.about-person {}*/
+	.about-person {
+		padding: 40px 0;
+	}
 	section.footer .map-holder {
 		position: relative;
 		margin-bottom: 40px;
@@ -408,6 +412,15 @@
 	#services-modal .modal-content .content-wrapper {
 		padding: 60px 20px 20px;
 		max-width: 100vw;
+	}
+	.about-person h3,
+	.about-person .person-content {
+		margin-left: 0;
+		padding: 10px 0;
+	}
+	.about-person .poerson-image {
+		float: none;
+		width: 100%;
 	}
 }
 /*

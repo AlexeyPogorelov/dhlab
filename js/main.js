@@ -170,6 +170,8 @@ function runUser () {
 		if ( rest[$self.data('repeat')] ) {
 			buildElements(rest[$self.data('repeat')], $self);
 		} else {
+			console.log('-');
+			console.log(this);
 			console.error('Нет объекта с данными');
 		}
 	});
@@ -246,7 +248,10 @@ function runUser () {
 				}
 			})
 		} else {
+			console.log('---');
+			console.log(this);
 			console.error('Нет объекта с данными');
+			// $(this).remove();
 		}
 	});
 

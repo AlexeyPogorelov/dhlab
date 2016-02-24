@@ -528,8 +528,9 @@ section.updates .headers .right-side {
 	padding-left: 99px;
 }
 section.updates .left-side {
-	width: 50%;
 	float: left;
+	position: relative;
+	width: 50%;
 }
 section.updates .right-side {
 	position: relative;
@@ -540,6 +541,15 @@ section.updates .instagram-holder {
 	overflow: hidden;
 	height: 100%;
 	width: 100%;
+}
+section.updates .instagram-holder:after {
+	background: #fff;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 40px;
 }
 section.updates .instagram-holder iframe {
 	height: 100%;
@@ -857,6 +867,24 @@ section.footer .copyright-holder a:hover span:after {
 }
 /* END PERSONS-SLIDER */
 
+/* PERSONS-SLIDER */
+.about-person {
+	overflow: hidden;
+}
+.about-person .poerson-image {
+	float: left;
+	width: 50%;
+}
+.about-person .person-content {
+	padding: 0 20px;
+	margin-left: 50%;
+}
+.about-person h3 {
+	padding: 0 20px;
+	margin-left: 50%;
+}
+/* END PERSONS-SLIDER */
+
 
 /* MAP */
  #footer-map {
@@ -901,6 +929,9 @@ section.footer .copyright-holder a:hover span:after {
 }
 .editable[contenteditable="true"]:after {
 	display: none !important;
+}
+.button-holder {
+	padding: 20px 0;
 }
 /* END ADMIN */
 

@@ -1,6 +1,7 @@
 function runAdmin () {
 	window.isAdmin = true;
 	window.buttonHandlers = function ($modal) {
+		console.log($modal);
 		if (!$modal instanceof jQuery) {
 			$modal = $($modal);
 		}
@@ -119,7 +120,8 @@ function runAdmin () {
 				adminMethods.fillFileInputs(data, input);
 				// console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
-				alert( "Ошибка загрузки: " + textStatus );
+				alert( "Ошибка загрузки: " + textStatus + ". Файл, который Вы пытаетесь загрузить не должен превышать 2mb. Поддерживаемые форматы: '.jpeg, .jpg, .gif, .png'. Рекомендуем не загружать изображения более 1200 пикселей в ширину. ");
+				loading.hidePreloader();
 			});
 		},
 		deleteImage: function (url) {
@@ -323,6 +325,73 @@ function runAdmin () {
 		}
 	});
 	$addFeatures.on('click', function(e) {
+		if (e.target == this) {
+			var $src = $(this).find('[name="path_to_delete"]');
+			if ($src.val()) {
+				adminMethods.deleteImage($src.val());
+				$src.val('');
+				$src.closest('.file').addClass('error');
+			}
+		}
+	});
+
+	var $addPerson = $('#addPerson');
+	$addPerson.validate();
+	$addPerson.on('submit', function () {
+		var data = {},
+			$self = $(this);
+		$self.find('[name]').each(function () {
+			var $input = $(this);
+			data[$input.attr('name')] = $input.val();
+		});
+		if(rest[$self.data('type')] instanceof Array )
+		{
+			rest[$self.data('type')].unshift(data);
+			$('#admin-button').trigger('click');
+			$addPerson.removeClass('opened');
+		} else {
+			rest[$self.data('type')] = [];
+			console.warn('Увы, у нас на сайте ошибка. Конечный массив не найден. Но он был только что создан!');
+		}
+	});
+	$addPerson.find('[type=file]').on('change', function () {
+		if (this.files.length) {
+			adminMethods.sendImage(this.files[0], this);
+			$(this).closest('.error').removeClass('error');
+		}
+	})
+	$addPerson.on('click', function(e) {
+		if (e.target == this) {
+			var $src = $(this).find('[name="path_to_delete"]');
+			if ($src.val()) {
+				adminMethods.deleteImage($src.val());
+				$src.val('');
+				$src.closest('.file').addClass('error');
+			}
+		}
+	});
+
+	var $addEmail = $('#addEmail');
+	$addEmail.validate();
+	$addEmail.on('submit', function () {
+		var data = {},
+			$self = $(this);
+		$self.find('[name]').each(function () {
+			var $input = $(this);
+			data[$input.attr('name')] = $input.val();
+		});
+		if(rest[$self.data('type')] instanceof Array )
+		{
+			rest[$self.data('type')].unshift(data);
+			$('#admin-button').trigger('click');
+			$addEmail.removeClass('opened');
+
+		} else {
+			rest[$self.data('type')] = [];
+			console.warn('Увы, у нас на сайте ошибка. Конечный массив не найден. Но он был только что создан!');
+		}
+	});
+	$addEmail.on('click', function(e) {
 		if (e.target == this) {
 			var $src = $(this).find('[name="path_to_delete"]');
 			if ($src.val()) {
