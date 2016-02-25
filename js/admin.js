@@ -1,5 +1,5 @@
+var isAdmin = true;
 function runAdmin () {
-	window.isAdmin = true;
 	window.buttonHandlers = function ($modal) {
 		console.log($modal);
 		if (!$modal instanceof jQuery) {

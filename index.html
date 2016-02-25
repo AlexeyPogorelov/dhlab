@@ -61,12 +61,12 @@
 			<nav class="navbar-left">
 				<ul data-repeat="nav">
 					<li>
-						<a href="{{href}}" data-editable="nav" data-key="{{index}}">{{name}}</a>
+						<a href="{{href}}" data-key="{{index}}">{{name}}</a>
 					</li>
 				</ul>
 			</nav>
 			<div class="navbar-right">
-				<a href="tel:+30443442233" data-editable="snippets" data-key="phones">(044) 344-22-33</a>
+				<a href="tel:+30443442233" data-key="phones">(044) 344-22-33</a>
 			</div>
 		</div>
 		<div class="extra-link-holder">
@@ -87,15 +87,15 @@
 	<div class="content-holder">
 		<div class="container">
 			<div class="vertical-middle">
-				<p class="description" data-editable="snippets" data-key="main-small">Одна из главных черт салона</p>
-				<h1 data-editable="snippets" data-key="main-grand">постоянное совершенствование искусства по созданию Вашей красоты</h1>
+				<p class="description" data-key="main-small">Одна из главных черт салона</p>
+				<h1 data-key="main-grand">постоянное совершенствование искусства по созданию Вашей красоты</h1>
 			</div>
 		</div>
 	</div>
 	<div class="right-top-holder">
 		<ul class="socials" data-repeat="socials">
 			<li>
-				<a href="{{href}}">{{name}}</a>
+				<a href="{{href}}" target="_blank">{{name}}</a>
 			</li>
 		</ul>
 	</div>
@@ -107,12 +107,12 @@
 <section class="features">
 	<div class="container">
 		<div class="left-side">
-			<h2 data-editable="snippets" data-key="features-header">особенности салона</h2>
+			<h2 data-key="features-header">особенности салона</h2>
 		</div>
 		<div class="right-side">
 			<ul class="features-list" data-repeat="features">
 
-				<li data-content-modal="#editFeatures" data-index="{{index}}">
+				<li data-index="{{index}}">
 					<div class="counter">
 						<span>{{number}}</span>
 					</div>
@@ -123,10 +123,6 @@
 				</li>
 
 			</ul>
-
-		<div class="button-holder">
-			<button data-modal="#addFeatures" class="type-1">Добавить особенность</button>
-		</div>
 
 		</div>
 	</div>
@@ -151,17 +147,13 @@
 
 </section>
 
-<div class="button-holder">
-	<button data-modal="#addService" class="type-1">Добавить услугу</button>
-</div>
-
 <section id="bonuses" class="bonuses">
 	<div class="container">
 		<div class="left-side">
-			<h2 data-editable="snippets" data-key="bonuses-header">Акции и новинки</h2>
+			<h2 data-key="bonuses-header">Акции и новинки</h2>
 		</div>
 		<div class="right-side">
-			<h1 data-editable="snippets" data-key="bonuses-body">Каждая шестая стрижка в нашем салоне – в подарок !</h1>
+			<h1 data-key="bonuses-body">Каждая шестая стрижка в нашем салоне – в подарок !</h1>
 		</div>
 	</div>
 </section>
@@ -169,14 +161,14 @@
 <section id="partners" class="partners grey">
 	<div class="container">
 		<div class="left-side">
-			<h2 data-editable="snippets" data-key="partners-header">Мы работаем с лучшими брендами на рынке</h2>
+			<h2 data-key="partners-header">Мы работаем с лучшими брендами на рынке</h2>
 		</div>
 		<div class="right-side">
 			<div class="partners-slider" id="partners-slider">
 				<div class="slider-viewport">
 					<ul class="slider-holder" data-repeat="partners" data-in-slide="6" >
 
-						<li class="partner" data-content-modal="#partners-modal" data-index="{{index}}">
+						<li class="partner" data-index="{{index}}">
 							<img src="{{src}}" alt="partner">
 						</li>
 
@@ -185,30 +177,27 @@
 			</div>
 		</div>
 	</div>
-	<div class="button-holder">
-		<button data-modal="#addPartner" class="type-2">Добавить партнера</button>
-	</div>
 </section>
 
 <section id="updates" class="updates white">
 	<div class="headers">
 		<div class="left-side">
-			<h2 data-editable="snippets" data-key="updates-header"></h2>
+			<h2 data-key="updates-header"></h2>
 		</div>
 		<div class="right-side">
-			<h2 data-editable="snippets" data-key="news-header" class="tablet-hidden"></h2>
+			<h2 data-key="news-header" class="tablet-hidden"></h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="left-side">
 			<div class="instagram-holder">
-				<iframe src="http://widget.websta.me/in/dh_lab/?s=250&w=3&h=3&b=0&bg=000000&p=0&sb=off" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:750px; height: 750px" ></iframe>
+				<iframe src="http://widget.websta.me/in/dh_lab/?s=250&w=3&h=3&b=0&bg=000000&p=0&sb=off" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:100%; height: 750px" ></iframe>
 			</div>
 		</div>
 		<div class="right-side">
 			<!-- TODO -->
 			<div class="about-person" data-repeat="aboutPerson">
-				<div class="person-holder" data-index="{{index}}" data-content-modal="#editPerson">
+				<div class="person-holder" data-index="{{index}}">
 					<div class="poerson-image image-holder" >
 						<img src="{{src}}" alt="person">
 					</div>
@@ -218,9 +207,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="button-holder">
-				<button data-modal="#addPerson" class="type-2">Добавить</button>
-			</div>
 		</div>
 	</div>
 </section>
@@ -229,28 +215,26 @@
 	<div class="row">
 		<div class="left-side">
 			<div class="contacts-holder">
-				<h2 data-editable="snippets" data-key="contacts-header">Контактная информация</h2>
-				<p class="address" data-editable="snippets" data-key="adress">Киев, бульвар Леси Украинки 7б</p>
+				<h2 data-key="contacts-header">Контактная информация</h2>
+				<p class="address" data-key="adress">Киев, бульвар Леси Украинки 7б</p>
 				<ul class="phones">
 					<li>
-						<a href="tel:+30675991177" data-editable="snippets" data-key="phones">(067) 599-11-77</a>
+						<a href="tel:+30675991177" data-key="phones">(067) 599-11-77</a>
 					</li>
 					<li>
-						<a href="tel:+30445990405" data-editable="snippets" data-key="phones-2">(044) 599-04-05</a>
+						<a href="tel:+30445990405" data-key="phones-2">(044) 599-04-05</a>
 					</li>
 				</ul>
 				<ul class="socials" data-repeat="socials">
 					<li>
-						<a href="{{href}}">{{name}}</a>
+						<a href="{{href}}" target="_blank">{{name}}</a>
 					</li>
 				</ul>
 				<ul class="emails" data-repeat="emails">
-					<li data-index="{{index}}" data-content-modal="#editEmail">
+					<li data-index="{{index}}">
 						<a href="mailto:{{name}}">{{name}}</a>
 					</li>
 				</ul>
-
-				<button data-modal="#addEmail" class="type-1">Добавить почту</button>
 
 				<div class="copyright-holder">
 					<span class="copyright">© 2016. DH lab</span>
@@ -275,19 +259,18 @@
 		</div>
 
 		<div class="content-wrapper">
-			<div class="date-holder" data-key="date" contenteditable="true">{{date}}</div>
+			<div class="date-holder" data-key="date">{{date}}</div>
 			<div class="image-holder">
 				<img src="{{src}}">
 			</div>
 			<div class="content-holder">
-				<h3 data-key="header" contenteditable="true">{{header}}</h3>
+
+				<h3 data-key="header">{{header}}</h3>
 				<div class="label">Текст новости:</div>
-				<p data-key="content" contenteditable="true">{{content}}</p>
+				<p data-key="content">{{content}}</p>
 				<div class="label">Краткое описание:</div>
-				<p data-key="short" contenteditable="true">{{short}}</p>
-				<div class="button-holder">
-					<button class="remove" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить новость</button>
-				</div>
+				<p data-key="short">{{short}}</p>
+
 			</div>
 		</div>
 
@@ -302,145 +285,11 @@
 
 		<div class="content-wrapper">
 
-			<h1 contenteditable="true" data-key="name">{{name}}</h1>
-			<h3 contenteditable="true" data-key="header">{{header}}</h3>
-			<ul class="services-list" contenteditable="true" data-key="content">
+			<h3 data-key="header">{{header}}</h3>
+			<ul class="services-list" data-key="content">
 				{{content}}
 			</ul>
 
-			<div class="form-group file">
-				<input type="file" name="file" id="file1" required />
-				<label for="file1">Загрузить</label>
-				<input type="text" name="src" data-validate="empty" class="hidden" data-key="src">
-				<input type="text" name="path_to_delete" data-validate="empty" class="hidden" data-key="path_to_delete">
-				<span class="label">Изменить зображение</span>
-			</div>
-			<button class="type-1" type="submit">Сохранить</button>
-			<button class="remove" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить услугу</button>
-
-		</div>
-
-	</div>
-</div>
-
-<div id="partners-modal" class="modal-holder">
-	<div class="modal-content middle" data-type="partners" data-index="{{index}}">
-
-		<div class="content-wrapper">
-
-			<div class="image-holder">
-				<img src="{{src}}">
-			</div>
-
-			<div class="button-holder">
-				<button class="remove type-" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить партнера</button>
-			</div>
-
-		</div>
-
-	</div>
-</div>
-
-<div id="admin-saved" class="modal-holder">
-	<div class="modal-content">
-		<h1>Сохранено успешно!</h1>
-	</div>
-</div>
-
-<div id="admin-button">
-	<button>Сохранить</button>
-</div>
-
-<div class="editor-modal modal-holder" id="addNew" data-type="news">
-
-	<div class="close-modal">
-	</div>
-
-	<div class="modal-content">
-		<h2>Создать новость</h2>
-		<div class="form-group">
-			<div class="label">Заголовок новости</div>
-			<input type="text" name="header" data-validate="empty">
-		</div>
-		<div class="form-group">
-			<div class="label">Дата</div>
-			<input type="text" name="date" data-validate="empty">
-		</div>
-		<div class="form-group file">
-			<div class="label">Изображение</div>
-			<input type="file" name="file" id="file" required />
-			<label for="file">Загрузить</label>
-			<input type="text" name="src" data-validate="empty" class="hidden">
-			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
-		</div>
-
-		<div class="form-group">
-			<div class="label">Короткое описание</div>
-			<textarea name="short" class="small" data-validate="empty"></textarea>
-		</div>
-		<div class="form-group">
-			<div class="label">Текст</div>
-			<textarea name="content" data-validate="empty"></textarea>
-		</div>
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
-		</div>
-	</div>
-</div>
-
-<div class="editor-modal modal-holder" id="addService" data-type="services">
-	<div class="modal-content">
-
-		<div class="close-modal">
-		</div>
-
-		<h2>Создать услугу</h2>
-
-		<div class="form-group">
-			<div class="label">Название услуги</div>
-			<input type="text" name="name" data-validate="empty">
-		</div>
-
-		<div class="form-group">
-			<div class="label">Заголовок</div>
-			<input type="text" name="header" data-validate="empty">
-		</div>
-
-		<div class="form-group file">
-			<div class="label">Изображение</div>
-			<input type="file" name="file" id="file" required />
-			<label for="file">Загрузить</label>
-			<input type="text" name="src" data-validate="empty" class="hidden">
-			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
-		</div>
-
-		<div class="form-group">
-			<div class="label">Текст</div>
-			<textarea name="content" data-validate="empty"></textarea>
-		</div>
-
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
-		</div>
-
-	</div>
-</div>
-
-<div class="editor-modal modal-holder" id="addPartner" data-type="partners">
-	<div class="modal-content middle">
-
-		<h2>Добавить партнета</h2>
-
-		<div class="form-group file">
-			<div class="label">Логотип</div>
-			<input type="file" name="file" id="file" required />
-			<label for="file">Загрузить</label>
-			<input type="text" name="src" data-validate="empty" class="hidden">
-			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
-		</div>
-
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
 		</div>
 
 	</div>
@@ -471,120 +320,6 @@
 	</div>
 </div>
 
-<div class="editor-modal modal-holder" id="addPerson" data-type="aboutPerson">
-	<div class="modal-content">
-
-		<div class="close-modal">
-		</div>
-
-		<h2>Создать нового персонажа</h2>
-
-		<div class="form-group">
-			<div class="label">Заголовок</div>
-			<input type="text" name="head" data-validate="empty">
-		</div>
-
-		<div class="form-group">
-			<div class="label">Текст</div>
-			<textarea name="text" data-validate="empty"></textarea>
-		</div>
-
-		<div class="form-group file">
-			<div class="label">Изображение</div>
-			<input type="file" name="file" id="file" required />
-			<label for="file">Загрузить</label>
-			<input type="text" name="src" data-validate="empty" class="hidden">
-			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
-		</div>
-
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
-		</div>
-
-	</div>
-</div>
-<div class="editor-modal modal-holder" id="editPerson">
-	<div class="modal-content" data-type="aboutPerson" data-index="{{index}}">
-
-		<div class="close-modal">
-		</div>
-
-		<h2 data-key="head" contenteditable="true">{{head}}</h2>
-		<br>
-		<p data-key="text" contenteditable="true">{{text}}</p>
-		<br>
-
-		<div class="form-group file">
-			<div class="label">Изображение</div>
-			<input type="file" name="file" id="file" required />
-			<label for="file">Загрузить</label>
-			<input type="text" name="src" data-key="src" data-validate="empty" class="hidden">
-			<input type="text" name="path_to_delete" data-key="path_to_delete" data-validate="empty" class="hidden">
-		</div>
-
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
-			<button class="remove type-1" data-index="{{index}}">Удалить</button>
-		</div>
-
-	</div>
-</div>
-
-<div class="editor-modal modal-holder" id="editFeatures" data-type="features">
-	<div class="modal-content" data-type="features" data-index="{{index}}">
-
-		<div class="close-modal">
-		</div>
-
-		<h2 data-key="head" contenteditable="true">{{head}}</h2>
-		<br>
-		<p data-key="text" contenteditable="true">{{text}}</p>
-		<br>
-
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
-			<button class="remove type-1" data-index="{{index}}">Удалить</button>
-		</div>
-
-	</div>
-</div>
-
-<div class="editor-modal modal-holder" id="addEmail" data-type="emails">
-	<div class="modal-content" data-type="emails" data-index="{{index}}">
-
-		<div class="close-modal">
-		</div>
-
-		<h2>Добавить почту</h2>
-
-		<div class="form-group">
-			<div class="label">Адресс</div>
-			<input type="text" name="name" data-key="name" data-validate="email">
-		</div>
-
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
-		</div>
-
-	</div>
-</div>
-
-<div class="editor-modal modal-holder" id="editEmail">
-	<div class="modal-content" data-type="emails" data-index="{{index}}">
-
-		<div class="close-modal">
-		</div>
-
-		<h2>Изменить почту</h2>
-
-		<div class="form-group">
-			<div class="label">Адресс</div>
-			<input type="text" name="name" data-key="name" data-validate="email" value="{{name}}">
-		</div>
-
-	</div>
-</div>
-
 	<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9I8d7JYaXAgwCBqNKjPxaEOUvT-Z_G4w&callback=initMap"></script>
 	<script>
 		// map
@@ -610,6 +345,5 @@
 	<script src="libs/wow/dist/wow.js"></script>
 	<script src="js/content.js"></script>
 	<script src="js/main.js"></script>
-	<!-- <script src="js/admin.js"></script> -->
 </body>
 </html>

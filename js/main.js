@@ -114,7 +114,10 @@ var loading = {
 			if (!loading.completed) {
 				loading.completed = true;
 				runUser();
-				runAdmin();
+
+				if (window.isAdmin) {
+					runAdmin();
+				};
 
 				this.hidePreloader();
 			}
@@ -187,7 +190,7 @@ function runUser () {
 				} else {
 					$el = $target.closest('[data-index]');
 				}
-				if ($el.length) {
+				if ($el.length && $el.data('content-modal')) {
 					var $modal = $( $el.data('content-modal') ).clone();
 					$modal.html( replaceTemplate( rest[$self.data('repeat')][$el.data('index')], $modal.html(), $el.data('index') ) );
 					bodyOverflow.fixBody();
@@ -216,26 +219,26 @@ function runUser () {
 						}, 300);
 					});
 
-					if (isAdmin) {
-						$modal.on('blur', '[contenteditable]', function (e) {
+					$modal.on('blur', '[contenteditable]', function (e) {
 
-							var $target = $(this),
-								$content = $target.closest('.modal-content'),
-								type = $content.data('type'),
-								index = $content.data('index'),
-								key = $target.data('key');
-								
-								console.log(type);
-								console.log(index);
-								console.log(key);
+						var $target = $(this),
+							$content = $target.closest('.modal-content'),
+							type = $content.data('type'),
+							index = $content.data('index'),
+							key = $target.data('key');
+							
+							console.log(type);
+							console.log(index);
+							console.log(key);
 
-							if (key && type && (index || index == 0)) {
-								rest[type][index][key] = $target.html();
-							} else {
-								console.error('Не найден целевой ключ');
-							}
+						if (key && type && (index || index == 0)) {
+							rest[type][index][key] = $target.html();
+						} else {
+							console.error('Не найден целевой ключ');
+						}
 
-						});
+					});
+					if (window.isAdmin) {
 						buttonHandlers($modal);
 					}
 
