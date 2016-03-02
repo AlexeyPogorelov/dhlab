@@ -166,6 +166,34 @@
 	</div>
 </section>
 
+<section id="personal" class="personal white">
+	<div class="container">
+		<h2 class="section-label" data-editable="snippets" data-key="personal-header">Обо мне</h2>
+	</div>
+	<div class="persons-slider" id="persons-slider">
+		<div class="slider-viewport">
+			<div class="slider-holder" data-repeat="personal">
+
+				<div class="slide person" data-content-modal="#personal-modal" data-index="{{index}}">
+					<div class="image-holder">
+						<img class="fake-img" src="{{src}}" />
+						<div class="img" style="background-image: url({{src}})"></div>
+					</div>
+					<div class="content-holder">
+						<h2>{{header}}</h2>
+						<p class="role">{{role}}</p>
+						<p>{{content}}</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="button-holder">
+		<button data-modal="#addPersonal" class="type-2">Добавить слайд</button>
+	</div>
+</section>
+
 <section id="partners" class="partners grey">
 	<div class="container">
 		<div class="left-side">
@@ -252,6 +280,11 @@
 
 				<button data-modal="#addEmail" class="type-1">Добавить почту</button>
 
+				<div>
+					<!-- <button class="type-1" id="updateInstagram">Обновить Instagram</button> -->
+					<a href="https://www.instagram.com/oauth/authorize/?client_id=f0136bdb1e354f268ad5e9e90a966a8a&redirect_uri=http://localhost:63341/admin.html&response_type=code" class="btn type-1" id="updateInstagram">Обновить Instagram</a>
+				</div>
+
 				<div class="copyright-holder">
 					<span class="copyright">© 2016. DH lab</span>
 					<a href="#" class="design">Design: <span>NewWave</span></a>
@@ -321,6 +354,79 @@
 		</div>
 
 	</div>
+</div>
+
+<!-- TODO fix it PERSONAL EDIT  -->
+<div id="personal-modal" class="modal-holder editor-modal">
+	<div class="modal-content" data-type="personal" data-index="{{index}}">
+
+		<div class="close-modal">
+		</div>
+
+		<div class="content-wrapper">
+
+			<h1 contenteditable="true" data-key="header">{{header}}</h1>
+			<h3 contenteditable="true" data-key="role">{{role}}</h3>
+			<ul class="services-list" contenteditable="true" data-key="content">
+				{{content}}
+			</ul>
+
+			<div class="form-group file">
+				<input type="file" name="file" id="file1" required />
+				<label for="file1">Загрузить</label>
+				<input type="text" name="src" data-validate="empty" class="hidden" data-key="src">
+				<input type="text" name="path_to_delete" data-validate="empty" class="hidden" data-key="path_to_delete">
+				<span class="label">Изменить зображение</span>
+			</div>
+			<div class="button-holder">
+				<button class="type-1" type="submit">Сохранить</button>
+				<button class="remove" data-image="{{path_to_delete}}" data-index="{{index}}">Удалить услугу</button>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<!-- TODO ADD PERSONAL fix it  -->
+<div class="editor-modal modal-holder" id="addPersonal" data-type="personal">
+
+	<div class="close-modal">
+	</div>
+
+	<div class="modal-content">
+
+		<h2>Создать слайд</h2>
+
+		<div class="form-group">
+			<div class="label">Заголовок</div>
+			<input type="text" name="header" data-validate="empty">
+		</div>
+
+		<div class="form-group file">
+			<div class="label">Изображение</div>
+			<input type="file" name="file" id="file" required />
+			<label for="file">Загрузить</label>
+			<input type="text" name="src" data-validate="empty" class="hidden">
+			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
+		</div>
+
+		<div class="form-group full">
+			<div class="label">Подзаголовок</div>
+			<input type="text" name="role">
+		</div>
+
+		<div class="form-group">
+			<div class="label">Текст</div>
+			<textarea name="content" data-validate="empty"></textarea>
+		</div>
+
+		<div class="button-holder">
+			<button class="type-1" type="submit">Сохранить</button>
+		</div>
+
+	</div>
+
 </div>
 
 <div id="partners-modal" class="modal-holder">
@@ -401,17 +507,17 @@
 			<input type="text" name="name" data-validate="empty">
 		</div>
 
-		<div class="form-group">
-			<div class="label">Заголовок</div>
-			<input type="text" name="header" data-validate="empty">
-		</div>
-
 		<div class="form-group file">
 			<div class="label">Изображение</div>
 			<input type="file" name="file" id="file" required />
 			<label for="file">Загрузить</label>
 			<input type="text" name="src" data-validate="empty" class="hidden">
 			<input type="text" name="path_to_delete" data-validate="empty" class="hidden">
+		</div>
+
+		<div class="form-group full">
+			<div class="label">Заголовок</div>
+			<input type="text" name="header" data-validate="empty">
 		</div>
 
 		<div class="form-group">
@@ -429,7 +535,7 @@
 <div class="editor-modal modal-holder" id="addPartner" data-type="partners">
 	<div class="modal-content middle">
 
-		<h2>Добавить партнета</h2>
+		<h2>Добавить партнеpа</h2>
 
 		<div class="form-group file">
 			<div class="label">Логотип</div>
@@ -479,7 +585,7 @@
 
 		<h2>Создать нового персонажа</h2>
 
-		<div class="form-group">
+		<div class="form-group full">
 			<div class="label">Заголовок</div>
 			<input type="text" name="head" data-validate="empty">
 		</div>
@@ -584,6 +690,7 @@
 
 		<div class="button-holder">
 			<button class="type-1" type="submit">Сохранить</button>
+			<button class="remove type-1" data-index="{{index}}">Удалить</button>
 		</div>
 
 	</div>

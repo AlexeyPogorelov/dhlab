@@ -1,11 +1,30 @@
 var isAdmin = true;
 function runAdmin () {
+
+	if ( location.href.split('?code=').length > 1 ) {
+		
+		var code = location.href.split('?code=')[1];
+
+		$.ajax({
+			method: "GET",
+			url: domain + "api/admin/instagram",
+			data: {
+				code: code
+			}
+		}).done(function(data) {
+			console.log(data);
+			// rest[instagram] = data;
+		}).fail(function( jqXHR, textStatus ) {
+			alert( "Request failed: " + textStatus );
+		});
+	}
+
 	window.buttonHandlers = function ($modal) {
 		console.log($modal);
 		if (!$modal instanceof jQuery) {
 			$modal = $($modal);
 		}
-		var $target = $(this);
+		var $target = $modal.find('button.remove');
 		if (!$modal.data('type')) {
 			$modal = $modal.find('[data-type]');
 		}
@@ -14,6 +33,8 @@ function runAdmin () {
 
 			var image = $(this).data('image');
 			console.warn(image)
+			// console.log($target.data('index'));
+			// return
 			rest[$modal.data('type')].splice((+$target.data('index')), 1);
 			if (image) {
 				if (image.substring(0,1) == '[') {
@@ -28,7 +49,9 @@ function runAdmin () {
 				}
 			}
 			$modal.removeClass('opened').closest('.opened').removeClass('opened');
+			// TODO
 			$('#admin-button').trigger('click');
+			// console.log(rest)
 
 		});
 
@@ -40,13 +63,14 @@ function runAdmin () {
 		$modal.find('[data-key]').on('change blur', function () {
 			if (this.value) {
 				rest[$modal.data('type')][$modal.data('index')][$(this).data('key')] = $(this).val();
-				console.log(rest);
+				// console.log(rest);
 			}
 		});
 
 		$modal.find('[type="submit"]').on('click', function () {
 			$(this).closest('.opened').removeClass('opened');
 			$('#admin-button').trigger('click');
+			// console.log(rest);
 		});
 	}
 	$('[data-editable]').each(function () {
@@ -99,7 +123,7 @@ function runAdmin () {
 				});
 				setTimeout(function () {
 					window.location.reload();
-				}, 7000)
+				}, 5000)
 			}).fail(function( jqXHR, textStatus ) {
 				alert( "Request failed: " + textStatus );
 			});
@@ -361,6 +385,42 @@ function runAdmin () {
 		}
 	})
 	$addPerson.on('click', function(e) {
+		if (e.target == this) {
+			var $src = $(this).find('[name="path_to_delete"]');
+			if ($src.val()) {
+				adminMethods.deleteImage($src.val());
+				$src.val('');
+				$src.closest('.file').addClass('error');
+			}
+		}
+	});
+
+	var $addPersonal = $('#addPersonal');
+	$addPersonal.validate();
+	$addPersonal.on('submit', function () {
+		var data = {},
+			$self = $(this);
+		$self.find('[name]').each(function () {
+			var $input = $(this);
+			data[$input.attr('name')] = $input.val();
+		});
+		if(rest[$self.data('type')] instanceof Array )
+		{
+			rest[$self.data('type')].unshift(data);
+			$('#admin-button').trigger('click');
+			$addPersonal.removeClass('opened');
+		} else {
+			rest[$self.data('type')] = [];
+			console.warn('Увы, у нас на сайте ошибка. Конечный массив не найден. Но он был только что создан!');
+		}
+	});
+	$addPersonal.find('[type=file]').on('change', function () {
+		if (this.files.length) {
+			adminMethods.sendImage(this.files[0], this);
+			$(this).closest('.error').removeClass('error');
+		}
+	})
+	$addPersonal.on('click', function(e) {
 		if (e.target == this) {
 			var $src = $(this).find('[name="path_to_delete"]');
 			if ($src.val()) {

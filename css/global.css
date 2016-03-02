@@ -349,6 +349,11 @@ input[type='number'] {
 .tablet-xs-visible {
 	display: none;
 }
+.fake-img {
+	opacity: 0;
+	max-height: 100%;
+	max-width: 100%;
+}
 .btn.type-2,
 button.type-2 {
 	border: 1px solid #000;
@@ -773,6 +778,7 @@ button:focus,
 }
 /* END MODALS */
 
+.map-wrapper,
 #map-wrapper {
 	position: absolute;
 	top: 0;

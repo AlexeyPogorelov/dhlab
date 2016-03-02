@@ -369,6 +369,9 @@ section.partners .partner {
 section.partners .partner img {
 	display: inline-block;
 	vertical-align: middle;
+	max-height: 100%;
+	max-height: calc(100% - 10px);
+	max-width: 100%;
 }
 section.partners .paginator-holder {
 	position: absolute;
@@ -523,8 +526,8 @@ section.updates .headers h2 {
 	padding-bottom: 40px;
 	text-transform: uppercase;
 }
-section.updates .headers .left-side,
-section.updates .headers .right-side {
+/*section.updates .headers .right-side */
+section.updates .headers .left-side {
 	padding-left: 99px;
 }
 section.updates .left-side {
@@ -803,6 +806,16 @@ section.footer .copyright-holder a:hover span:after {
 }
 .persons-slider .slide .image-holder {
 	height: 520px;
+	position: relative;
+}
+.persons-slider .slide .image-holder .img {
+	background-size: cover;
+	background-position: 50% 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
 }
 .persons-slider .slide .image-holder video {
 	height: 100%;
@@ -840,6 +853,7 @@ section.footer .copyright-holder a:hover span:after {
 	padding: 40px 96px 0;
 	-webkit-transition: bottom .4s ease-in;
 	transition: bottom .4s ease-in;
+	width: 100%;
 }
 /* hover */
 .persons-slider .slide:hover .content-holder {
@@ -901,9 +915,10 @@ section.footer .copyright-holder a:hover span:after {
 
 /* ADMIN */
 #admin-button {
+	background: rgba(0,0,0,.3);
+	bottom: 20px;
 	position: fixed;
 	right: 20px;
-	bottom: 20px;
 }
 .editable {
 	cursor: pointer;
@@ -1145,6 +1160,14 @@ section.footer .copyright-holder a:hover span:after {
 .editor-modal .form-group textarea,
 .editor-modal .form-group input {
 	width: 300px;
+}
+.editor-modal .form-group.full {
+	display: block;
+	margin: 10px 24px;
+}
+.editor-modal .form-group.full textarea,
+.editor-modal .form-group.full input {
+	width: 100%;
 }
 .editor-modal .form-group input {
 	border: 1px solid black;

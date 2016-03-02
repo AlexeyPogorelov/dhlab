@@ -258,6 +258,42 @@ function runUser () {
 		}
 	});
 
+		$('[data-editable="snippets"]').each(function () {
+		var $self = $(this);
+		if ( rest[$self.data('editable')] && rest[$self.data('editable')][$self.data('key')] ) {
+			var ob = rest[$self.data('editable')][$self.data('key')];
+			if (Object.keys(ob).length > 1) {
+
+				for (key in ob) {
+
+					if (key != 'name') {
+						$self.attr(key, ob[key])
+					} else {
+						$self.html( ob[key] );
+					}
+
+				}
+
+			} else {
+
+				$self.html( ob['name'] );
+
+			}
+
+		} else if ( rest[$self.data('editable')] ) {
+
+			$self.html( rest[$self.data('editable')]['name'] );
+
+		} else {
+
+			console.log('------------');
+			console.log(this);
+			console.error('Нет данных');
+			console.log('------------');
+
+		}
+	});
+
 	// modals
 	$('[data-modal]').on('click', function (e) {
 		e.preventDefault();
@@ -716,21 +752,21 @@ function runUser () {
 			// console.log(DOM);
 
 			// video
-			DOM.$slides.find('video').each(function () {
-					this.load();
-					this.currentTime = 0.01;
-				});
-			DOM.$slides.on('mouseenter', function () {
-					var $this = $(this);
-					$this.find('video').get(0).play();
-				})
-				.on('mouseleave', function () {
-					var $this = $(this);
-					var video = $this.find('video').get(0);
+			// DOM.$slides.find('video').each(function () {
+			// 		this.load();
+			// 		this.currentTime = 0.01;
+			// 	});
+			// DOM.$slides.on('mouseenter', function () {
+			// 		var $this = $(this);
+			// 		$this.find('video').get(0).play();
+			// 	})
+			// 	.on('mouseleave', function () {
+			// 		var $this = $(this);
+			// 		var video = $this.find('video').get(0);
 
-					video.pause();
-					video.currentTime = 0.01;
-				});
+			// 		video.pause();
+			// 		video.currentTime = 0.01;
+			// 	});
 
 			// resize
 			$(window).on('resize', function () {

@@ -66,7 +66,7 @@
 				</ul>
 			</nav>
 			<div class="navbar-right">
-				<a href="tel:+30443442233" data-key="phones">(044) 344-22-33</a>
+				<a href="tel:+30443442233" data-editable="snippets" data-key="phones">(044) 344-22-33</a>
 			</div>
 		</div>
 		<div class="extra-link-holder">
@@ -87,8 +87,8 @@
 	<div class="content-holder">
 		<div class="container">
 			<div class="vertical-middle">
-				<p class="description" data-key="main-small">Одна из главных черт салона</p>
-				<h1 data-key="main-grand">постоянное совершенствование искусства по созданию Вашей красоты</h1>
+				<p class="description" data-editable="snippets" data-key="main-small">Одна из главных черт салона</p>
+				<h1 data-editable="snippets" data-key="main-grand">постоянное совершенствование искусства по созданию Вашей красоты</h1>
 			</div>
 		</div>
 	</div>
@@ -107,7 +107,7 @@
 <section class="features">
 	<div class="container">
 		<div class="left-side">
-			<h2 data-key="features-header">особенности салона</h2>
+			<h2 data-editable="snippets" data-key="features-header">особенности салона</h2>
 		</div>
 		<div class="right-side">
 			<ul class="features-list" data-repeat="features">
@@ -150,10 +150,35 @@
 <section id="bonuses" class="bonuses">
 	<div class="container">
 		<div class="left-side">
-			<h2 data-key="bonuses-header">Акции и новинки</h2>
+			<h2 data-editable="snippets" data-key="bonuses-header">Акции и новинки</h2>
 		</div>
 		<div class="right-side">
-			<h1 data-key="bonuses-body">Каждая шестая стрижка в нашем салоне – в подарок !</h1>
+			<h1 data-editable="snippets" data-key="bonuses-body">Каждая шестая стрижка в нашем салоне – в подарок !</h1>
+		</div>
+	</div>
+</section>
+
+<section id="personal" class="personal white">
+	<div class="container">
+		<h2 class="section-label" data-editable="snippets" data-key="personal-header">Обо мне</h2>
+	</div>
+	<div class="persons-slider" id="persons-slider">
+		<div class="slider-viewport">
+			<div class="slider-holder" data-repeat="personal">
+
+				<div class="slide person" data-index="{{index}}">
+					<div class="image-holder">
+						<img class="fake-img" src="{{src}}" />
+						<div class="img" style="background-image: url({{src}})"></div>
+					</div>
+					<div class="content-holder">
+						<h2>{{header}}</h2>
+						<p class="role">{{role}}</p>
+						<p>{{content}}</p>
+					</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
 </section>
@@ -161,7 +186,7 @@
 <section id="partners" class="partners grey">
 	<div class="container">
 		<div class="left-side">
-			<h2 data-key="partners-header">Мы работаем с лучшими брендами на рынке</h2>
+			<h2 data-editable="snippets" data-key="partners-header">Мы работаем с лучшими брендами на рынке</h2>
 		</div>
 		<div class="right-side">
 			<div class="partners-slider" id="partners-slider">
@@ -182,10 +207,10 @@
 <section id="updates" class="updates white">
 	<div class="headers">
 		<div class="left-side">
-			<h2 data-key="updates-header"></h2>
+			<h2 data-editable="snippets" data-key="updates-header"></h2>
 		</div>
 		<div class="right-side">
-			<h2 data-key="news-header" class="tablet-hidden"></h2>
+			<h2 data-editable="snippets" data-key="news-header" class="tablet-hidden"></h2>
 		</div>
 	</div>
 	<div class="row">
@@ -215,14 +240,14 @@
 	<div class="row">
 		<div class="left-side">
 			<div class="contacts-holder">
-				<h2 data-key="contacts-header">Контактная информация</h2>
-				<p class="address" data-key="adress">Киев, бульвар Леси Украинки 7б</p>
+				<h2 data-editable="snippets" data-key="contacts-header">Контактная информация</h2>
+				<p class="address" data-editable="snippets" data-key="adress">Киев, бульвар Леси Украинки 7б</p>
 				<ul class="phones">
 					<li>
-						<a href="tel:+30675991177" data-key="phones">(067) 599-11-77</a>
+						<a href="tel:+30675991177" data-editable="snippets" data-key="phones">(067) 599-11-77</a>
 					</li>
 					<li>
-						<a href="tel:+30445990405" data-key="phones-2">(044) 599-04-05</a>
+						<a href="tel:+30445990405" data-editable="snippets" data-key="phones-2">(044) 599-04-05</a>
 					</li>
 				</ul>
 				<ul class="socials" data-repeat="socials">
