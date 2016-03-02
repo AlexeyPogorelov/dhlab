@@ -168,6 +168,37 @@ function runUser () {
 	var winWidth = $(window).width(),
 		winHeight = $(window).height();
 
+	(function () {
+
+		var $instagram = $('#instagram'),
+			width = Math.floor($instagram.innerWidth() / 3);
+
+		if (rest.instagram.length) {
+
+			for (var i = 0; i < rest.instagram.length; i++) {
+				$('<a>')
+					.css('background-image', 'url(' + rest.instagram[i] + ')')
+					.attr('href', 'https://www.instagram.com/dh_lab/')
+					.attr('target', '_blank')
+					.addClass('item')
+					.height( width )
+					.width( width )
+					.appendTo( $instagram );
+					// .html('&nbsp');
+			}
+
+			$(window).on('resize', function () {
+				var width = Math.floor($instagram.innerWidth() / 3);
+				$instagram
+					.find('.item')
+					.height( width )
+					.width( width );
+			})
+
+		}
+
+	})()
+
 	$('[data-repeat]').each(function () {
 		var $self = $(this);
 		if ( rest[$self.data('repeat')] ) {

@@ -526,7 +526,7 @@ section.updates .headers h2 {
 	padding-bottom: 40px;
 	text-transform: uppercase;
 }
-/*section.updates .headers .right-side */
+/*section.updates .headers .right-side,*/
 section.updates .headers .left-side {
 	padding-left: 99px;
 }
@@ -539,13 +539,14 @@ section.updates .right-side {
 	position: relative;
 	float: left;
 	width: 50%;
+	padding-left: 20px;
 }
 section.updates .instagram-holder {
 	overflow: hidden;
 	height: 100%;
 	width: 100%;
 }
-section.updates .instagram-holder:after {
+/*section.updates .instagram-holder:after {
 	background: #fff;
 	content: '';
 	position: absolute;
@@ -553,7 +554,7 @@ section.updates .instagram-holder:after {
 	top: 0;
 	height: 100%;
 	width: 40px;
-}
+}*/
 section.updates .instagram-holder iframe {
 	height: 100%;
 	width: 100%;
@@ -561,6 +562,24 @@ section.updates .instagram-holder iframe {
 /* TODO remove it */
 section.updates .instagram-holder img {
 	width: 100%;
+}
+section.updates .instagram-holder #instagram {
+	/*margin-right: -20px;*/
+}
+section.updates .instagram-holder #instagram:before,
+section.updates .instagram-holder #instagram:after {
+	content: '';
+	clear: both;
+	display: table;
+}
+section.updates .instagram-holder #instagram .item {
+	display: block;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: 50% 50%;
+	float: left;
+	/*height: 300px;*/
+	/*width: 33.3%;*/
 }
 section.updates .news-slider {
 	margin-top: 88px;
@@ -730,6 +749,7 @@ section.footer ul li a:hover:after {
 }
 section.footer .copyright-holder {
 	margin-top: 103px;
+	margin-top: 52px;
 }
 section.footer .copyright-holder > a,
 section.footer .copyright-holder > span {

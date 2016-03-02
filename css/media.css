@@ -25,6 +25,9 @@
 		font-size: 42px;
 		line-height: 56px;
 	}
+	section.updates .right-side {
+		padding-left: 99px;
+	}
 }
 /*------------------------------------------------------------------------------
 	MEDIUM
@@ -190,6 +193,10 @@
 	}
 	section.updates .headers h2 {
 		/*mb40*/
+	}
+	section.updates .right-side {
+		padding-left: 40px;
+		padding-right: 40px;
 	}
 	section.partners .left-side {
 		height: auto;

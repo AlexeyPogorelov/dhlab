@@ -1,6 +1,5 @@
 var isAdmin = true;
 function runAdmin () {
-
 	if ( location.href.split('?code=').length > 1 ) {
 		
 		var code = location.href.split('?code=')[1];
@@ -12,15 +11,18 @@ function runAdmin () {
 				code: code
 			}
 		}).done(function(data) {
-			console.log(data);
-			// rest[instagram] = data;
+			// console.log(data);
+			rest['instagram'] = data;
+			$('#admin-button').trigger('click');
+			location.href = location.href.split('?code=')[0];
 		}).fail(function( jqXHR, textStatus ) {
+			console.log( "Request failed: " + textStatus );
 			alert( "Request failed: " + textStatus );
 		});
 	}
 
 	window.buttonHandlers = function ($modal) {
-		console.log($modal);
+		// console.log($modal);
 		if (!$modal instanceof jQuery) {
 			$modal = $($modal);
 		}
