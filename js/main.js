@@ -79,8 +79,8 @@ function buildElements (data, selector) {
 
 	} else if ( data instanceof Array ) {
 
-		for (var y = 0; y < data.length; y++) {
-			$el.append( replaceTemplate(data[y], template, y) );
+		for (var z = 0; z < data.length; z++) {
+			$el.append( replaceTemplate(data[z], template, z) );
 		}
 
 	} else if (typeof data == "object") {
@@ -122,8 +122,8 @@ var loading = {
 				(function () {
 					var $servicesContainer = $('#services'),
 						$services = $servicesContainer.find('> .service');
-					console.log($services.length);
-					console.log($services.length % 2);
+					// console.log($services.length);
+					// console.log($services.length % 2);
 					if ($services.length % 2 !== 0) {
 						$servicesContainer.addClass('even-elements');
 					}
@@ -254,7 +254,7 @@ function runUser () {
 								$modal.remove();
 							}, 300);
 						}
-					})
+					});
 					$modal.find('.close-modal').on('click', function () {
 						if($modal.find('[name="path_to_delete"]').val())
 						{
@@ -293,11 +293,11 @@ function runUser () {
 					$('body').append($modal);
 					setTimeout(function () {
 						$modal.addClass('opened');
-					}, 1)
+					}, 1);
 				} else {
 					console.error('Не найден редактируемый элемент');
 				}
-			})
+			});
 		} else {
 			console.log('---');
 			console.log(this);
@@ -315,7 +315,7 @@ function runUser () {
 				for (key in ob) {
 
 					if (key != 'name') {
-						$self.attr(key, ob[key])
+						$self.attr(key, ob[key]);
 					} else {
 						$self.html( ob[key] );
 					}
@@ -411,7 +411,7 @@ function runUser () {
 			'min-height': winHeight
 		});
 	});
-};
+}
 
 //plugins
 (function ($) {
@@ -891,7 +891,7 @@ function runUser () {
 					// })
 					DOM.$fields.on('focus', function () {
 						plg.removeLabel( $(this) );
-					})
+					});
 				},
 				test: function (data, type) {
 					switch (type) {

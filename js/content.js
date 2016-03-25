@@ -27,7 +27,7 @@ reseeet.nav = [
 		name: "контакты",
 		href: "#footer"
 	}
-]
+];
 reseeet.socials = [
 	{
 		name: "facebook",
@@ -37,7 +37,7 @@ reseeet.socials = [
 		name: "instagram",
 		href: "https://www.instagram.com/dh_lab/"
 	}
-]
+];
 
 reseeet.features = [
 	{
@@ -56,7 +56,7 @@ reseeet.features = [
 		head: 'Новинки',
 		text: 'Мы отслеживаем тендеции новых продуктов и технологий в сфере красоты. Лучшие из них мы предоставляем нашим клиентам'
 	}
-]
+];
 reseeet.snippets = {
 	'adress': {
 		name: 'Киев, бульвар Леси Украинки 7б'
@@ -92,7 +92,7 @@ reseeet.snippets = {
 	'updates-header': {
 		name: 'наш instagram'
 	}
-}
+};
 reseeet.news = [
 	{
 		header: 'Сколько времени я могу использовать',
@@ -178,7 +178,7 @@ reseeet.news = [
 		src: 'img/content/instagram-holder.jpg',
 		content: 'Ни в коем случае. Векторные изображения и EPS-файлы входят в стоимость вашего заказа.'
 	}
-]
+];
 reseeet.partners = [
 	{
 		name: 'img/content/partner-1.png'
@@ -207,16 +207,16 @@ reseeet.partners = [
 	{
 		name: 'img/content/partner-2.png'
 	}
-]
-rest.team = {}
-rest.services = {}
+];
+rest.team = {};
+rest.services = {};
 
 $.ajax({
 	method: "GET",
 	url: domain + "api/data",
 }).done(function(data) {
 	rest = jQuery.parseJSON(data);
-	// console.log(rest);
+	console.log(rest);
 	loading.done();
 }).fail(function( jqXHR, textStatus ) {
 	alert( "Request failed: " + textStatus );
