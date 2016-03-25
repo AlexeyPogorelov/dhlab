@@ -857,6 +857,19 @@ section.footer .copyright-holder a:hover span:after {
 	float: left;
 	overflow: hidden;
 	position: relative;
+
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: -webkit-filter .3s;
+	-o-transition: -webkit-filter .3s;
+	transition: -webkit-filter .3s;
+}
+.persons-slider .slide:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0%);
+	-webkit-transition: -webkit-filter .1s;
+	-o-transition: -webkit-filter .1s;
+	transition: -webkit-filter .1s;
 }
 .persons-slider .slide .image-holder {
 	height: 520px;
@@ -963,11 +976,12 @@ section.footer .copyright-holder a:hover span:after {
 	transition: -webkit-filter .1s;
 }
 .about-person .person-content {
-	/*padding: 0 20px 0 0;*/
+	padding: 0 20px 0 0;
 	/*margin-left: 50%;*/
 	font-size: 15px;
 	line-height: 19px;
 	opacity: 0.7;
+	text-align: justify;
 }
 .about-person h3 {
 	padding: 0 20px;
