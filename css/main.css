@@ -387,13 +387,13 @@ section.bonuses {
 	background: url('../img/bg/bonus-bg-1.png') 370px -40px no-repeat;
 	background-position: right 25px top -25px;
 	overflow: hidden;
-	height: 361px;
+	height: 420px;
 }
 section.bonuses .left-side {
 	border-right: 1px solid #fff;
 	position: relative;
 	float: left;
-	height: 361px;
+	height: 420px;
 	width: 200px;
 }
 section.bonuses .left-side h2 {
@@ -407,7 +407,7 @@ section.bonuses .left-side h2 {
 	-webkit-transform: translateY(-50%);
 }
 section.bonuses .right-side {
-	height: 361px;
+	height: 420px;
 	margin-left: 200px;
 	position: relative;
 	width: 100%;
