@@ -256,6 +256,12 @@ section.features ul.features-list li .counter {
 	text-transform: uppercase;
 	top: 23px;
 }
+section.features ul.features-list.short li:nth-child(1n+5) {
+	display: none;
+}
+section.features .button-holder {
+	padding-bottom: 0;
+}
 /* END FEATURES */
 
 /* SERVICES */
@@ -320,6 +326,16 @@ section.services .service > .content-holder button:hover img {
 	-webkit-transition: filter .3s;
 	transition: filter .3s;
 }
+section.services .service > .image-holder {
+	height: 100%;
+	width: 100%;
+}
+section.services .service > .image-holder img {
+	/*object-position: 50% 50%;*/
+	/*object-fit: cover;*/
+	height: 100%;
+	width: 100%;
+}
 section.services .service:hover > .image-holder {
 	opacity: 0.8;
 	-webkit-transition: opacity .3s;
@@ -330,6 +346,10 @@ section.services .service:hover > .content-holder button {
 	-webkit-transition: right .3s ease-out, background .3s, border .3s, color .3s, filter .3s;
 	transition: right .3s ease-out, background .3s, border .3s, color .3s, filter .3s;
 }
+section.services.even-elements > .service:last-child {
+	width: 100%;
+}
+
 /* END SERVICES */
 
 /* PARTNERS */
@@ -422,6 +442,7 @@ section.bonuses .right-side h1 {
 	position: absolute;
 	text-transform: uppercase;
 	top: 50%;
+	width: 80%;
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 }
@@ -564,7 +585,7 @@ section.updates .instagram-holder img {
 	width: 100%;
 }
 section.updates .instagram-holder #instagram {
-	/*margin-right: -20px;*/
+	margin-right: -60px;
 }
 section.updates .instagram-holder #instagram:before,
 section.updates .instagram-holder #instagram:after {
@@ -574,12 +595,24 @@ section.updates .instagram-holder #instagram:after {
 }
 section.updates .instagram-holder #instagram .item {
 	display: block;
-	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: 50% 50%;
 	float: left;
+	margin-left: -1px;
 	/*height: 300px;*/
 	/*width: 33.3%;*/
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: -webkit-filter .3s;
+	-webkit-background-size: cover;
+	transition: -webkit-filter .3s;
+}
+section.updates .instagram-holder #instagram .item:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0%);
+	-webkit-transition: -webkit-filter .1s;
+	-o-transition: -webkit-filter .1s;
+	transition: -webkit-filter .1s;
 }
 section.updates .news-slider {
 	margin-top: 88px;
@@ -697,6 +730,7 @@ section.footer .map-holder {
 	right: 0;
 	top: 0;
 	width: 50%;
+	/*width: calc(50% + 3px);*/
 }
 section.footer h2 {
 	font-size: 24px;
@@ -905,13 +939,35 @@ section.footer .copyright-holder a:hover span:after {
 .about-person {
 	overflow: hidden;
 }
+.about-person p {
+	font-size: 15px;
+	line-height: 19px;
+}
 .about-person .poerson-image {
-	float: left;
+	margin-left: 40px;
+	margin-bottom: 40px;
+	float: right;
 	width: 50%;
+	z-index: 1;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: -webkit-filter .3s;
+	-o-transition: -webkit-filter .3s;
+	transition: -webkit-filter .3s;
+}
+.about-person .poerson-image:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0%);
+	-webkit-transition: -webkit-filter .1s;
+	-o-transition: -webkit-filter .1s;
+	transition: -webkit-filter .1s;
 }
 .about-person .person-content {
-	padding: 0 20px;
-	margin-left: 50%;
+	/*padding: 0 20px 0 0;*/
+	/*margin-left: 50%;*/
+	font-size: 15px;
+	line-height: 19px;
+	opacity: 0.7;
 }
 .about-person h3 {
 	padding: 0 20px;

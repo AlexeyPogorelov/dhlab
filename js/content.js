@@ -1,6 +1,7 @@
 var rest = {},
-	domain = 'http://distance-learning.pp.ua/';
-var reseeet = {}
+	domain = 'http://api.dh-lab.com.ua/';
+	// domain = 'http://distance-learning.pp.ua/';
+var reseeet = {};
 reseeet.nav = [
 	{
 		name: "услуги",
@@ -215,7 +216,7 @@ $.ajax({
 	url: domain + "api/data",
 }).done(function(data) {
 	rest = jQuery.parseJSON(data);
-	console.log(rest);
+	// console.log(rest);
 	loading.done();
 }).fail(function( jqXHR, textStatus ) {
 	alert( "Request failed: " + textStatus );

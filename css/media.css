@@ -21,10 +21,10 @@
 	nav li {
 		margin-right: 35px;
 	}
-	section.bonuses .right-side h1 {
+/*	section.bonuses .right-side h1 {
 		font-size: 42px;
 		line-height: 56px;
-	}
+	}*/
 	section.updates .right-side {
 		padding-left: 99px;
 	}
@@ -89,6 +89,30 @@
 	}
 	section.features ul.features-list li:nth-child(even) {
 		margin-right: 0;
+	}
+	section.bonuses {
+		height: auto;
+		padding: 40px 0;
+	}
+	section.bonuses .left-side,
+	section.bonuses .right-side {
+		margin: 0;
+		height: auto;
+		border: none;
+		float: none;
+	}
+	section.bonuses .left-side h2,
+	section.bonuses .right-side h1 {
+		border: none;
+		margin: 0;
+		transform: none;
+		-webkit-transform: none;
+		position: static;
+		display: block;
+		float: none;
+	}
+	section.bonuses .left-side h2 {
+		margin-bottom: 20px;
 	}
 }
 /*--------------------------------------------------------------------------
@@ -230,6 +254,10 @@
 	}
 	#footer-map {
 		height: 400px;
+	}
+
+	section.updates .instagram-holder #instagram {
+		margin-right: 0;
 	}
 }
 /*
@@ -427,6 +455,8 @@
 	}
 	.about-person .poerson-image {
 		float: none;
+		margin: 0;
+		padding: 0;
 		width: 100%;
 	}
 }

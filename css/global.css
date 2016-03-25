@@ -354,6 +354,16 @@ input[type='number'] {
 	max-height: 100%;
 	max-width: 100%;
 }
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+
 .btn.type-2,
 button.type-2 {
 	border: 1px solid #000;
@@ -380,6 +390,15 @@ button.type-2:hover {
 }
 .image-holder img {
 	vertical-align: middle;
+	width: 100%;
+}
+.image-holder .img {
+	background-size: cover;
+	background-position: 50% 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
 	width: 100%;
 }
 /*	LIGHTBOX	*/

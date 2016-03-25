@@ -81,7 +81,7 @@
 	<div class="background-video-holder">
 		<video poster="img/bg/main-video-holder.jpg" autoplay loop>
 			<!-- TODO test -->
-			<!--<source src="videos/background.mp4" />-->
+			<source src="videos/background.mp4" />
 		</video>
 	</div>
 	<div class="content-holder">
@@ -110,7 +110,7 @@
 			<h2 data-editable="snippets" data-key="features-header">особенности салона</h2>
 		</div>
 		<div class="right-side">
-			<ul class="features-list" data-repeat="features">
+			<ul class="features-list short" data-repeat="features">
 
 				<li data-index="{{index}}">
 					<div class="counter">
@@ -124,6 +124,10 @@
 
 			</ul>
 
+			<div class="button-holder">
+				<button class="type-1" id="features-more">читать больше</button>
+			</div>
+
 		</div>
 	</div>
 </section>
@@ -134,7 +138,8 @@
 
 	<div href="#" class="service" data-content-modal="#services-modal" data-index="{{index}}">
 		<div class="image-holder">
-			<img src="{{src}}" alt="service">
+			<img src="{{src}}" alt="service" class="fake-img">
+			<div class="img" style="background-image: url({{src}})"></div>
 		</div>
 		<div class="content-holder">
 			<h2>{{name}}</h2>
@@ -318,31 +323,6 @@
 				{{content}}
 			</ul>
 
-		</div>
-
-	</div>
-</div>
-
-<div class="editor-modal modal-holder" id="addFeatures" data-type="features">
-	<div class="modal-content">
-
-		<div class="close-modal">
-		</div>
-
-		<h2>Создать особенность</h2>
-
-		<div class="form-group">
-			<div class="label">Заголовок</div>
-			<input type="text" name="head" data-validate="empty">
-		</div>
-
-		<div class="form-group">
-			<div class="label">Текст</div>
-			<textarea name="text" data-validate="empty"></textarea>
-		</div>
-
-		<div class="button-holder">
-			<button class="type-1" type="submit">Сохранить</button>
 		</div>
 
 	</div>

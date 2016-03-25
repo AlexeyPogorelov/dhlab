@@ -6,7 +6,7 @@ var serverConfig = {
 	server: {
 		baseDir: "./"
 	},
-	tunnel: true,
+	tunnel: false,
 	host: 'localhost',
 	port: 63341,
 	logPrefix: "DH_lab"

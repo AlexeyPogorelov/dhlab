@@ -104,7 +104,8 @@ function runAdmin () {
 					}
 					console.log(ob);
 				} else {
-					alert('Ошибка! window.[$self.data(editable)] не является объектом')
+					console.log('Ошибка! window.[$self.data(editable)] не является объектом');
+					alert('Ошибка! window.[$self.data(editable)] не является объектом');
 				}
 			});
 	});
@@ -125,8 +126,9 @@ function runAdmin () {
 				});
 				setTimeout(function () {
 					window.location.reload();
-				}, 5000)
+				}, 5000);
 			}).fail(function( jqXHR, textStatus ) {
+				console.log( "Request failed: " + textStatus );
 				alert( "Request failed: " + textStatus );
 			});
 		},
@@ -146,6 +148,7 @@ function runAdmin () {
 				adminMethods.fillFileInputs(data, input);
 				// console.log(data);
 			}).fail(function( jqXHR, textStatus ) {
+				console.log( "Ошибка загрузки: " + textStatus + ". Файл, который Вы пытаетесь загрузить не должен превышать 2mb. Поддерживаемые форматы: '.jpeg, .jpg, .gif, .png'. Рекомендуем не загружать изображения более 1200 пикселей в ширину. ");
 				alert( "Ошибка загрузки: " + textStatus + ". Файл, который Вы пытаетесь загрузить не должен превышать 2mb. Поддерживаемые форматы: '.jpeg, .jpg, .gif, .png'. Рекомендуем не загружать изображения более 1200 пикселей в ширину. ");
 				loading.hidePreloader();
 			});
@@ -157,6 +160,7 @@ function runAdmin () {
 			}).done(function() {
 				console.log('removed old file');
 			}).fail(function( jqXHR, textStatus ) {
+				console.log( "Ошибка загрузки: " + textStatus );
 				alert( "Ошибка загрузки: " + textStatus );
 			});
 		},
