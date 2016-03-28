@@ -28,6 +28,9 @@
 	section.updates .right-side {
 		padding-left: 99px;
 	}
+	section.main-screen {
+		height: 745px;
+	}
 }
 /*------------------------------------------------------------------------------
 	MEDIUM

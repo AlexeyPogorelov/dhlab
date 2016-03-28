@@ -96,6 +96,7 @@ nav li a:hover:after {
 section.main-screen {
 	overflow: hidden;
 	height: 745px;
+	height: 696px;
 }
 section.main-screen .content {
 	position: relative;
@@ -140,12 +141,13 @@ section.main-screen .content-holder h1 {
 	padding-right: 76px;
 }
 section.main-screen .left-bottom-holder {
-	bottom: 208px;
+	bottom: 196px;
 	left: 27px;
 	position: absolute;
 	text-align: left;
 	text-transform: uppercase;
 	white-space: nowrap;
+	height: 0;
 	width: 0;
 	-webkit-transform: rotateZ(90deg);
 	transform: rotateZ(90deg);
