@@ -348,9 +348,9 @@ section.services .service:hover > .content-holder button {
 	-webkit-transition: right .3s ease-out, background .3s, border .3s, color .3s, filter .3s;
 	transition: right .3s ease-out, background .3s, border .3s, color .3s, filter .3s;
 }
-section.services.even-elements > .service:last-child {
+/*section.services.even-elements > .service:last-child {
 	width: 100%;
-}
+}*/
 
 /* END SERVICES */
 
